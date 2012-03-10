@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD5576B9150854CE00963F66 /* Pantry.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5576B8150854CE00963F66 /* Pantry.png */; };
 		CDD2A5251504178200FF5B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5241504178200FF5B03 /* UIKit.framework */; };
 		CDD2A5271504178200FF5B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5261504178200FF5B03 /* Foundation.framework */; };
 		CDD2A5291504178200FF5B03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5281504178200FF5B03 /* CoreGraphics.framework */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD5576B8150854CE00963F66 /* Pantry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pantry.png; path = "Virtual Fridge/Pantry.png"; sourceTree = "<group>"; };
 		CDD2A5201504178200FF5B03 /* Virtual Fridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Fridge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD2A5241504178200FF5B03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CDD2A5261504178200FF5B03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +63,7 @@
 		CDD2A5151504178100FF5B03 = {
 			isa = PBXGroup;
 			children = (
+				CD5576B8150854CE00963F66 /* Pantry.png */,
 				CDD2A52A1504178200FF5B03 /* Virtual Fridge */,
 				CDD2A5231504178200FF5B03 /* Frameworks */,
 				CDD2A5211504178200FF5B03 /* Products */,
@@ -171,6 +174,7 @@
 				CDD2A53F1504178200FF5B03 /* first@2x.png in Resources */,
 				CDD2A5441504178200FF5B03 /* second.png in Resources */,
 				CDD2A5461504178200FF5B03 /* second@2x.png in Resources */,
+				CD5576B9150854CE00963F66 /* Pantry.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +300,7 @@
 				CDD2A54B1504178200FF5B03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
