@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD1941C41511950B00E0205D /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1941C31511950B00E0205D /* Food.m */; };
+		CD60CAD115115F01000C89B7 /* foodDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD60CACF15115F01000C89B7 /* foodDB.xcdatamodeld */; };
+		CD60CAD4151161B4000C89B7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD60CAD3151161B4000C89B7 /* CoreData.framework */; };
+		CD60CAE3151170B9000C89B7 /* PantryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60CAE2151170B9000C89B7 /* PantryViewController.m */; };
 		CDD2A5251504178200FF5B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5241504178200FF5B03 /* UIKit.framework */; };
 		CDD2A5271504178200FF5B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5261504178200FF5B03 /* Foundation.framework */; };
 		CDD2A5291504178200FF5B03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5281504178200FF5B03 /* CoreGraphics.framework */; };
@@ -23,6 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD1941C21511950B00E0205D /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		CD1941C31511950B00E0205D /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		CD60CAD015115F01000C89B7 /* foodDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = foodDB.xcdatamodel; sourceTree = "<group>"; };
+		CD60CAD3151161B4000C89B7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CD60CAE1151170B9000C89B7 /* PantryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PantryViewController.h; sourceTree = "<group>"; };
+		CD60CAE2151170B9000C89B7 /* PantryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PantryViewController.m; sourceTree = "<group>"; };
 		CDD2A5201504178200FF5B03 /* Virtual Fridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Fridge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD2A5241504178200FF5B03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CDD2A5261504178200FF5B03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD60CAD4151161B4000C89B7 /* CoreData.framework in Frameworks */,
 				CDD2A5251504178200FF5B03 /* UIKit.framework in Frameworks */,
 				CDD2A5271504178200FF5B03 /* Foundation.framework in Frameworks */,
 				CDD2A5291504178200FF5B03 /* CoreGraphics.framework in Frameworks */,
@@ -61,6 +72,9 @@
 		CDD2A5151504178100FF5B03 = {
 			isa = PBXGroup;
 			children = (
+				CD60CAE1151170B9000C89B7 /* PantryViewController.h */,
+				CD60CAE2151170B9000C89B7 /* PantryViewController.m */,
+				CD60CAD3151161B4000C89B7 /* CoreData.framework */,
 				CDD2A52A1504178200FF5B03 /* Virtual Fridge */,
 				CDD2A5231504178200FF5B03 /* Frameworks */,
 				CDD2A5211504178200FF5B03 /* Products */,
@@ -91,6 +105,9 @@
 				CDD2A5331504178200FF5B03 /* AppDelegate.h */,
 				CDD2A5341504178200FF5B03 /* AppDelegate.m */,
 				CDD2A5361504178200FF5B03 /* MainStoryboard.storyboard */,
+				CD1941C21511950B00E0205D /* Food.h */,
+				CD1941C31511950B00E0205D /* Food.m */,
+				CD60CACF15115F01000C89B7 /* foodDB.xcdatamodeld */,
 				CDD2A5391504178200FF5B03 /* FirstViewController.h */,
 				CDD2A53A1504178200FF5B03 /* FirstViewController.m */,
 				CDD2A53C1504178200FF5B03 /* first.png */,
@@ -185,6 +202,9 @@
 				CDD2A5351504178200FF5B03 /* AppDelegate.m in Sources */,
 				CDD2A53B1504178200FF5B03 /* FirstViewController.m in Sources */,
 				CDD2A5421504178200FF5B03 /* SecondViewController.m in Sources */,
+				CD60CAD115115F01000C89B7 /* foodDB.xcdatamodeld in Sources */,
+				CD60CAE3151170B9000C89B7 /* PantryViewController.m in Sources */,
+				CD1941C41511950B00E0205D /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +316,22 @@
 				CDD2A54B1504178200FF5B03 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD60CACF15115F01000C89B7 /* foodDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD60CAD015115F01000C89B7 /* foodDB.xcdatamodel */,
+			);
+			currentVersion = CD60CAD015115F01000C89B7 /* foodDB.xcdatamodel */;
+			path = foodDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CDD2A5171504178100FF5B03 /* Project object */;
 }
