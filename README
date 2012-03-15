@@ -1,1 +1,14 @@
 Please set up a git hub repo. I have done the leg work all you need to do is add git to your terminal (little bit tricky for MAC) then connect. I already created a project in xcode so just grab it and go. Use the commit string argument to add notes about what you did.
+
+Core Data:
+
+	For this submission I started by creating a Food Object in the core data model view. At this point there is not much information stored in that object but I have sucessfully passed it between views and have only objects in the correct state. 
+	STATE 1: Pantry
+	STATE 2: Shopping List
+	STATE 3: Cart
+	STATE 4: 1 & 2
+	STATE 5: 2 & 3
+	STATE 6: 1 & 3
+	STATE 7: 1 & 2 & 3
+
+	We will use this at our state key for all the possible states a food iteam could be in. Review code in the PantryViewController and AppDelegate to see how I have been using core data.
