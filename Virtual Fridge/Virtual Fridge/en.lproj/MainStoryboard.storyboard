@@ -9,7 +9,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqA-om-tjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="gWc-Wf-7na" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="2xt-Yo-mxL"/>
+                    <tabBarItem key="tabBarItem" title="Pantry" id="2xt-Yo-mxL"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rgc-Hp-Yrk">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -49,44 +49,93 @@
             </objects>
             <point key="canvasLocation" x="1180" y="-383"/>
         </scene>
-        <scene sceneID="13">
+        <scene sceneID="FUi-IR-QsB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
-                <viewController title="Second" id="3" customClass="SecondViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="22">
-                                <rect key="frame" x="54" y="98" width="212" height="43"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" text="Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate." textAlignment="center" id="23">
-                                <rect key="frame" x="20" y="181" width="280" height="88"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="6x9-wx-X1w">
-                                <rect key="frame" x="30" y="20" width="207" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title=""/>
-                                </segments>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="6"/>
-                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Vw-OA-I0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="YdI-lv-nHR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" id="BnD-Ao-47k"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KdM-T2-0NQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GeP-Sc-SFz" kind="relationship" relationship="rootViewController" id="XFb-PO-V3A"/>
+                    </connections>
+                </navigationController>
             </objects>
-            <point key="canvasLocation" x="671" y="240"/>
+            <point key="canvasLocation" x="645" y="376"/>
+        </scene>
+        <scene sceneID="od0-pv-PCc">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYp-TT-iwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="GeP-Sc-SFz" customClass="ShoppingListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ovq-QX-2LM">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XYx-2G-vgI">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GeP-Sc-SFz" id="3rI-9a-alm"/>
+                            <outlet property="delegate" destination="GeP-Sc-SFz" id="Nae-5L-YDI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Shopping List" id="bkV-5R-RXG"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1098" y="376"/>
+        </scene>
+        <scene sceneID="WDr-LQ-EZH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RfK-Ig-SAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="rIA-dt-M7p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Cart" id="taQ-4k-70J"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DJy-Pz-MM6">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DDa-l3-vIR" kind="relationship" relationship="rootViewController" id="N4v-3l-qer"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="660" y="1002"/>
+        </scene>
+        <scene sceneID="d0g-ak-Wcd">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="50D-lC-xLe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="DDa-l3-vIR" customClass="CartViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qno-cf-ypf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QwJ-3K-znz">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DDa-l3-vIR" id="k23-d2-4W1"/>
+                            <outlet property="delegate" destination="DDa-l3-vIR" id="8N0-NL-Hpk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="pVm-a5-Cuh"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="1108" y="1002"/>
         </scene>
         <scene sceneID="15">
             <objects>
@@ -99,23 +148,24 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
                         <segue destination="gWc-Wf-7na" kind="relationship" relationship="viewControllers" id="mF7-gG-Mep"/>
+                        <segue destination="YdI-lv-nHR" kind="relationship" relationship="viewControllers" id="Ors-cC-yHO"/>
+                        <segue destination="rIA-dt-M7p" kind="relationship" relationship="viewControllers" id="0lD-dH-MhJ"/>
                     </connections>
                 </tabBarController>
             </objects>
             <point key="canvasLocation" x="30" y="56"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="second" width="16" height="16"/>
-    </resources>
     <classes>
+        <class className="CartViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartViewController.h"/>
+        </class>
         <class className="PantryViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PantryViewController.h"/>
         </class>
-        <class className="SecondViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecondViewController.h"/>
+        <class className="ShoppingListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
