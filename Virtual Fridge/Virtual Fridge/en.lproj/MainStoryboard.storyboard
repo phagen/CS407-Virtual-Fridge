@@ -44,10 +44,60 @@
                             <outlet property="delegate" destination="ltg-0r-he5" id="QTe-xN-8kc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Pantry" id="9w8-RW-K9M"/>
+                    <navigationItem key="navigationItem" title="Pantry" id="9w8-RW-K9M">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="eAT-rV-SKS">
+                            <connections>
+                                <action selector="AddPantry:" destination="ltg-0r-he5" id="Tbc-RX-vLP"/>
+                                <segue destination="iRC-z6-gHj" kind="modal" id="NcI-Ku-UoX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1180" y="-383"/>
+        </scene>
+        <scene sceneID="Y01-WW-KDI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkc-R4-uMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="iRC-z6-gHj" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Aas-tk-xJ9">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9qM-GU-bh9" kind="relationship" relationship="rootViewController" id="Sdp-BS-QHC"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1699" y="-379"/>
+        </scene>
+        <scene sceneID="L3V-e7-dOh">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RGF-LM-yD9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="9qM-GU-bh9" customClass="AddPantry" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Y0o-1Y-PqA">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tj6-4N-K9C">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9qM-GU-bh9" id="EBb-I0-Thf"/>
+                            <outlet property="delegate" destination="9qM-GU-bh9" id="CyM-MK-1ur"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ucM-81-FiU"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2216" y="-377"/>
         </scene>
         <scene sceneID="FUi-IR-QsB">
             <objects>
@@ -132,7 +182,7 @@
                             <outlet property="delegate" destination="DDa-l3-vIR" id="8N0-NL-Hpk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pVm-a5-Cuh"/>
+                    <navigationItem key="navigationItem" title="Cart" id="pVm-a5-Cuh"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1108" y="1002"/>
@@ -158,6 +208,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="AddPantry" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPantry.h"/>
+        </class>
         <class className="CartViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartViewController.h"/>
         </class>

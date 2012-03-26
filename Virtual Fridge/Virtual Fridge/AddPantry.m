@@ -11,6 +11,7 @@
 
 @implementation AddPantry
 
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -80,14 +81,14 @@
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,6 +103,33 @@
     // Configure the cell...
     
     return cell;
+}
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+       
+    if(section == 1)
+    {
+        return @"Dairy";
+    }
+    else if(section == 2)
+    {
+        return @"Meat";
+    }
+    else if(section == 3)
+    {
+        return @"Produce";
+    }
+    else if(section == 0)
+    {
+        return @"Bakery";
+    }
+    else
+    {
+        return @"Anna Rules";
+    }
+
+
+    
 }
 
 /*
