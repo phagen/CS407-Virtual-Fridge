@@ -59,11 +59,11 @@
     NSError *error;
     NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     pantryItems = (NSMutableArray*) allItems;
-    for(int i =0; i < [pantryItems count]; i++)
+    /*for(int i =0; i < [pantryItems count]; i++)
     {
         NSLog(@"Name: %@", ((Food *)[pantryItems objectAtIndex: i]).name);
         NSLog(@"State: %d",((Food *)[pantryItems objectAtIndex: i]).state.intValue);
-    }
+    }*/
 
           
     // Uncomment the following line to preserve selection between presentations.
@@ -96,6 +96,8 @@
         NSError *error;
         NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
         pantryItems = (NSMutableArray*) allItems;
+        
+        //TODO call refresh on the list
     }
     else //categories
     {
@@ -107,7 +109,16 @@
                          [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7], [categories objectAtIndex:[NSNumber numberWithInt:i]]];
         
             [fetchRequest setPredicate:predicate]; //fetch with predicate
+            
+            NSError *error;
+            NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+            
+            [pantryItems addObject:allItems];
+            
+            
         }
+        
+        //TODO call refresh on the list
     }
     
     

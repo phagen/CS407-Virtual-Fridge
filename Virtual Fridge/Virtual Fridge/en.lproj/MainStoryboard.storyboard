@@ -161,6 +161,9 @@
                                     <segment title="Cat."/>
                                 </segments>
                             </segmentedControl>
+                            <connections>
+                                <action selector="changeSegmentEvent:" destination="GeP-Sc-SFz" id="EVU-JK-qJx"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -216,6 +219,9 @@
                                     <segment title="Cat."/>
                                 </segments>
                             </segmentedControl>
+                            <connections>
+                                <action selector="changeSegmentEvent:" destination="DDa-l3-vIR" id="YD7-dC-cUq"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
