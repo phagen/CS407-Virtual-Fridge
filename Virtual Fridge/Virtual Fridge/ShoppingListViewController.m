@@ -43,15 +43,68 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
     [fetchRequest setEntity:entity];
+    
+    //Use predicate to get items from the database with parameters: syntax demonstrated below
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
+                              [NSNumber numberWithInt:2], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], [NSNumber numberWithInt:7]];
+    [fetchRequest setPredicate:predicate]; //fetch with predicate
+    
+    NSSortDescriptor *sortDecsriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES]; //Call will be sorted
+    [fetchRequest setSortDescriptors:[NSArray   arrayWithObject:sortDecsriptor]];
+    
     NSError *error;
     NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    pantryItems = [ShoppingListViewController cleanItems: allItems];
-    for(int i =0; i < [pantryItems count]; i++)
-    {
-        NSLog(@"Name: %@", ((Food *)[pantryItems objectAtIndex: i]).name);
-        NSLog(@"State: %d",((Food *)[pantryItems objectAtIndex: i]).state.intValue);
-    }
+    pantryItems = (NSMutableArray*) allItems;
 
+}
+- (IBAction)changeSegmentEvent:(id)sender {
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDecsriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES]; //Call will be sorted
+    [fetchRequest setSortDescriptors:[NSArray   arrayWithObject:sortDecsriptor]];
+    
+    NSPredicate *predicate;
+    
+    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
+    {
+        predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
+                     [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7]];
+        
+        [fetchRequest setPredicate:predicate]; //fetch with predicate
+        
+        NSError *error;
+        NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        pantryItems = (NSMutableArray*) allItems;
+        
+        //TODO call refresh on the list
+    }
+    else //categories
+    {
+        NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and bueaty", @"other"];
+        
+        for(int i = 0; i < categories.count; i++)
+        {
+            predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@ AND category == %@)", 
+                         [NSNumber numberWithInt:2], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], [NSNumber numberWithInt:7], [categories objectAtIndex:[NSNumber numberWithInt:i]]];
+            
+            [fetchRequest setPredicate:predicate]; //fetch with predicate
+            
+            NSError *error;
+            NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+            
+            [pantryItems addObject:allItems];
+            
+            
+        }
+        
+        //TODO call refresh on the list
+    }
 }
 
 - (void)viewDidUnload

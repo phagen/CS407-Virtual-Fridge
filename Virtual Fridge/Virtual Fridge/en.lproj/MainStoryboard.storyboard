@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -45,6 +45,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pantry" id="9w8-RW-K9M">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="SuL-ZG-nVr">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="hqI-rI-bUl">
+                                <rect key="frame" x="5" y="7" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="ABC"/>
+                                    <segment title="Cat."/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentChangeEvent:" destination="ltg-0r-he5" eventType="valueChanged" id="ThK-H3-WPJ"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="eAT-rV-SKS">
                             <connections>
                                 <action selector="AddPantry:" destination="ltg-0r-he5" id="Tbc-RX-vLP"/>
@@ -138,7 +151,18 @@
                             <outlet property="delegate" destination="GeP-Sc-SFz" id="Nae-5L-YDI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shopping List" id="bkV-5R-RXG"/>
+                    <navigationItem key="navigationItem" title="Shopping List" id="bkV-5R-RXG">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="fW7-gE-sF6">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="owR-bI-2s2">
+                                <rect key="frame" x="5" y="7" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="ABC"/>
+                                    <segment title="Cat."/>
+                                </segments>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1098" y="376"/>
@@ -182,7 +206,18 @@
                             <outlet property="delegate" destination="DDa-l3-vIR" id="8N0-NL-Hpk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cart" id="pVm-a5-Cuh"/>
+                    <navigationItem key="navigationItem" title="Cart" id="pVm-a5-Cuh">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="EHx-bM-H3b">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="KzL-Ac-Kdp">
+                                <rect key="frame" x="5" y="7" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="ABC"/>
+                                    <segment title="Cat."/>
+                                </segments>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1108" y="1002"/>
