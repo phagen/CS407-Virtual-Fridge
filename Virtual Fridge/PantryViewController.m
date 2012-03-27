@@ -16,6 +16,7 @@
 @synthesize Food = _Food;
 @synthesize s;
 @synthesize pantryItems;
+@synthesize pantryItemsCat;
 //@synthesize context = _context;
 
 
@@ -101,19 +102,23 @@
     }
     else //categories
     {
-        NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and bueaty", @"other"];
+         
+        NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
         
-        for(int i = 0; i < categories.count; i++)
+        [pantryItemsCat removeAllObjects];
+        
+        for(int i = 0; i < [categories count]; i++)
         {
-            predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@ AND category == %@)", 
-                         [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7], [categories objectAtIndex:[NSNumber numberWithInt:i]]];
+            NSMutableArray *allItems = [[NSMutableArray alloc] init];
+            predicate = [NSPredicate predicateWithFormat: @"((state == %@ OR state == %@ OR state == %@ OR state == %@) AND category == %@)", 
+                         [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7], [categories objectAtIndex:i]];
         
             [fetchRequest setPredicate:predicate]; //fetch with predicate
             
             NSError *error;
-            NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+            allItems = ((NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);
             
-            [pantryItems addObject:allItems];
+            [pantryItemsCat addObject:allItems];
             
             
         }

@@ -42,8 +42,10 @@
         Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Apple";
         food.state =  [NSNumber numberWithInt:7];
+        food.category = @"produce";
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Pear";
+        food.category = @"produce";
         food.state =  [NSNumber numberWithInt:2];
         food.state =  [NSNumber numberWithInt:3];
     }

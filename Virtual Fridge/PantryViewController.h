@@ -12,6 +12,7 @@
 @interface PantryViewController : UITableViewController {
     NSArray *_Food;
     @private NSMutableArray *pantryItems;
+    @private NSMutableArray *pantryItemsCat;
     NSString *s;
   //  NSManagedObjectContext *_context;
 }
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) NSArray *Food;
 @property (nonatomic, retain) NSString *s;
 @property (nonatomic, strong) NSMutableArray *pantryItems;
+@property (nonatomic, strong) NSMutableArray *pantryItemsCat;
 
 
 + (NSMutableArray *) cleanItems: (NSMutableArray*) array;

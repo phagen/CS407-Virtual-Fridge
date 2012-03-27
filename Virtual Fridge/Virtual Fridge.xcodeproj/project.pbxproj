@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD1941C41511950B00E0205D /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1941C31511950B00E0205D /* Food.m */; };
+		6CFCD3201522429D00BA974E /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFCD31F1522429D00BA974E /* Food.m */; };
 		CD5F28AF151B8F8F00F5E65C /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */; };
 		CD5F28B3151B975D00F5E65C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B2151B975D00F5E65C /* CartViewController.m */; };
 		CD5F28B6151BC1D000F5E65C /* AddPantry.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B5151BC1D000F5E65C /* AddPantry.m */; };
@@ -30,8 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CD1941C21511950B00E0205D /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
-		CD1941C31511950B00E0205D /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		6CFCD31E1522429D00BA974E /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		6CFCD31F1522429D00BA974E /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		CD5F28AD151B8F8F00F5E65C /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
 		CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		CD5F28B1151B975D00F5E65C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 				CD5F28B2151B975D00F5E65C /* CartViewController.m */,
 				CD5F28AD151B8F8F00F5E65C /* ShoppingListViewController.h */,
 				CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */,
-				CD1941C21511950B00E0205D /* Food.h */,
-				CD1941C31511950B00E0205D /* Food.m */,
+				6CFCD31E1522429D00BA974E /* Food.h */,
+				6CFCD31F1522429D00BA974E /* Food.m */,
 				CD60CACF15115F01000C89B7 /* foodDB.xcdatamodeld */,
 				CDD2A5391504178200FF5B03 /* FirstViewController.h */,
 				CDD2A53A1504178200FF5B03 /* FirstViewController.m */,
@@ -219,10 +219,10 @@
 				CDD2A5421504178200FF5B03 /* SecondViewController.m in Sources */,
 				CD60CAD115115F01000C89B7 /* foodDB.xcdatamodeld in Sources */,
 				CD60CAE3151170B9000C89B7 /* PantryViewController.m in Sources */,
-				CD1941C41511950B00E0205D /* Food.m in Sources */,
 				CD5F28AF151B8F8F00F5E65C /* ShoppingListViewController.m in Sources */,
 				CD5F28B3151B975D00F5E65C /* CartViewController.m in Sources */,
 				CD5F28B6151BC1D000F5E65C /* AddPantry.m in Sources */,
+				6CFCD3201522429D00BA974E /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
