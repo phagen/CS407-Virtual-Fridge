@@ -60,6 +60,10 @@
     NSError *error;
     NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     pantryItems = (NSMutableArray*) allItems;
+    
+    
+    
+    
     /*for(int i =0; i < [pantryItems count]; i++)
     {
         NSLog(@"Name: %@", ((Food *)[pantryItems objectAtIndex: i]).name);

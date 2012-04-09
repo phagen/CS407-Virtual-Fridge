@@ -48,6 +48,9 @@
         food.category = @"produce";
         food.state =  [NSNumber numberWithInt:2];
         food.state =  [NSNumber numberWithInt:3];
+        ///NEED THIS TO SAVE STATE OF DB///
+        [self saveContext];
+
     }
        
     //Testing 
