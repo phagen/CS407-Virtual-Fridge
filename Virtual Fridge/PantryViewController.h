@@ -14,6 +14,7 @@
     @private NSMutableArray *pantryItems;
     @private NSMutableArray *pantryItemsCat;
     NSString *s;
+    NSInteger *viewFlag;
   //  NSManagedObjectContext *_context;
 }
 

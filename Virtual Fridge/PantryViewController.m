@@ -17,6 +17,8 @@
 @synthesize s;
 @synthesize pantryItems;
 @synthesize pantryItemsCat;
+
+static int *viewFlag = 0;
 //@synthesize context = _context;
 
 
@@ -93,6 +95,7 @@
     
     if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
     {
+        viewFlag = 0;
         predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
                                   [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7]];
         
@@ -106,10 +109,12 @@
     }
     else //categories
     {
+        viewFlag = 1; // This needed for reload
          
         NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
         
         [pantryItemsCat removeAllObjects];
+        pantryItemsCat = [[NSMutableArray alloc] init];
         
         for(int i = 0; i < [categories count]; i++)
         {
@@ -123,12 +128,11 @@
             allItems = ((NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);
             
             [pantryItemsCat addObject:allItems];
-            
+        
             
         }
-        
-        //TODO call refresh on the list
     }
+    [self.tableView reloadData];
     
     
     
@@ -197,13 +201,33 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    if(viewFlag == 0)
+    {
+        return 1;
+    }
+    else if(viewFlag == 1)
+    {
+        return 19;
+    }
+    else
+    {
+        NSLog(@"Bad viewFlag state");
+        return 1;
+    }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {   
     // Return the number of rows in the section.
+    if(viewFlag == 0)
+    {
     return [pantryItems count];
+    }
+    else if(viewFlag == 1)
+    {
+        return [[pantryItemsCat objectAtIndex:section] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -214,12 +238,72 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    cell.textLabel.text = ((Food *)[pantryItems objectAtIndex:indexPath.row]).name;
+    if (viewFlag == 0)
+    {
+        cell.textLabel.text = ((Food *)[pantryItems objectAtIndex:indexPath.row]).name;
+    }
+    else if (viewFlag == 1)
+    {
+        NSMutableArray* array = [pantryItemsCat objectAtIndex: indexPath.section];
+        cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+    }
     
     return cell;
 }
-
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(viewFlag == 0)
+    {
+       return @" "; 
+    }
+    else if (viewFlag == 1)
+    {
+        switch (section) {
+            case 0:
+                return @"Produce";
+                break;
+            case 1:
+                return @"Frozen Food";
+            case 2:
+                return @"Bulk Food";
+            case 3:
+                return @"Baking Food";
+            case 4:
+                return @"Breads";
+            case 5:
+                return @"Meat and Seafood";
+            case 6:
+                return @"Deli";
+            case 7:
+                return @"Bakery";
+            case 8:
+                return @"Dairy";
+            case 9:
+                return @"Pasta and Rice";
+            case 10:
+                return @"Ethnic Food";
+            case 11:
+                return @"Canned Food";
+            case 12:
+                return @"Condiments";
+            case 13:
+                return @"Snacks";
+            case 14:
+                return @"Cereal";
+            case 15:
+                return @"Beverages";
+            case 16:
+                return @"Household Items"; 
+            case 17:   
+                return @"Health and Beauty";
+            case 18:
+                return @"Other";
+            default:
+                return @"Bad Access";
+                break;
+        }
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
