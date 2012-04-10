@@ -19,6 +19,7 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+-(void)initCoreData;
 
 @end
 

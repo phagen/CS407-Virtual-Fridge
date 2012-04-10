@@ -18,6 +18,25 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
+-(void) initCoreData
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    Food *food = nil;
+   // Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
+    NSArray *produce = [NSArray arrayWithObjects:@"Oranges",@"Lemons",@"Limes",
+                        @"Mango",@"Bananas",@"Pineapple", @"Strawberries",@"Berries",@"Kiwi",@"Grapes",nil];
+    
+    
+    //Produce Init
+    for (int i = 0; i < [produce count]; i++) {
+        food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
+        food.name = ((NSString*)[produce objectAtIndex:i]);
+        food.state =  [NSNumber numberWithInt:0];
+        food.category = @"produce";
+    }
+    return;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -39,6 +58,7 @@
    
     if([fetchedObjects count] == 0)
     {
+        [self initCoreData];
         Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Apple";
         food.state =  [NSNumber numberWithInt:7];
@@ -62,8 +82,7 @@
         NSLog(@"State: %d",food.state.intValue);
     }
     return YES;
-}
-							
+}							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

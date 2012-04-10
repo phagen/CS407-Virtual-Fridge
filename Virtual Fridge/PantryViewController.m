@@ -113,6 +113,12 @@ static int *viewFlag = 0;
          
         NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
         
+        categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        for(int i =0; i < [categories count]; i++)
+        {
+            NSLog(@"%@ \n", ((NSString*)[categories objectAtIndex:i]));
+        }
+        
         [pantryItemsCat removeAllObjects];
         pantryItemsCat = [[NSMutableArray alloc] init];
         
@@ -254,50 +260,50 @@ static int *viewFlag = 0;
 {
     if(viewFlag == 0)
     {
-       return @" "; 
+       return @""; 
     }
     else if (viewFlag == 1)
     {
         switch (section) {
             case 0:
-                return @"Produce";
+                return @"Bakery";
                 break;
             case 1:
-                return @"Frozen Food";
-            case 2:
-                return @"Bulk Food";
-            case 3:
                 return @"Baking Food";
-            case 4:
+            case 2:
+                return @"Beverages";
+            case 3:
                 return @"Breads";
+            case 4:
+                return @"Bulk Food";
             case 5:
-                return @"Meat and Seafood";
+                return @"Canned Goods";
             case 6:
-                return @"Deli";
+                return @"Cereal";
             case 7:
-                return @"Bakery";
+                return @"Condiments";
             case 8:
                 return @"Dairy";
             case 9:
-                return @"Pasta and Rice";
+                return @"Deli";
             case 10:
                 return @"Ethnic Food";
             case 11:
-                return @"Canned Food";
+                return @"Frozen Food";
             case 12:
-                return @"Condiments";
-            case 13:
-                return @"Snacks";
-            case 14:
-                return @"Cereal";
-            case 15:
-                return @"Beverages";
-            case 16:
-                return @"Household Items"; 
-            case 17:   
                 return @"Health and Beauty";
-            case 18:
+            case 13:
+                return @"Household Items";
+            case 14:
+                return @"Meat and Seafood";
+            case 15:
                 return @"Other";
+            case 16:
+                return @"Pasta and Rice"; 
+            case 17:   
+                return @"Produce";
+            case 18:
+                return @"Snacks";
             default:
                 return @"Bad Access";
                 break;
