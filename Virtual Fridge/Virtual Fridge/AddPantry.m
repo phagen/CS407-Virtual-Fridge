@@ -7,9 +7,15 @@
 //
 
 #import "AddPantry.h"
+#import <CoreData/CoreData.h>
+#import "Food.h"
+#import "AppDelegate.h"
+
 
 
 @implementation AddPantry
+
+@synthesize nonPantry;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -34,6 +40,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor *sortDecsriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES]; //Call will be sorted
+    [fetchRequest setSortDescriptors:[NSArray   arrayWithObject:sortDecsriptor]];
+    
+    NSPredicate *predicate;
+    
+    
+    NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
+    
+    categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    nonPantry = [[NSMutableArray alloc] init];
+
+    for(int i = 0; i < [categories count]; i++)
+    {
+        NSMutableArray *allItems = [[NSMutableArray alloc] init];
+        predicate = [NSPredicate predicateWithFormat: @"((state == %@ OR state == %@ OR state == %@ OR state == %@) AND category == %@)", 
+                     [NSNumber numberWithInt:2], [NSNumber numberWithInt:3], [NSNumber numberWithInt:5],[NSNumber numberWithInt:0], [categories objectAtIndex:i]];
+        
+        [fetchRequest setPredicate:predicate]; //fetch with predicate
+        
+        NSError *error;
+        allItems = ((NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);
+        
+        [nonPantry addObject:allItems];
+        
+    }
+
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,16 +121,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 5;
+    return 19;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 1;
+    return [[nonPantry objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,35 +141,61 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     // Configure the cell...
-    
+
+    NSMutableArray* array = [nonPantry objectAtIndex: indexPath.section];
+    cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+
+        
     return cell;
 }
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
        
-    if(section == 1)
-    {
-        return @"Dairy";
+    switch (section) {
+        case 0:
+            return @"Bakery";
+            break;
+        case 1:
+            return @"Baking Food";
+        case 2:
+            return @"Beverages";
+        case 3:
+            return @"Breads";
+        case 4:
+            return @"Bulk Food";
+        case 5:
+            return @"Canned Goods";
+        case 6:
+            return @"Cereal";
+        case 7:
+            return @"Condiments";
+        case 8:
+            return @"Dairy";
+        case 9:
+            return @"Deli";
+        case 10:
+            return @"Ethnic Food";
+        case 11:
+            return @"Frozen Food";
+        case 12:
+            return @"Health and Beauty";
+        case 13:
+            return @"Household Items";
+        case 14:
+            return @"Meat and Seafood";
+        case 15:
+            return @"Other";
+        case 16:
+            return @"Pasta and Rice"; 
+        case 17:   
+            return @"Produce";
+        case 18:
+            return @"Snacks";
+        default:
+            return @"Bad Access";
+            break;
     }
-    else if(section == 2)
-    {
-        return @"Meat";
-    }
-    else if(section == 3)
-    {
-        return @"Produce";
-    }
-    else if(section == 0)
-    {
-        return @"Bakery";
-    }
-    else
-    {
-        return @"Anna Rules";
-    }
-
 
     
 }
