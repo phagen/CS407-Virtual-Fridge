@@ -16,5 +16,5 @@
 @property (nonatomic, strong) NSMutableArray *nonPantry;
 
 - (IBAction)dismissView:(id)sender;
-
+- (void) adustCoreDatainSection: (NSInteger*) section atRow:(NSInteger*) row doAdd: (bool) add;
 @end

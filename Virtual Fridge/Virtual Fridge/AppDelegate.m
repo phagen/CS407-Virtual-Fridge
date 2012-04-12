@@ -72,16 +72,7 @@
         [self saveContext];
 
     }
-       
-    //Testing 
-    
    
-    for(Food *food in fetchedObjects)
-    {
-        NSLog(@"Name: %@", food.name);
-        NSLog(@"State: %d",food.state.intValue);
-    }
-    return YES;
 }							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

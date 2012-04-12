@@ -81,7 +81,51 @@ static int *viewFlag = 0;
 }
 
 - (IBAction)segmentChangeEvent:(id)sender {
+    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
+    {
+        viewFlag = 0;
+        [self fetchPantryAlpha];
+    }
+    else //categories
+    {
+        viewFlag = 1; // This needed for reload
+        [self fetchPantryCat];
+    }
+    [self.tableView reloadData];
+}
+
+
+-(void) fetchPantryAlpha
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
     
+    NSSortDescriptor *sortDecsriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES]; //Call will be sorted
+    [fetchRequest setSortDescriptors:[NSArray   arrayWithObject:sortDecsriptor]];
+    
+    NSPredicate *predicate;
+    predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
+                 [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7]];
+    
+    [fetchRequest setPredicate:predicate]; //fetch with predicate
+    
+    NSError *error;
+    NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    pantryItems = (NSMutableArray*) allItems;
+
+}
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+-(void) fetchPantryCat
+{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
@@ -93,62 +137,31 @@ static int *viewFlag = 0;
     
     NSPredicate *predicate;
     
-    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
+    NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
+    
+    categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    for(int i =0; i < [categories count]; i++)
     {
-        viewFlag = 0;
-        predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
-                                  [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7]];
+        NSLog(@"%@ \n", ((NSString*)[categories objectAtIndex:i]));
+    }
+    
+    [pantryItemsCat removeAllObjects];
+    pantryItemsCat = [[NSMutableArray alloc] init];
+    
+    for(int i = 0; i < [categories count]; i++)
+    {
+        NSMutableArray *allItems = [[NSMutableArray alloc] init];
+        predicate = [NSPredicate predicateWithFormat: @"((state == %@ OR state == %@ OR state == %@ OR state == %@) AND category == %@)", 
+                     [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7], [categories objectAtIndex:i]];
         
         [fetchRequest setPredicate:predicate]; //fetch with predicate
         
         NSError *error;
-        NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        pantryItems = (NSMutableArray*) allItems;
+        allItems = ((NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);
         
-        //TODO call refresh on the list
+        [pantryItemsCat addObject:allItems];
     }
-    else //categories
-    {
-        viewFlag = 1; // This needed for reload
-         
-        NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
-        
-        categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        for(int i =0; i < [categories count]; i++)
-        {
-            NSLog(@"%@ \n", ((NSString*)[categories objectAtIndex:i]));
-        }
-        
-        [pantryItemsCat removeAllObjects];
-        pantryItemsCat = [[NSMutableArray alloc] init];
-        
-        for(int i = 0; i < [categories count]; i++)
-        {
-            NSMutableArray *allItems = [[NSMutableArray alloc] init];
-            predicate = [NSPredicate predicateWithFormat: @"((state == %@ OR state == %@ OR state == %@ OR state == %@) AND category == %@)", 
-                         [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7], [categories objectAtIndex:i]];
-        
-            [fetchRequest setPredicate:predicate]; //fetch with predicate
-            
-            NSError *error;
-            allItems = ((NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);
-            
-            [pantryItemsCat addObject:allItems];
-        
-            
-        }
-    }
-    [self.tableView reloadData];
-    
-    
-    
-    
-    
-    
-    
-    
-}
-                              
+}                           
                               
 /* cleanItems DEPRECATED
 +(NSMutableArray*) cleanItems: (NSArray*) array
@@ -169,16 +182,20 @@ static int *viewFlag = 0;
     return temp;
 }*/
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if(viewFlag == 0)
+    {
+        [self fetchPantryAlpha];
+    }
+    else
+    {
+        [self fetchPantryCat];
+    }
+    [self.tableView reloadData];
+   
 }
 
 - (void)viewDidAppear:(BOOL)animated
