@@ -252,4 +252,8 @@
      */
 }
 
+- (IBAction)dismissView:(id)sender {
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

@@ -15,5 +15,6 @@
 
 @property (nonatomic, strong) NSMutableArray *nonPantry;
 
+- (IBAction)dismissView:(id)sender;
 
 @end

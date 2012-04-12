@@ -10,6 +10,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqA-om-tjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="gWc-Wf-7na" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Pantry" id="2xt-Yo-mxL"/>
+                    <navigationItem key="navigationItem" id="fub-IT-dRf"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rgc-Hp-Yrk">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -61,27 +62,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" id="eAT-rV-SKS">
                             <connections>
                                 <action selector="AddPantry:" destination="ltg-0r-he5" id="Tbc-RX-vLP"/>
-                                <segue destination="iRC-z6-gHj" kind="modal" id="NcI-Ku-UoX"/>
+                                <segue destination="cpS-nE-xNH" kind="modal" id="g4P-Nb-LeT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1180" y="-383"/>
-        </scene>
-        <scene sceneID="Y01-WW-KDI">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pkc-R4-uMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="iRC-z6-gHj" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Aas-tk-xJ9">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="9qM-GU-bh9" kind="relationship" relationship="rootViewController" id="Sdp-BS-QHC"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="1699" y="-379"/>
         </scene>
         <scene sceneID="L3V-e7-dOh">
             <objects>
@@ -110,13 +97,27 @@
                     <navigationItem key="navigationItem" id="ucM-81-FiU">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="cQf-Ne-17M">
                             <connections>
-                                <segue destination="ltg-0r-he5" kind="push" id="2Oj-GR-5H3"/>
+                                <action selector="dismissView:" destination="9qM-GU-bh9" id="rqV-86-KTK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2216" y="-377"/>
+            <point key="canvasLocation" x="2200" y="-379"/>
+        </scene>
+        <scene sceneID="mWy-EK-B3C">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BI1-fz-wWN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="cpS-nE-xNH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="rJZ-7n-9MI">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9qM-GU-bh9" kind="relationship" relationship="rootViewController" id="gYJ-KA-J9a"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1690" y="-379"/>
         </scene>
         <scene sceneID="FUi-IR-QsB">
             <objects>
@@ -238,6 +239,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
                 <tabBarController hidesBottomBarWhenPushed="YES" id="4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rMR-I1-0MC"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
@@ -257,6 +259,9 @@
     <classes>
         <class className="AddPantry" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPantry.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissView:"/>
+            </relationships>
         </class>
         <class className="CartViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartViewController.h"/>
