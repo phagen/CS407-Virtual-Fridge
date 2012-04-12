@@ -243,13 +243,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    UITableViewCell *thisCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if(thisCell.accessoryType == UITableViewCellAccessoryNone)
+    {
+        thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        thisCell.accessoryType = UITableViewCellAccessoryNone;
+    }
 }
 
 - (IBAction)dismissView:(id)sender {
