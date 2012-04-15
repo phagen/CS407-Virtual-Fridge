@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSMutableArray *pantryItems;
 @property (nonatomic, strong) NSMutableArray *pantryItemsCat;
 
+
 -(void) fetchPantryAlpha;
 -(void) fetchPantryCat;
 + (NSMutableArray *) cleanItems: (NSMutableArray*) array;

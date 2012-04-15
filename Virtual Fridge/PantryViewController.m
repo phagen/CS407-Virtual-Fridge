@@ -95,6 +95,9 @@ static int *viewFlag = 0;
 }
 
 
+- (IBAction)listSeg:(id)sender {
+}
+
 -(void) fetchPantryAlpha
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
@@ -140,10 +143,6 @@ static int *viewFlag = 0;
     NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
     
     categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    for(int i =0; i < [categories count]; i++)
-    {
-        NSLog(@"%@ \n", ((NSString*)[categories objectAtIndex:i]));
-    }
     
     [pantryItemsCat removeAllObjects];
     pantryItemsCat = [[NSMutableArray alloc] init];

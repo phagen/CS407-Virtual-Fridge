@@ -14,7 +14,9 @@
 
 @implementation ShoppingListViewController
 
-@synthesize pantryItems;
+@synthesize listItems;
+@synthesize listItemsCat;
+static int *viewFlag = 0;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,7 +48,7 @@
     
     //Use predicate to get items from the database with parameters: syntax demonstrated below
     NSPredicate *predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
-                              [NSNumber numberWithInt:2], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], [NSNumber numberWithInt:7]];
+                              [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7]];
     [fetchRequest setPredicate:predicate]; //fetch with predicate
     
     NSSortDescriptor *sortDecsriptor = [[NSSortDescriptor alloc]
@@ -55,11 +57,47 @@
     
     NSError *error;
     NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    pantryItems = (NSMutableArray*) allItems;
+    listItems = (NSMutableArray*) allItems;
 
 }
-- (IBAction)changeSegmentEvent:(id)sender {
+
+- (IBAction)segChangeEvent:(id)sender {
+    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
+    {
+        viewFlag = 0;
+        [self fetchListAlpha];
+    }
+    else //categories
+    {
+        viewFlag = 1; // This needed for reload
+        [self fetchListCat];
+    }
+    [self.tableView reloadData];
+}
+-(void) fetchListAlpha
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
     
+    NSSortDescriptor *sortDecsriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"name" ascending:YES]; //Call will be sorted
+    [fetchRequest setSortDescriptors:[NSArray   arrayWithObject:sortDecsriptor]];
+    
+    NSPredicate *predicate;
+    predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
+                 [NSNumber numberWithInt:2], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], [NSNumber numberWithInt:7]];
+    
+    [fetchRequest setPredicate:predicate]; //fetch with predicate
+    
+    NSError *error;
+    NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    listItems = (NSMutableArray*) allItems;
+    
+}
+-(void) fetchListCat
+{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
@@ -71,69 +109,48 @@
     
     NSPredicate *predicate;
     
-    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
+    NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
+    
+    categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    [listItemsCat removeAllObjects];
+    listItemsCat = [[NSMutableArray alloc] init];
+    
+    for(int i = 0; i < [categories count]; i++)
     {
-        predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@)", 
-                     [NSNumber numberWithInt:1], [NSNumber numberWithInt:4], [NSNumber numberWithInt:6], [NSNumber numberWithInt:7]];
+        NSMutableArray *allItems = [[NSMutableArray alloc] init];
+        predicate = [NSPredicate predicateWithFormat: @"((state == %@ OR state == %@ OR state == %@ OR state == %@) AND category == %@)", 
+                     [NSNumber numberWithInt:2], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], [NSNumber numberWithInt:7], [categories objectAtIndex:i]];
         
         [fetchRequest setPredicate:predicate]; //fetch with predicate
         
         NSError *error;
-        NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        pantryItems = (NSMutableArray*) allItems;
+        allItems = ((NSMutableArray *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);
         
-        //TODO call refresh on the list
+        [listItemsCat addObject:allItems];
     }
-    else //categories
-    {
-        NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and bueaty", @"other"];
-        
-        for(int i = 0; i < categories.count; i++)
-        {
-            predicate = [NSPredicate predicateWithFormat: @"(state == %@ OR state == %@ OR state == %@ OR state == %@ AND category == %@)", 
-                         [NSNumber numberWithInt:2], [NSNumber numberWithInt:4], [NSNumber numberWithInt:5], [NSNumber numberWithInt:7], [categories objectAtIndex:[NSNumber numberWithInt:i]]];
-            
-            [fetchRequest setPredicate:predicate]; //fetch with predicate
-            
-            NSError *error;
-            NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-            
-            [pantryItems addObject:allItems];
-            
-            
-        }
-        
-        //TODO call refresh on the list
-    }
-}
+}   
+
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
    
 }
-+(NSMutableArray*) cleanItems: (NSArray*) array
-{
-    int i = 0;
-    int state = -1;
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-    // Food *item;
-    while(i < [array count])
-    {
-        state = ((Food*)[array objectAtIndex:i]).state.intValue;
-        if(state == 2 || state == 4 || state == 5 || state == 7)
-        {
-            [temp addObject: [array objectAtIndex:i]];
-        }
-        i++;
-    }
-    return temp;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if(viewFlag == 0)
+    {
+        [self fetchListAlpha];
+    }
+    else
+    {
+        [self fetchListCat];
+    }
+    [self.tableView reloadData];
+    
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -160,13 +177,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [pantryItems count];
+    // Return the number of sections.
+    if(viewFlag == 0)
+    {
+        return 1;
+    }
+    else if(viewFlag == 1)
+    {
+        return 19;
+    }
+    else
+    {
+        NSLog(@"Bad viewFlag state");
+        return 1;
+    }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 1;
+    // Return the number of rows in the section.
+    if(viewFlag == 0)
+    {
+        return [listItems count];
+    }
+    else if(viewFlag == 1)
+    {
+        return [[listItemsCat objectAtIndex:section] count];
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -177,11 +217,78 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    if (viewFlag == 0)
+    {
+        cell.textLabel.text = ((Food *)[listItems objectAtIndex:indexPath.row]).name;
+    }
+    else if (viewFlag == 1)
+    {
+        NSMutableArray* array = [listItemsCat objectAtIndex: indexPath.section];
+        cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+    }
     
-    cell.textLabel.text = ((Food *)[pantryItems objectAtIndex:indexPath.row]).name;
-
     return cell;
+
 }
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(viewFlag == 0)
+    {
+        return @""; 
+    }
+    else if (viewFlag == 1)
+    {
+        switch (section) {
+            case 0:
+                return @"Bakery";
+                break;
+            case 1:
+                return @"Baking Food";
+            case 2:
+                return @"Beverages";
+            case 3:
+                return @"Breads";
+            case 4:
+                return @"Bulk Food";
+            case 5:
+                return @"Canned Goods";
+            case 6:
+                return @"Cereal";
+            case 7:
+                return @"Condiments";
+            case 8:
+                return @"Dairy";
+            case 9:
+                return @"Deli";
+            case 10:
+                return @"Ethnic Food";
+            case 11:
+                return @"Frozen Food";
+            case 12:
+                return @"Health and Beauty";
+            case 13:
+                return @"Household Items";
+            case 14:
+                return @"Meat and Seafood";
+            case 15:
+                return @"Other";
+            case 16:
+                return @"Pasta and Rice"; 
+            case 17:   
+                return @"Produce";
+            case 18:
+                return @"Snacks";
+            default:
+                return @"Bad Access";
+                break;
+        }
+    }
+    else
+    {
+        NSLog(@"Bad Flag State: ");
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -11,10 +11,14 @@
 
 @interface ShoppingListViewController : UITableViewController
 {
-    @private NSMutableArray *pantryItems;
+    @private NSMutableArray *listItems;
+    @private NSMutableArray *listItemsCat;
+
 }
-@property (nonatomic, strong) NSMutableArray *pantryItems;
+@property (nonatomic, strong) NSMutableArray *listItems;
+@property (nonatomic, strong) NSMutableArray *listItemsCat;
 
-+ (NSMutableArray *) cleanItems: (NSMutableArray*) array;
 
+-(void) fetchListAlpha;
+-(void) fetchListCat;
 @end

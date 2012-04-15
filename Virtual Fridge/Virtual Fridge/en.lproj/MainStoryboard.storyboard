@@ -55,6 +55,7 @@
                                     <segment title="Cat."/>
                                 </segments>
                                 <connections>
+                                    <action selector="listSeg:" destination="ltg-0r-he5" eventType="valueChanged" id="J6f-hF-77r"/>
                                     <action selector="segmentChangeEvent:" destination="ltg-0r-he5" eventType="valueChanged" id="ThK-H3-WPJ"/>
                                 </connections>
                             </segmentedControl>
@@ -117,7 +118,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1690" y="-379"/>
+            <point key="canvasLocation" x="1714" y="-383"/>
         </scene>
         <scene sceneID="FUi-IR-QsB">
             <objects>
@@ -167,9 +168,12 @@
                                     <segment title="ABC"/>
                                     <segment title="Cat."/>
                                 </segments>
+                                <connections>
+                                    <action selector="segChangeEvent:" destination="GeP-Sc-SFz" eventType="valueChanged" id="acg-Nh-6v6"/>
+                                </connections>
                             </segmentedControl>
                             <connections>
-                                <action selector="changeSegmentEvent:" destination="GeP-Sc-SFz" id="EVU-JK-qJx"/>
+                                <action selector="listSeg:" destination="GeP-Sc-SFz" id="cea-8S-jxN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -271,6 +275,9 @@
         </class>
         <class className="ShoppingListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="listSeg:"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
