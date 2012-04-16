@@ -134,6 +134,55 @@
             </objects>
             <point key="canvasLocation" x="1681" y="376"/>
         </scene>
+        <scene sceneID="adF-GF-bdF">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6GY-xe-NiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="D9J-bi-Rb7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ZYY-Z1-lNw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Imt-vZ-AXQ" kind="relationship" relationship="rootViewController" id="YIE-BH-hWm"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1681" y="1002"/>
+        </scene>
+        <scene sceneID="Vur-2d-5RG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qar-Af-J4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="Imt-vZ-AXQ" customClass="AddCart" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CZz-mV-0Uj">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Qsr-Id-7OP">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Imt-vZ-AXQ" id="QAr-NM-0SL"/>
+                            <outlet property="delegate" destination="Imt-vZ-AXQ" id="syw-9t-3BZ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gfE-gD-xWj">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="GXe-DR-G9c">
+                            <connections>
+                                <action selector="dissmissView:" destination="Imt-vZ-AXQ" id="JmW-hl-tK6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2200" y="1002"/>
+        </scene>
         <scene sceneID="yQA-0S-uMB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iz1-d1-Ke3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +340,11 @@
                                 <action selector="segChangeEvent:" destination="DDa-l3-vIR" id="WIz-8W-YGY"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="Ghb-DS-oMW">
+                            <connections>
+                                <segue destination="D9J-bi-Rb7" kind="modal" id="ZDe-Lr-NVl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
@@ -317,29 +371,6 @@
             <point key="canvasLocation" x="30" y="56"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddPantry" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPantry.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissView:"/>
-            </relationships>
-        </class>
-        <class className="AddShoppingList" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddShoppingList.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissView:"/>
-            </relationships>
-        </class>
-        <class className="CartViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartViewController.h"/>
-        </class>
-        <class className="PantryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PantryViewController.h"/>
-        </class>
-        <class className="ShoppingListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
