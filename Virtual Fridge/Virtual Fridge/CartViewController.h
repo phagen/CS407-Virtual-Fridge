@@ -10,13 +10,15 @@
 
 @interface CartViewController : UITableViewController
 {
-@private NSMutableArray *pantryItems;
-
+@private NSMutableArray *cartItems;
+@private NSMutableArray *cartItemsCat;
+    
 }
-@property (nonatomic, strong) NSMutableArray *pantryItems;
+@property (nonatomic, strong) NSMutableArray *cartItems;
+@property (nonatomic, strong) NSMutableArray *cartItemsCat;
 
 
-+ (NSMutableArray *) cleanItems: (NSMutableArray*) array;
-
+-(void) fetchCartAlpha;
+-(void) fetchCartCat;
 
 @end

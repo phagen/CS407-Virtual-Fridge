@@ -229,9 +229,12 @@
                                     <segment title="ABC"/>
                                     <segment title="Cat."/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChangeEvent:" destination="DDa-l3-vIR" eventType="valueChanged" id="3ik-5N-b5A"/>
+                                </connections>
                             </segmentedControl>
                             <connections>
-                                <action selector="changeSegmentEvent:" destination="DDa-l3-vIR" id="YD7-dC-cUq"/>
+                                <action selector="segChangeEvent:" destination="DDa-l3-vIR" id="WIz-8W-YGY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -275,9 +278,6 @@
         </class>
         <class className="ShoppingListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="listSeg:"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
