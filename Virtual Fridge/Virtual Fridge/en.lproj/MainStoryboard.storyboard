@@ -120,6 +120,55 @@
             </objects>
             <point key="canvasLocation" x="1714" y="-383"/>
         </scene>
+        <scene sceneID="zaV-UB-VOG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IwB-7u-mpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="Ws2-A9-USf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="i0B-DY-otQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="x0s-GQ-9cz" kind="relationship" relationship="rootViewController" id="AVw-Up-8Gc"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1681" y="376"/>
+        </scene>
+        <scene sceneID="yQA-0S-uMB">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iz1-d1-Ke3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="x0s-GQ-9cz" customClass="AddShoppingList" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yVX-d1-TgT">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="lGQ-hc-Ocx">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="x0s-GQ-9cz" id="wDh-zF-ShK"/>
+                            <outlet property="delegate" destination="x0s-GQ-9cz" id="4Xn-cX-tXC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Ic0-Cz-HuB">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="wwf-mu-ulJ">
+                            <connections>
+                                <action selector="dismissView:" destination="x0s-GQ-9cz" id="wGy-dY-Zut"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="2200" y="376"/>
+        </scene>
         <scene sceneID="FUi-IR-QsB">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vw-OA-I0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,6 +223,11 @@
                             </segmentedControl>
                             <connections>
                                 <action selector="listSeg:" destination="GeP-Sc-SFz" id="cea-8S-jxN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="cHF-SU-EIX">
+                            <connections>
+                                <segue destination="Ws2-A9-USf" kind="modal" id="sNs-hr-j4B"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -266,6 +320,12 @@
     <classes>
         <class className="AddPantry" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPantry.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissView:"/>
+            </relationships>
+        </class>
+        <class className="AddShoppingList" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddShoppingList.h"/>
             <relationships>
                 <relationship kind="action" name="dismissView:"/>
             </relationships>

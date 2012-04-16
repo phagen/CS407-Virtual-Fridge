@@ -1,20 +1,21 @@
 //
-//  AddPantry.h
+//  AddShoppingList.h
 //  Virtual Fridge
 //
-//  Created by Patrick Hagen on 3/22/12.
+//  Created by Patrick Hagen on 4/16/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface AddPantry : UITableViewController
+@interface AddShoppingList : UITableViewController
 {
     @private NSMutableArray *nonPantry;
 }
 
 @property (nonatomic, strong) NSMutableArray *nonPantry;
 
-- (IBAction)dismissView:(id)sender;
 - (void) adustCoreDatainSection: (NSInteger*) section atRow:(NSInteger*) row doAdd: (bool) add;
+- (IBAction)dismissView:(id)sender;
+
 @end
