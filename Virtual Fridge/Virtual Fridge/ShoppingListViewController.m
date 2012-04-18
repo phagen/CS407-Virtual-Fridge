@@ -16,17 +16,18 @@
 
 @synthesize listItems;
 @synthesize listItemsCat;
+@synthesize myTableView;
 static int *viewFlag = 0;
 
-- (id)initWithStyle:(UITableViewStyle)style
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
 }
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -60,7 +61,6 @@ static int *viewFlag = 0;
     listItems = (NSMutableArray*) allItems;
 
 }
-
 - (IBAction)segChangeEvent:(id)sender {
     if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
     {
@@ -72,8 +72,9 @@ static int *viewFlag = 0;
         viewFlag = 1; // This needed for reload
         [self fetchListCat];
     }
-    [self.tableView reloadData];
+    [self.myTableView reloadData];
 }
+
 -(void) fetchListAlpha
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
@@ -131,8 +132,11 @@ static int *viewFlag = 0;
 }   
 
 
+
+
 - (void)viewDidUnload
 {
+    [self setMyTableView:nil];
     [super viewDidUnload];
    
 }
@@ -147,7 +151,7 @@ static int *viewFlag = 0;
     {
         [self fetchListCat];
     }
-    [self.tableView reloadData];
+    [self.myTableView reloadData];
     
 }
 

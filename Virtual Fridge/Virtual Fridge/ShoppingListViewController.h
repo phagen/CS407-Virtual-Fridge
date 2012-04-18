@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Food.h"
 
-@interface ShoppingListViewController : UITableViewController
-{
+@interface ShoppingListViewController :UIViewController <UITableViewDataSource, UITableViewDelegate>{
     @private NSMutableArray *listItems;
     @private NSMutableArray *listItemsCat;
 
@@ -18,7 +17,11 @@
 @property (nonatomic, strong) NSMutableArray *listItems;
 @property (nonatomic, strong) NSMutableArray *listItemsCat;
 
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
+- (IBAction)segChangeEvent:(id)sender;
 -(void) fetchListAlpha;
 -(void) fetchListCat;
+
+
 @end
