@@ -336,15 +336,130 @@ static int *viewFlag = 0;
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)myTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //NSLog(@"Row: %d",[self.tableView indexPathForSelectedRow].section);
+    int selSection = [self.myTableView indexPathForSelectedRow].section;
+    int selRow = [self.myTableView indexPathForSelectedRow].row;
+    
+    UITableViewCell *thisCell = [myTableView cellForRowAtIndexPath:indexPath];
+    if(viewFlag == 0)
+    {
+        if(thisCell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self adjustAlphaDataUsingRow:selRow doAdd:TRUE];
+        }
+        else
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryNone;
+            [self adjustAlphaDataUsingRow:selRow doAdd:FALSE];
+        }
+    }
+    else
+    {
+        
+        if(thisCell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:TRUE];
+        }
+        else
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryNone;
+            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:false];
+        }
+
+    }
+}
+-(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Food *selected = ((Food*)[cartItems objectAtIndex: row]);
+    int currState = selected.state.intValue;
+    if(add)
+    {
+        switch (currState) {
+            case 3:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:1];
+                break;
+            case 5:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:4];
+                break;
+            case 6:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:1];
+                break;
+            case 7:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:4];
+                break;
+            default:
+                NSLog(@"Error");
+                break;
+        }
+
+    }
+    else
+    {
+          selected.state = selected.prev_state;
+    }
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+
+}
+-(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSMutableArray *sect = ((NSMutableArray*)[cartItemsCat objectAtIndex: sec]);
+    Food *selected = ((Food*)[sect objectAtIndex: row]);
+    int currState = selected.state.intValue;
+    if(add)
+    {
+        switch (currState) {
+            case 3:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:1];
+                break;
+            case 5:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:4];
+                break;
+            case 6:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:1];
+                break;
+            case 7:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:4];
+                break;
+            default:
+                NSLog(@"Error");
+                break;
+        }   
+    }
+    else
+    {
+        selected.state = selected.prev_state;
+    }
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
 }
 
+- (IBAction)CheckOut:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if(viewFlag == 0)
+    {
+        [self fetchCartAlpha];
+    }
+    else
+    {
+        [self fetchCartCat];
+    }
+    
+    [self.myTableView reloadData];
+    
+}
 @end

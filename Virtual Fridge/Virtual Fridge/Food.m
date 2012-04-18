@@ -18,5 +18,6 @@
 @dynamic name;
 @dynamic purchase_date;
 @dynamic state;
+@dynamic prev_state;
 
 @end

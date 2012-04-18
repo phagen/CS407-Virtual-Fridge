@@ -21,5 +21,7 @@
 -(void) fetchCartCat;
 - (IBAction)segChangeEvent:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
-
+- (IBAction)CheckOut:(id)sender;
+-(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add;
+-(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add;
 @end

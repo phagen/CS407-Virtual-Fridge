@@ -33,6 +33,7 @@
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = ((NSString*)[produce objectAtIndex:i]);
         food.state =  [NSNumber numberWithInt:0];
+        food.prev_state =  [NSNumber numberWithInt:0];
         food.category = @"produce";
     }
     return;
@@ -62,12 +63,15 @@
         Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Apple";
         food.state =  [NSNumber numberWithInt:7];
+        food.prev_state =  [NSNumber numberWithInt:7];
         food.category = @"produce";
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Pear";
         food.category = @"produce";
         food.state =  [NSNumber numberWithInt:2];
         food.state =  [NSNumber numberWithInt:3];
+        food.prev_state =  [NSNumber numberWithInt:2];
+        food.prev_state =  [NSNumber numberWithInt:3];
         ///NEED THIS TO SAVE STATE OF DB///
         [self saveContext];
 

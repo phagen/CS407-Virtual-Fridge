@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSDate * purchase_date;
 @property (nonatomic, retain) NSNumber * state;
+@property (nonatomic, retain) NSNumber * prev_state;
 
 @end
