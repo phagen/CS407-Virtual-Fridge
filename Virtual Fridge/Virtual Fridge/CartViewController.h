@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CartViewController : UITableViewController
+@interface CartViewController :UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
 @private NSMutableArray *cartItems;
 @private NSMutableArray *cartItemsCat;
@@ -17,8 +17,9 @@
 @property (nonatomic, strong) NSMutableArray *cartItems;
 @property (nonatomic, strong) NSMutableArray *cartItemsCat;
 
-
 -(void) fetchCartAlpha;
 -(void) fetchCartCat;
+- (IBAction)segChangeEvent:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end

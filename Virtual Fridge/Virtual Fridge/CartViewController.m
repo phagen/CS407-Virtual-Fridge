@@ -15,18 +15,18 @@
 @implementation CartViewController
 @synthesize cartItems;
 @synthesize cartItemsCat;
+@synthesize myTableView;
 
 static int *viewFlag = 0;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
 }
-
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -63,20 +63,6 @@ static int *viewFlag = 0;
     cartItems = (NSMutableArray*) allItems;
     
 
-}
-
-- (IBAction)segmentChangeEvent:(id)sender {
-    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
-    {
-        viewFlag = 0;
-        [self fetchCartAlpha];
-    }
-    else //categories
-    {
-        viewFlag = 1; // This needed for reload
-        [self fetchCartCat];
-    }
-    [self.tableView reloadData];
 }
 -(void) fetchCartAlpha
 {
@@ -134,11 +120,26 @@ static int *viewFlag = 0;
     }
 }   
 
+- (IBAction)segChangeEvent:(id)sender {
+    if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
+    {
+        viewFlag = 0;
+        [self fetchCartAlpha];
+    }
+    else //categories
+    {
+        viewFlag = 1; // This needed for reload
+        [self fetchCartCat];
+    }
+    [self.myTableView reloadData];
+}
+
 
 
 
 - (void)viewDidUnload
 {
+    [self setMyTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -155,7 +156,7 @@ static int *viewFlag = 0;
     {
         [self fetchCartCat];
     }
-    [self.tableView reloadData];
+   [self.myTableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -217,7 +218,7 @@ static int *viewFlag = 0;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"myCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
