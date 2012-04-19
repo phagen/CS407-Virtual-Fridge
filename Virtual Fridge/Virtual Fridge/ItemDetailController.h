@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Food.h"
 
-@interface ItemDetailController : UITableViewController
+@interface ItemDetailController : UITableViewController {
+    Food *food;
+    
+}
+
+@property (nonatomic, strong) Food *food;
+
 
 @end

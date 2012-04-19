@@ -9,6 +9,7 @@
 #import <CoreData/CoreData.h>
 #import "Food.h"
 #import "AppDelegate.h"
+#import "ItemDetailController.h"
 
 
 @implementation PantryViewController
@@ -365,13 +366,6 @@ static int *viewFlag = 0;
 }
 */
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    if([segue.identifier isEqualToString: @"ItemDetailSegue"])
-    {
-        
-    }
-}
 
 #pragma mark - Table view delegate
 
@@ -379,13 +373,35 @@ static int *viewFlag = 0;
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     
     ItemDetailController *itemDetailController = [[ItemDetailController alloc] init];
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate;
+    
+    predicate = [NSPredicate predicateWithFormat: @"name == %@", cell.textLabel.text];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    Food *food;
+    
+    NSError *error;
+    food = ((Food *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);    
+    
+    itemDetailController.food = food;
+    
+    [[self navigationController] pushViewController:itemDetailController animated:YES];
     
 }
 

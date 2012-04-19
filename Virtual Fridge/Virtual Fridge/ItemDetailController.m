@@ -7,9 +7,12 @@
 //
 
 #import "ItemDetailController.h"
+#import "Food.h"
 
 
 @implementation ItemDetailController
+
+@synthesize food;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
