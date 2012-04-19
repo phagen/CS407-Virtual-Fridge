@@ -23,7 +23,7 @@
     NSManagedObjectContext *context = [self managedObjectContext];
     
     Food *food = nil;
-   // Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
+    //Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
     NSArray *produce = [NSArray arrayWithObjects:@"Oranges",@"Lemons",@"Limes",
                         @"Mango",@"Bananas",@"Pineapple", @"Strawberries",@"Berries",@"Kiwi",@"Grapes",nil];
     

@@ -365,6 +365,14 @@ static int *viewFlag = 0;
 }
 */
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if([segue.identifier isEqualToString: @"ItemDetailSegue"])
+    {
+        
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -376,6 +384,9 @@ static int *viewFlag = 0;
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    ItemDetailController *itemDetailController = [[ItemDetailController alloc] init];
+    
 }
 
 @end
