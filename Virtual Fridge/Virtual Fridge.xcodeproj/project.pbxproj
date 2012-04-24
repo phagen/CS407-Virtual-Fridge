@@ -15,6 +15,7 @@
 		CD60CAD4151161B4000C89B7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD60CAD3151161B4000C89B7 /* CoreData.framework */; };
 		CD60CAE3151170B9000C89B7 /* PantryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60CAE2151170B9000C89B7 /* PantryViewController.m */; };
 		CD75E6A815472A4E00EF4B7F /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CD75E6A715472A4E00EF4B7F /* Food.m */; };
+		CD75E6AD15473B3700EF4B7F /* pantry_new.png in Resources */ = {isa = PBXBuildFile; fileRef = CD75E6AC15473B3700EF4B7F /* pantry_new.png */; };
 		CD859E18153CA9BE009B934D /* AddShoppingList.m in Sources */ = {isa = PBXBuildFile; fileRef = CD859E17153CA9BE009B934D /* AddShoppingList.m */; };
 		CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB5C6681545F73A0075DF19 /* DetailedViewController.m */; };
 		CDD2A5251504178200FF5B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5241504178200FF5B03 /* UIKit.framework */; };
@@ -48,6 +49,7 @@
 		CD60CAE2151170B9000C89B7 /* PantryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PantryViewController.m; sourceTree = "<group>"; };
 		CD75E6A615472A4E00EF4B7F /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		CD75E6A715472A4E00EF4B7F /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		CD75E6AC15473B3700EF4B7F /* pantry_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pantry_new.png; path = "Virtual Fridge/pantry_new.png"; sourceTree = "<group>"; };
 		CD859E16153CA9BE009B934D /* AddShoppingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingList.h; sourceTree = "<group>"; };
 		CD859E17153CA9BE009B934D /* AddShoppingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingList.m; sourceTree = "<group>"; };
 		CDB5C6671545F73A0075DF19 /* DetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		CDD2A5151504178100FF5B03 = {
 			isa = PBXGroup;
 			children = (
+				CD75E6AC15473B3700EF4B7F /* pantry_new.png */,
 				CD60CAE1151170B9000C89B7 /* PantryViewController.h */,
 				CD60CAE2151170B9000C89B7 /* PantryViewController.m */,
 				CD60CAD3151161B4000C89B7 /* CoreData.framework */,
@@ -223,6 +226,7 @@
 				CDD2A53F1504178200FF5B03 /* first@2x.png in Resources */,
 				CDD2A5441504178200FF5B03 /* second.png in Resources */,
 				CDD2A5461504178200FF5B03 /* second@2x.png in Resources */,
+				CD75E6AD15473B3700EF4B7F /* pantry_new.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

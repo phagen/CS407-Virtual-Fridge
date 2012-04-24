@@ -27,4 +27,5 @@
 -(void) unCheckAll;
 -(void) unSelectAll;
 -(void) transitionBackAll;
+-(void) updateDbOnCheckOut;
 @end

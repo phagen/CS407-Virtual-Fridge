@@ -127,13 +127,13 @@ static int *viewFlag = 0;
     {
         viewFlag = 0;
         [self fetchCartAlpha];
-        [self transitionBackAll];
+       // [self transitionBackAll];
     }
     else //categories
     {
         viewFlag = 1; // This needed for reload
         [self fetchCartCat];
-        [self transitionBackAll];
+       // [self transitionBackAll];
     }
     NSError *error;
     [appDelegate.managedObjectContext save: &error];
@@ -236,7 +236,7 @@ static int *viewFlag = 0;
         if(((Food *)[cartItems objectAtIndex:indexPath.row]).cart_sel == [NSNumber numberWithInt: 1])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self adjustAlphaDataUsingRow: indexPath.row doAdd:TRUE];
+            
         }
     }
     else if (viewFlag == 1)
@@ -245,8 +245,7 @@ static int *viewFlag = 0;
         cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
         if (((Food *)[array objectAtIndex:indexPath.row]).cart_sel == [NSNumber numberWithInt: 1]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self adjustCatDataUsingSection:indexPath.section atRow:indexPath.row doAdd:TRUE];
-        }
+            }
     }
     
     return cell;
@@ -363,12 +362,13 @@ static int *viewFlag = 0;
         if(thisCell.accessoryType == UITableViewCellAccessoryNone)
         {
             thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self adjustAlphaDataUsingRow:selRow doAdd:TRUE];
+            ((Food*)[cartItems objectAtIndex:selRow]).cart_sel = [NSNumber numberWithInt:1];
+            
         }
         else
         {
             thisCell.accessoryType = UITableViewCellAccessoryNone;
-            [self adjustAlphaDataUsingRow:selRow doAdd:FALSE];
+            ((Food*)[cartItems objectAtIndex:selRow]).cart_sel = [NSNumber numberWithInt:0];
         }
     }
     else
@@ -377,97 +377,20 @@ static int *viewFlag = 0;
         if(thisCell.accessoryType == UITableViewCellAccessoryNone)
         {
             thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:TRUE];
+            ((Food*)[[cartItemsCat objectAtIndex:selSection] objectAtIndex:selRow] ).cart_sel = [NSNumber numberWithInt:1];
+           
         }
         else
         {
             thisCell.accessoryType = UITableViewCellAccessoryNone;
-            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:false];
+            ((Food*)[[cartItemsCat objectAtIndex:selSection] objectAtIndex:selRow] ).cart_sel = [NSNumber numberWithInt:0];
         }
 
     }
-}
--(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    Food *selected = ((Food*)[cartItems objectAtIndex: row]);
-    int currState = selected.state.intValue;
-    if(add)
-    {
-        selected.cart_sel = [NSNumber numberWithInt: 1];
-        switch (currState) {
-            case 3:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:1];
-                break;
-            case 5:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:4];
-                break;
-            case 6:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:1];
-                break;
-            case 7:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:4];
-                break;
-            default:
-                NSLog(@"Error");
-                break;
-        }
-
-    }
-    else
-    {
-        selected.cart_sel = [NSNumber numberWithInt: 0];
-        selected.state = selected.prev_state;
-    }
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
-
-}
--(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSMutableArray *sect = ((NSMutableArray*)[cartItemsCat objectAtIndex: sec]);
-    Food *selected = ((Food*)[sect objectAtIndex: row]);
-    int currState = selected.state.intValue;
-    if(add)
-    {
-        selected.cart_sel = [NSNumber numberWithInt: 1];
-        switch (currState) {
-            case 3:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:1];
-                break;
-            case 5:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:4];
-                break;
-            case 6:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:1];
-                break;
-            case 7:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:4];
-                break;
-            default:
-                NSLog(@"Error");
-                break;
-        }   
-    }
-    else
-    {
-        selected.state = selected.prev_state;
-        selected.cart_sel = [NSNumber numberWithInt: 0];
-    }
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
 }
 #pragma mark - Button Actions
 - (IBAction)CheckOut:(id)sender {
+    [self updateDbOnCheckOut];
     if(viewFlag == 0)
     {
         [self fetchCartAlpha];
@@ -476,7 +399,6 @@ static int *viewFlag = 0;
     {
         [self fetchCartCat];
     }
-    [self unSelectAll];
     [self unCheckAll];
     [self.myTableView reloadData];
    
@@ -488,13 +410,7 @@ static int *viewFlag = 0;
     {
         [self unCheckAll];
     }
-        
-        
-
 }
-
-
-
 #pragma mark - Helper Methods
 -(void) unCheckAll
 {
@@ -503,45 +419,74 @@ static int *viewFlag = 0;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
--(void) unSelectAll
+-(void) updateDbOnCheckOut
 {
-    if(viewFlag == 0)
+    
+    Food *temp;
+    if (viewFlag == 0) {
+        
+    for(int i = 0; i < [cartItems count]; i++)
     {
-        for(Food *item in cartItems)
+        temp = [cartItems objectAtIndex:i];
+        if(temp.cart_sel.intValue == 1)
         {
-            item.cart_sel = FALSE;
+                temp.cart_sel = [NSNumber numberWithInt:0];
+                switch (temp.state.intValue) {
+                case 3:
+                    temp.state = [NSNumber numberWithInt:1];
+                    break;
+                case 5:
+                    temp.state = [NSNumber numberWithInt:4];
+                    break;
+                case 6:
+                    temp.state = [NSNumber numberWithInt:1];
+                    break;
+                case 7:
+                    temp.state = [NSNumber numberWithInt:4];
+                    break;
+                default:
+                    NSLog(@"Error");
+                    break;
+            }   
+
         }
+    }
     }
     else
     {
-        for(int s = 0; s < [cartItemsCat count]; s++)
+    for(int s = 0; s < [cartItemsCat count]; s++)
+    {
+        for(int r = 0; r < [[cartItemsCat objectAtIndex:s] count];r++)
         {
-            for(int r = 0; r < [[cartItemsCat objectAtIndex:s] count];r++)
+            temp = [[cartItemsCat objectAtIndex:s] objectAtIndex:r];
+            if(temp.cart_sel.intValue == 1)
             {
-                ((Food*)[[cartItemsCat objectAtIndex:s] objectAtIndex:r]).cart_sel = FALSE;
-            }
-        }
-    }
-}
--(void) transitionBackAll
-        {
-            if(viewFlag == 0)
-            {
-                for(int i = 0; i < [cartItems count]; i++)
-                {
-                    [self adjustAlphaDataUsingRow: i doAdd:FALSE];
-                }
-            }
-            else
-            {
-                for(int s = 0; s < [cartItemsCat count]; s++)
-                {
-                    for(int r = 0; r < [[cartItemsCat objectAtIndex:s] count];r++)
-                    {
-                        [self adjustCatDataUsingSection:s atRow:r doAdd:FALSE];
-                    }
-                }
+            temp.cart_sel = [NSNumber numberWithInt:0];
+            switch (temp.state.intValue) {
+                case 3:
+                    temp.state = [NSNumber numberWithInt:1];
+                    break;
+                case 5:
+                    temp.state = [NSNumber numberWithInt:4];
+                    break;
+                case 6:
+                    temp.state = [NSNumber numberWithInt:1];
+                    break;
+                case 7:
+                    temp.state = [NSNumber numberWithInt:4];
+                    break;
+                default:
+                    NSLog(@"Error");
+                    break;
+            } 
             }
 
         }
+    }
+    }
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    
+   }
 @end
