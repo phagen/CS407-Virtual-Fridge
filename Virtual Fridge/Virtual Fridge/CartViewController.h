@@ -25,4 +25,6 @@
 -(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add;
 -(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add;
 -(void) unCheckAll;
+-(void) unSelectAll;
+-(void) transitionBackAll;
 @end

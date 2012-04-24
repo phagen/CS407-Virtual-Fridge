@@ -2,7 +2,7 @@
 //  Food.h
 //  Virtual Fridge
 //
-//  Created by Matt Wysocki on 3/27/12.
+//  Created by Patrick Hagen on 4/24/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -17,8 +17,10 @@
 @property (nonatomic, retain) NSDate * expiration_date;
 @property (nonatomic, retain) NSNumber * expiration_offset;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * prev_state;
 @property (nonatomic, retain) NSDate * purchase_date;
 @property (nonatomic, retain) NSNumber * state;
-@property (nonatomic, retain) NSNumber * prev_state;
+@property (nonatomic, retain) NSNumber * cart_sel;
+@property (nonatomic, retain) NSNumber * shop_sel;
 
 @end

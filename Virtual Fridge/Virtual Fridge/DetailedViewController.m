@@ -109,4 +109,7 @@
     [self dismissModalViewControllerAnimated:YES];
     
 }
+- (IBAction)backButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
 @end

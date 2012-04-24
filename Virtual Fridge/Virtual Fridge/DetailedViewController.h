@@ -36,5 +36,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *comment;
 @property (weak, nonatomic) IBOutlet UILabel *expDate;
 @property (weak, nonatomic) IBOutlet UILabel *purDate;
+- (IBAction)backButton:(id)sender;
 
 @end

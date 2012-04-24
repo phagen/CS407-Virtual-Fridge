@@ -37,6 +37,8 @@
         food.category = @"Produce";
         food.comment = @"Edit to change comment.";
         food.expiration_offset = [NSNumber numberWithInt:5];
+        food.cart_sel = [NSNumber numberWithInt: 0];
+        food.shop_sel = [NSNumber numberWithInt: 0];
     }
     return;
 }

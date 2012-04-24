@@ -64,6 +64,7 @@ static int *viewFlag = 0;
     
 
 }
+
 -(void) fetchCartAlpha
 {
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
@@ -121,16 +122,21 @@ static int *viewFlag = 0;
 }   
 
 - (IBAction)segChangeEvent:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (((UISegmentedControl *)sender).selectedSegmentIndex == 0) //alphabetical
     {
         viewFlag = 0;
         [self fetchCartAlpha];
+        [self transitionBackAll];
     }
     else //categories
     {
         viewFlag = 1; // This needed for reload
         [self fetchCartCat];
+        [self transitionBackAll];
     }
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
     [self.myTableView reloadData];
 }
 
@@ -227,11 +233,20 @@ static int *viewFlag = 0;
     if (viewFlag == 0)
     {
         cell.textLabel.text = ((Food *)[cartItems objectAtIndex:indexPath.row]).name;
+        if(((Food *)[cartItems objectAtIndex:indexPath.row]).cart_sel == [NSNumber numberWithInt: 1])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self adjustAlphaDataUsingRow: indexPath.row doAdd:TRUE];
+        }
     }
     else if (viewFlag == 1)
     {
         NSMutableArray* array = [cartItemsCat objectAtIndex: indexPath.section];
         cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+        if (((Food *)[array objectAtIndex:indexPath.row]).cart_sel == [NSNumber numberWithInt: 1]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self adjustCatDataUsingSection:indexPath.section atRow:indexPath.row doAdd:TRUE];
+        }
     }
     
     return cell;
@@ -379,6 +394,7 @@ static int *viewFlag = 0;
     int currState = selected.state.intValue;
     if(add)
     {
+        selected.cart_sel = [NSNumber numberWithInt: 1];
         switch (currState) {
             case 3:
                 selected.prev_state = selected.state;
@@ -404,7 +420,8 @@ static int *viewFlag = 0;
     }
     else
     {
-          selected.state = selected.prev_state;
+        selected.cart_sel = [NSNumber numberWithInt: 0];
+        selected.state = selected.prev_state;
     }
     NSError *error;
     [appDelegate.managedObjectContext save: &error];
@@ -418,6 +435,7 @@ static int *viewFlag = 0;
     int currState = selected.state.intValue;
     if(add)
     {
+        selected.cart_sel = [NSNumber numberWithInt: 1];
         switch (currState) {
             case 3:
                 selected.prev_state = selected.state;
@@ -443,11 +461,12 @@ static int *viewFlag = 0;
     else
     {
         selected.state = selected.prev_state;
+        selected.cart_sel = [NSNumber numberWithInt: 0];
     }
     NSError *error;
     [appDelegate.managedObjectContext save: &error];
 }
-
+#pragma mark - Button Actions
 - (IBAction)CheckOut:(id)sender {
     if(viewFlag == 0)
     {
@@ -457,12 +476,26 @@ static int *viewFlag = 0;
     {
         [self fetchCartCat];
     }
-     
+    [self unSelectAll];
     [self unCheckAll];
     [self.myTableView reloadData];
    
     
 }
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"add"]) 
+    {
+        [self unCheckAll];
+    }
+        
+        
+
+}
+
+
+
+#pragma mark - Helper Methods
 -(void) unCheckAll
 {
     for (UITableViewCell *cell in [myTableView visibleCells])
@@ -470,4 +503,45 @@ static int *viewFlag = 0;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
+-(void) unSelectAll
+{
+    if(viewFlag == 0)
+    {
+        for(Food *item in cartItems)
+        {
+            item.cart_sel = FALSE;
+        }
+    }
+    else
+    {
+        for(int s = 0; s < [cartItemsCat count]; s++)
+        {
+            for(int r = 0; r < [[cartItemsCat objectAtIndex:s] count];r++)
+            {
+                ((Food*)[[cartItemsCat objectAtIndex:s] objectAtIndex:r]).cart_sel = FALSE;
+            }
+        }
+    }
+}
+-(void) transitionBackAll
+        {
+            if(viewFlag == 0)
+            {
+                for(int i = 0; i < [cartItems count]; i++)
+                {
+                    [self adjustAlphaDataUsingRow: i doAdd:FALSE];
+                }
+            }
+            else
+            {
+                for(int s = 0; s < [cartItemsCat count]; s++)
+                {
+                    for(int r = 0; r < [[cartItemsCat objectAtIndex:s] count];r++)
+                    {
+                        [self adjustCatDataUsingSection:s atRow:r doAdd:FALSE];
+                    }
+                }
+            }
+
+        }
 @end
