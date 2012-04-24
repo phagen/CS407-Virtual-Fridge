@@ -449,7 +449,6 @@ static int *viewFlag = 0;
 }
 
 - (IBAction)CheckOut:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if(viewFlag == 0)
     {
         [self fetchCartAlpha];
@@ -458,8 +457,17 @@ static int *viewFlag = 0;
     {
         [self fetchCartCat];
     }
-    
+     
+    [self unCheckAll];
     [self.myTableView reloadData];
+   
     
+}
+-(void) unCheckAll
+{
+    for (UITableViewCell *cell in [myTableView visibleCells])
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
 }
 @end

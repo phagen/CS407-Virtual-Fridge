@@ -24,4 +24,5 @@
 - (IBAction)CheckOut:(id)sender;
 -(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add;
 -(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add;
+-(void) unCheckAll;
 @end

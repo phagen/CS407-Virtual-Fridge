@@ -458,7 +458,15 @@ static int *viewFlag = 0;
     {
         [self fetchListCat];
     }
+    [self unCheckAll];
     [self.myTableView reloadData];
+   }
+-(void) unCheckAll
+{
+    for (UITableViewCell *cell in [myTableView visibleCells]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+      
 }
 
 
