@@ -32,5 +32,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 @property (weak, nonatomic) IBOutlet UILabel *category;
+@property (weak, nonatomic) IBOutlet UILabel *comment;
+@property (weak, nonatomic) IBOutlet UILabel *expDate;
+@property (weak, nonatomic) IBOutlet UILabel *purDate;
 
 @end

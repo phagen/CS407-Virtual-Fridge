@@ -12,6 +12,9 @@
 @implementation DetailedViewController
 @synthesize navBar;
 @synthesize category;
+@synthesize comment;
+@synthesize expDate;
+@synthesize purDate;
 @synthesize name, foodName;
 @synthesize selectedFood;
 
@@ -50,8 +53,13 @@
     //Init Screen Vars
     self.name.text = selectedFood.name;
     self.category.text = selectedFood.category;
+    self.comment.text = selectedFood.comment;
     self.navBar.topItem.title = selectedFood.name;
-    
+    //Need to format dates
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM dd, yyyy"];
+    self.purDate.text = [dateFormat stringFromDate:selectedFood.purchase_date];
+    self.expDate.text = [dateFormat stringFromDate:selectedFood.expiration_date];
 }
 
 
@@ -60,6 +68,9 @@
     [self setName:nil];
     [self setNavBar:nil];
     [self setCategory:nil];
+    [self setComment:nil];
+    [self setExpDate:nil];
+    [self setPurDate:nil];
     [super viewDidUnload];
     }
 

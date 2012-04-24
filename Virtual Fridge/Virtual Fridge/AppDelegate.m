@@ -65,6 +65,9 @@
         food.state =  [NSNumber numberWithInt:7];
         food.prev_state =  [NSNumber numberWithInt:7];
         food.category = @"produce";
+        food.purchase_date = [NSDate date];
+        food.expiration_date = [NSDate date];
+        food.comment = @"This is my comment";
         food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Pear";
         food.category = @"produce";
