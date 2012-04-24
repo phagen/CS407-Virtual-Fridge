@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 #import "Food.h"
 #import "AppDelegate.h"
-#import "ItemDetailController.h"
+#import "DetailedViewController.h"
 
 
 @implementation PantryViewController
@@ -163,25 +163,6 @@ static int *viewFlag = 0;
     }
 }                           
                               
-/* cleanItems DEPRECATED
-+(NSMutableArray*) cleanItems: (NSArray*) array
-{
-    int i = 0;
-    int state = -1;
-    NSMutableArray *temp = [[NSMutableArray alloc] init];
-   // Food *item;
-    while(i < [array count])
-    {
-        state = ((Food*)[array objectAtIndex:i]).state.intValue;
-        if(state == 1 || state == 4 || state == 6 || state == 7)
-        {
-            [temp addObject: [array objectAtIndex:i]];
-        }
-        i++;
-    }
-    return temp;
-}*/
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -366,42 +347,28 @@ static int *viewFlag = 0;
 }
 */
 
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
     
-    ItemDetailController *itemDetailController = [[ItemDetailController alloc] init];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    NSPredicate *predicate;
-    
-    predicate = [NSPredicate predicateWithFormat: @"name == %@", cell.textLabel.text];
-    
-    [fetchRequest setPredicate:predicate];
-    
-    Food *food;
-    
-    NSError *error;
-    food = ((Food *)[appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error]);    
-    
-    itemDetailController.food = food;
-    
-    [[self navigationController] pushViewController:itemDetailController animated:YES];
+   if ([[segue identifier] isEqualToString:@"ItemDetail"]) {
+        Food *item;
+        DetailedViewController *nextViewController = [segue destinationViewController];
+        NSUInteger row = [self.tableView indexPathForSelectedRow].row;
+        NSUInteger sect = [self.tableView indexPathForSelectedRow].section;
+        if (viewFlag == 0) {
+            item = [pantryItems objectAtIndex:row];
+        }
+        else
+        {
+            item = [[pantryItemsCat objectAtIndex:sect] objectAtIndex:row];
+        }
+       nextViewController.selectedFood = item;
+        nextViewController.foodName = item.name;
+   }
+}
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)myTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 

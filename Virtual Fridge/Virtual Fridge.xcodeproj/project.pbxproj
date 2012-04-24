@@ -16,6 +16,7 @@
 		CD60CAD4151161B4000C89B7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD60CAD3151161B4000C89B7 /* CoreData.framework */; };
 		CD60CAE3151170B9000C89B7 /* PantryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60CAE2151170B9000C89B7 /* PantryViewController.m */; };
 		CD859E18153CA9BE009B934D /* AddShoppingList.m in Sources */ = {isa = PBXBuildFile; fileRef = CD859E17153CA9BE009B934D /* AddShoppingList.m */; };
+		CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB5C6681545F73A0075DF19 /* DetailedViewController.m */; };
 		CDD2A5251504178200FF5B03 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5241504178200FF5B03 /* UIKit.framework */; };
 		CDD2A5271504178200FF5B03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5261504178200FF5B03 /* Foundation.framework */; };
 		CDD2A5291504178200FF5B03 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD2A5281504178200FF5B03 /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 		CD60CAE2151170B9000C89B7 /* PantryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PantryViewController.m; sourceTree = "<group>"; };
 		CD859E16153CA9BE009B934D /* AddShoppingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingList.h; sourceTree = "<group>"; };
 		CD859E17153CA9BE009B934D /* AddShoppingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingList.m; sourceTree = "<group>"; };
+		CDB5C6671545F73A0075DF19 /* DetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
+		CDB5C6681545F73A0075DF19 /* DetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
 		CDD2A5201504178200FF5B03 /* Virtual Fridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Fridge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD2A5241504178200FF5B03 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CDD2A5261504178200FF5B03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 				CDD2A5331504178200FF5B03 /* AppDelegate.h */,
 				CDD2A5341504178200FF5B03 /* AppDelegate.m */,
 				CDD2A5361504178200FF5B03 /* MainStoryboard.storyboard */,
+				CDB5C6671545F73A0075DF19 /* DetailedViewController.h */,
+				CDB5C6681545F73A0075DF19 /* DetailedViewController.m */,
 				CD859E16153CA9BE009B934D /* AddShoppingList.h */,
 				CD859E17153CA9BE009B934D /* AddShoppingList.m */,
 				CDE3F78F153CB0BE00DD0C39 /* AddCart.h */,
@@ -241,6 +246,7 @@
 				CD859E18153CA9BE009B934D /* AddShoppingList.m in Sources */,
 				CDE3F791153CB0BE00DD0C39 /* AddCart.m in Sources */,
 				6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */,
+				CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
