@@ -13,6 +13,7 @@
 
 
 @implementation ShoppingListViewController
+@synthesize addToCart;
 
 @synthesize listItems;
 @synthesize listItemsCat;
@@ -110,7 +111,7 @@ static int *viewFlag = 0;
     
     NSPredicate *predicate;
     
-    NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
+     NSArray *categories = [NSArray arrayWithObjects: @"Produce", @"Frozen Food", @"Bulk Food", @"Baking Food", @"Breads", @"Meat and Seafood", @"Deli", @"Bakery", @"Dairy", @"Pasta and Rice", @"Ethnic Foods", @"Canned Foods", @"Condiments", @"Snacks", @"Cereal", @"Beverages", @"Household Items", @"Health and Beauty", @"Other", nil];
     
     categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     [listItemsCat removeAllObjects];
@@ -137,6 +138,7 @@ static int *viewFlag = 0;
 - (void)viewDidUnload
 {
     [self setMyTableView:nil];
+    [self setAddToCart:nil];
     [super viewDidUnload];
    
 }
@@ -337,13 +339,127 @@ static int *viewFlag = 0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    int selSection = [self.myTableView indexPathForSelectedRow].section;
+    int selRow = [self.myTableView indexPathForSelectedRow].row;
+    
+    UITableViewCell *thisCell = [tableView cellForRowAtIndexPath:indexPath];
+    if(viewFlag == 0)
+    {
+        if(thisCell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self adjustAlphaDataUsingRow:selRow doAdd:TRUE];
+        }
+        else
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryNone;
+            [self adjustAlphaDataUsingRow:selRow doAdd:FALSE];
+        }
+    }
+    else
+    {
+        
+        if(thisCell.accessoryType == UITableViewCellAccessoryNone)
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:TRUE];
+        }
+        else
+        {
+            thisCell.accessoryType = UITableViewCellAccessoryNone;
+            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:FALSE];
+        }
+        
+    }
+
+   }
+-(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    Food *selected = ((Food*)[listItems objectAtIndex: row]);
+    int currState = selected.state.intValue;
+    if(add)
+    {
+        switch (currState) {
+            case 2:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:3];
+                selected.comment = @"Edit to change comment.";
+                break;
+            case 4:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:6];
+                break;
+            case 5:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:3];
+                break;
+            case 7:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:6];
+                break;
+            default:
+                NSLog(@"Error");
+                break;
+        }
+        
+    }
+    else
+    {
+        selected.state = selected.prev_state;
+    }
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    
 }
+-(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSMutableArray *sect = ((NSMutableArray*)[listItemsCat objectAtIndex: sec]);
+    Food *selected = ((Food*)[sect objectAtIndex: row]);
+    int currState = selected.state.intValue;
+    if(add)
+    {
+        switch (currState) {
+            case 2:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:3];
+                break;
+            case 4:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:6];
+                break;
+            case 5:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:3];
+                break;
+            case 7:
+                selected.prev_state = selected.state;
+                selected.state = [NSNumber numberWithInt:6];
+                break;
+            default:
+                NSLog(@"Error");
+                break;
+        }   
+    }
+    else
+    {
+        selected.state = selected.prev_state;
+    }
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+}
+
+- (IBAction)addToCart:(id)sender {
+    if (viewFlag == 0) {
+        [self fetchListAlpha];
+    }
+    else
+    {
+        [self fetchListCat];
+    }
+    [self.myTableView reloadData];
+}
+
 
 @end

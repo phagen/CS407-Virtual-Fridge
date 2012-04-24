@@ -22,6 +22,10 @@
 - (IBAction)segChangeEvent:(id)sender;
 -(void) fetchListAlpha;
 -(void) fetchListCat;
+@property (weak, nonatomic) IBOutlet UIButton *addToCart;
+-(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add;
+-(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add;
 
+- (IBAction)addToCart:(id)sender;
 
 @end

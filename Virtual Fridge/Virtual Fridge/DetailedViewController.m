@@ -8,6 +8,8 @@
 
 #import "DetailedViewController.h"
 #import "Food.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
 
 @implementation DetailedViewController
 @synthesize navBar;
@@ -80,4 +82,31 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)addToList:(id)sender {
+    switch (selectedFood.state.intValue) {
+        case 1:
+            selectedFood.state = [NSNumber numberWithInt:2];
+            break;
+        case 4:
+            selectedFood.state = [NSNumber numberWithInt:2];
+            selectedFood.comment = @"Edit to change comment";
+            break;
+        case 6:
+            selectedFood.state = [NSNumber numberWithInt:5];
+            selectedFood.comment = @"Edit to change comment";
+            break;
+        case 7:
+            selectedFood.state = [NSNumber numberWithInt:5];
+            selectedFood.comment = @"Edit to change comment";
+            break;
+        default:
+            NSLog(@"Invalid State Error");
+            break;
+    }
+     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
 @end

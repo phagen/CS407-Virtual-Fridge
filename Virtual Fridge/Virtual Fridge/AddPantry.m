@@ -56,7 +56,7 @@
     NSPredicate *predicate;
     
     
-    NSArray *categories = [NSArray arrayWithObjects: @"produce", @"frozen food", @"bulk food", @"baking food", @"breads", @"meat and seafood", @"deli", @"bakery", @"dairy", @"pasta and rice", @"ethnic foods", @"canned foods", @"condiments", @"snacks", @"cereal", @"beverages", @"household items", @"health and beauty", @"other", nil];
+     NSArray *categories = [NSArray arrayWithObjects: @"Produce", @"Frozen Food", @"Bulk Food", @"Baking Food", @"Breads", @"Meat and Seafood", @"Deli", @"Bakery", @"Dairy", @"Pasta and Rice", @"Ethnic Foods", @"Canned Foods", @"Condiments", @"Snacks", @"Cereal", @"Beverages", @"Household Items", @"Health and Beauty", @"Other", nil];
     
     categories = [categories sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
@@ -270,6 +270,8 @@
     int currState = selected.state.intValue;
     if(add)
     {
+        selected.purchase_date = [NSDate date];
+        selected.expiration_date = [selected.purchase_date addTimeInterval:(60*60*24*selected.expiration_offset.intValue)];
         switch (currState) {
             case 0:
                 selected.state = [NSNumber numberWithInt:1];

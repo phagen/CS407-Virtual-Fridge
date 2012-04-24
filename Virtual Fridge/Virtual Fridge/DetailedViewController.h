@@ -28,6 +28,7 @@
 
 
 
+- (IBAction)addToList:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;

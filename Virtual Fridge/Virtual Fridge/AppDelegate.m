@@ -25,7 +25,7 @@
     Food *food = nil;
     //Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
     NSArray *produce = [NSArray arrayWithObjects:@"Oranges",@"Lemons",@"Limes",
-                        @"Mango",@"Bananas",@"Pineapple", @"Strawberries",@"Berries",@"Kiwi",@"Grapes",nil];
+                        @"Mango",@"Bananas",@"Pineapple", @"Strawberries",@"Berries",@"Kiwi",@"Grapes",@"Apple",nil];
     
     
     //Produce Init
@@ -34,7 +34,9 @@
         food.name = ((NSString*)[produce objectAtIndex:i]);
         food.state =  [NSNumber numberWithInt:0];
         food.prev_state =  [NSNumber numberWithInt:0];
-        food.category = @"produce";
+        food.category = @"Produce";
+        food.comment = @"Edit to change comment.";
+        food.expiration_offset = [NSNumber numberWithInt:5];
     }
     return;
 }
@@ -60,6 +62,7 @@
     if([fetchedObjects count] == 0)
     {
         [self initCoreData];
+        /*
         Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
         food.name = @"Apple";
         food.state =  [NSNumber numberWithInt:7];
@@ -77,7 +80,7 @@
         food.prev_state =  [NSNumber numberWithInt:3];
         ///NEED THIS TO SAVE STATE OF DB///
         [self saveContext];
-
+         */
     }
    
 }							
