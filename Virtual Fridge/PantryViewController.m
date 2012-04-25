@@ -16,6 +16,7 @@
 
 @synthesize pantryItems;
 @synthesize pantryItemsCat;
+@synthesize delete;
 
 static int viewFlag = 0;
 
@@ -120,6 +121,7 @@ static int viewFlag = 0;
 }
 - (void)viewDidUnload
 {
+    [self setDelete:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

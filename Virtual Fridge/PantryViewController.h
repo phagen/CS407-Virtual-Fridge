@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSMutableArray *pantryItems;
 @property (nonatomic, strong) NSMutableArray *pantryItemsCat;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *delete;
 
 
 -(void) fetchPantryAlpha;

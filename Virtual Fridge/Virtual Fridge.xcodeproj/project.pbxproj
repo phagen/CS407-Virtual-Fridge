@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C350FD8153FBD18008341DD /* ItemDetailController.m */; };
 		CD022D241547991C00053918 /* EditFoodDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CD022D231547991C00053918 /* EditFoodDetails.m */; };
+		CD0A416C15486D54008A031B /* icon_introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A416B15486D54008A031B /* icon_introduction.png */; };
+		CD0A416F1548714E008A031B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0A416E1548714E008A031B /* CoreBluetooth.framework */; };
+		CD0A417115487421008A031B /* check-list-icon-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A417015487421008A031B /* check-list-icon-hi.png */; };
+		CD0A41751548768A008A031B /* fridge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A41741548768A008A031B /* fridge-icon.png */; };
 		CD5F28AF151B8F8F00F5E65C /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */; };
 		CD5F28B3151B975D00F5E65C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B2151B975D00F5E65C /* CartViewController.m */; };
 		CD5F28B6151BC1D000F5E65C /* AddPantry.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B5151BC1D000F5E65C /* AddPantry.m */; };
@@ -40,6 +44,10 @@
 		6C350FD8153FBD18008341DD /* ItemDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailController.m; sourceTree = "<group>"; };
 		CD022D221547991C00053918 /* EditFoodDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFoodDetails.h; sourceTree = "<group>"; };
 		CD022D231547991C00053918 /* EditFoodDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFoodDetails.m; sourceTree = "<group>"; };
+		CD0A416B15486D54008A031B /* icon_introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_introduction.png; sourceTree = "<group>"; };
+		CD0A416E1548714E008A031B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		CD0A417015487421008A031B /* check-list-icon-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-list-icon-hi.png"; sourceTree = "<group>"; };
+		CD0A41741548768A008A031B /* fridge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fridge-icon.png"; path = "Virtual Fridge/fridge-icon.png"; sourceTree = "<group>"; };
 		CD5F28AD151B8F8F00F5E65C /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
 		CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		CD5F28B1151B975D00F5E65C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0A416F1548714E008A031B /* CoreBluetooth.framework in Frameworks */,
 				CD60CAD4151161B4000C89B7 /* CoreData.framework in Frameworks */,
 				CDD2A5251504178200FF5B03 /* UIKit.framework in Frameworks */,
 				CDD2A5271504178200FF5B03 /* Foundation.framework in Frameworks */,
@@ -98,6 +107,8 @@
 		CDD2A5151504178100FF5B03 = {
 			isa = PBXGroup;
 			children = (
+				CD0A41741548768A008A031B /* fridge-icon.png */,
+				CD0A416E1548714E008A031B /* CoreBluetooth.framework */,
 				CD75E6AC15473B3700EF4B7F /* pantry_new.png */,
 				CD60CAE1151170B9000C89B7 /* PantryViewController.h */,
 				CD60CAE2151170B9000C89B7 /* PantryViewController.m */,
@@ -131,7 +142,9 @@
 			children = (
 				CDD2A5331504178200FF5B03 /* AppDelegate.h */,
 				CDD2A5341504178200FF5B03 /* AppDelegate.m */,
+				CD0A417015487421008A031B /* check-list-icon-hi.png */,
 				CDD2A5361504178200FF5B03 /* MainStoryboard.storyboard */,
+				CD0A416B15486D54008A031B /* icon_introduction.png */,
 				CD022D221547991C00053918 /* EditFoodDetails.h */,
 				CD022D231547991C00053918 /* EditFoodDetails.m */,
 				CDB5C6671545F73A0075DF19 /* DetailedViewController.h */,
@@ -232,6 +245,9 @@
 				CDD2A5441504178200FF5B03 /* second.png in Resources */,
 				CDD2A5461504178200FF5B03 /* second@2x.png in Resources */,
 				CD75E6AD15473B3700EF4B7F /* pantry_new.png in Resources */,
+				CD0A416C15486D54008A031B /* icon_introduction.png in Resources */,
+				CD0A417115487421008A031B /* check-list-icon-hi.png in Resources */,
+				CD0A41751548768A008A031B /* fridge-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

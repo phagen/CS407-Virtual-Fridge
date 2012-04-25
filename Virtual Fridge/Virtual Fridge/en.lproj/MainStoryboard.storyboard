@@ -9,7 +9,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqA-om-tjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="gWc-Wf-7na" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pantry" id="2xt-Yo-mxL"/>
+                    <tabBarItem key="tabBarItem" title="Pantry" image="fridge-icon.png" id="2xt-Yo-mxL"/>
                     <navigationItem key="navigationItem" id="fub-IT-dRf"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Rgc-Hp-Yrk">
                         <autoresizingMask key="autoresizingMask"/>
@@ -355,7 +355,7 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <mutableData key="data">
+                                    <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -373,7 +373,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                 </timeZone>
                                 <connections>
                                     <action selector="datePicker:" destination="1Iw-KG-dHy" eventType="valueChanged" id="fdd-wX-DYI"/>
@@ -506,7 +506,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vw-OA-I0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="YdI-lv-nHR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping List" id="BnD-Ao-47k"/>
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="check-list-icon-hi.png" id="BnD-Ao-47k"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KdM-T2-0NQ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -521,7 +521,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RfK-Ig-SAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="rIA-dt-M7p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cart" id="taQ-4k-70J"/>
+                    <tabBarItem key="tabBarItem" title="Cart" image="icon_introduction.png" id="taQ-4k-70J"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DJy-Pz-MM6">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -631,6 +631,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="30" y="56"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="check-list-icon-hi.png" width="30" height="30"/>
+        <image name="fridge-icon.png" width="30" height="30"/>
+        <image name="icon_introduction.png" width="30" height="30"/>
+    </resources>
     <classes>
         <class className="AddCart" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCart.h"/>
@@ -676,10 +681,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="datePicker:"/>
                 <relationship kind="action" name="doneButton:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
             </relationships>
         </class>
         <class className="PantryViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PantryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delete" candidateClass="UISwipeGestureRecognizer"/>
+            </relationships>
         </class>
         <class className="ShoppingListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
