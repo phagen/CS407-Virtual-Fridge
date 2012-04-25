@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C350FD8153FBD18008341DD /* ItemDetailController.m */; };
+		CD022D241547991C00053918 /* EditFoodDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CD022D231547991C00053918 /* EditFoodDetails.m */; };
 		CD5F28AF151B8F8F00F5E65C /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */; };
 		CD5F28B3151B975D00F5E65C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B2151B975D00F5E65C /* CartViewController.m */; };
 		CD5F28B6151BC1D000F5E65C /* AddPantry.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B5151BC1D000F5E65C /* AddPantry.m */; };
@@ -37,6 +38,8 @@
 /* Begin PBXFileReference section */
 		6C350FD7153FBD18008341DD /* ItemDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailController.h; sourceTree = "<group>"; };
 		6C350FD8153FBD18008341DD /* ItemDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailController.m; sourceTree = "<group>"; };
+		CD022D221547991C00053918 /* EditFoodDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFoodDetails.h; sourceTree = "<group>"; };
+		CD022D231547991C00053918 /* EditFoodDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFoodDetails.m; sourceTree = "<group>"; };
 		CD5F28AD151B8F8F00F5E65C /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
 		CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		CD5F28B1151B975D00F5E65C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 				CDD2A5331504178200FF5B03 /* AppDelegate.h */,
 				CDD2A5341504178200FF5B03 /* AppDelegate.m */,
 				CDD2A5361504178200FF5B03 /* MainStoryboard.storyboard */,
+				CD022D221547991C00053918 /* EditFoodDetails.h */,
+				CD022D231547991C00053918 /* EditFoodDetails.m */,
 				CDB5C6671545F73A0075DF19 /* DetailedViewController.h */,
 				CDB5C6681545F73A0075DF19 /* DetailedViewController.m */,
 				CD859E16153CA9BE009B934D /* AddShoppingList.h */,
@@ -251,6 +256,7 @@
 				6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */,
 				CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */,
 				CD75E6A815472A4E00EF4B7F /* Food.m in Sources */,
+				CD022D241547991C00053918 /* EditFoodDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

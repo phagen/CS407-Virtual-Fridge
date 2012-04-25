@@ -10,6 +10,7 @@
 #import "Food.h"
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "EditFoodDetails.h"
 
 @implementation DetailedViewController
 @synthesize navBar;
@@ -81,7 +82,19 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"editItem"])
+    {
+          EditFoodDetails *nextViewController = [segue destinationViewController]; 
+        nextViewController.item = selectedFood;
+        
+    }
+}
 
+
+#pragma mark - Button Actions
 - (IBAction)addToList:(id)sender {
     switch (selectedFood.state.intValue) {
         case 1:

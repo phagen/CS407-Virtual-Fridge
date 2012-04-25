@@ -222,7 +222,11 @@
                                                 <action selector="backButton:" destination="Wck-gb-Zj0" id="AcS-66-8nL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Lh5-2Q-ZWk"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="Lh5-2Q-ZWk">
+                                            <connections>
+                                                <segue destination="1Iw-KG-dHy" kind="modal" identifier="editItem" id="aDl-fP-b81"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -321,6 +325,70 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1714" y="-999"/>
+        </scene>
+        <scene sceneID="DgH-bM-qzH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae6-2D-R8W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="1Iw-KG-dHy" customClass="EditFoodDetails" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qjw-qx-X9L">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="4SB-ol-UEJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="f6V-sj-JMR">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="AYl-9b-Wq9">
+                                            <connections>
+                                                <action selector="doneButton:" destination="1Iw-KG-dHy" id="CXE-NS-VcN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="CG7-zn-YLL">
+                                <rect key="frame" x="0.0" y="244" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="357014751.78007901">
+                                    <!--2012-04-25 02:45:51 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="en_US"/>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                                <connections>
+                                    <action selector="datePicker:" destination="1Iw-KG-dHy" eventType="valueChanged" id="fdd-wX-DYI"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="N4y-Vx-UaN"/>
+                    <connections>
+                        <outlet property="datePicker" destination="CG7-zn-YLL" id="3MK-Su-wih"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2184" y="-998"/>
         </scene>
         <scene sceneID="mWy-EK-B3C">
             <objects>
@@ -601,6 +669,13 @@
                 <relationship kind="outlet" name="name" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="purDate" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EditFoodDetails" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditFoodDetails.h"/>
+            <relationships>
+                <relationship kind="action" name="datePicker:"/>
+                <relationship kind="action" name="doneButton:"/>
             </relationships>
         </class>
         <class className="PantryViewController" superclassName="UITableViewController">
