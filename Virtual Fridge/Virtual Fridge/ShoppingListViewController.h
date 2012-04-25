@@ -20,12 +20,16 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 - (IBAction)segChangeEvent:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *addToCart;
+- (IBAction)addToCart:(id)sender;
+
+
+-(void) unCheckAll;
+-(void) saveDB;
+-(void) switchStateOfFood: (Food*) temp;
+-(void) updateDBOnAddToCart;
 -(void) fetchListAlpha;
 -(void) fetchListCat;
-@property (weak, nonatomic) IBOutlet UIButton *addToCart;
--(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add;
--(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add;
--(void) unCheckAll;
-- (IBAction)addToCart:(id)sender;
+
 
 @end

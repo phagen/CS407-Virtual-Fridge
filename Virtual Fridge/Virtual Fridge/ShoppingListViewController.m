@@ -18,7 +18,7 @@
 @synthesize listItems;
 @synthesize listItemsCat;
 @synthesize myTableView;
-static int *viewFlag = 0;
+static int viewFlag = 0;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -73,6 +73,7 @@ static int *viewFlag = 0;
         viewFlag = 1; // This needed for reload
         [self fetchListCat];
     }
+    [self saveDB];
     [self.myTableView reloadData];
 }
 
@@ -212,6 +213,11 @@ static int *viewFlag = 0;
     {
         return [[listItemsCat objectAtIndex:section] count];
     }
+    else
+    {
+         NSLog(@"Bad viewFlag state");
+        return 1;
+    }
 
 }
 
@@ -226,11 +232,18 @@ static int *viewFlag = 0;
     if (viewFlag == 0)
     {
         cell.textLabel.text = ((Food *)[listItems objectAtIndex:indexPath.row]).name;
+        if(((Food *)[listItems objectAtIndex:indexPath.row]).shop_sel == [NSNumber numberWithInt: 1])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
     else if (viewFlag == 1)
     {
-        NSMutableArray* array = [listItemsCat objectAtIndex: indexPath.section];
-        cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+        cell.textLabel.text = ((Food *)[[listItemsCat objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).name;
+        if( ((Food*)[[listItemsCat objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]).shop_sel == [NSNumber numberWithInt:1])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
     
     return cell;
@@ -292,48 +305,9 @@ static int *viewFlag = 0;
     else
     {
         NSLog(@"Bad Flag State: ");
+        return @"";
     }
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -348,12 +322,12 @@ static int *viewFlag = 0;
         if(thisCell.accessoryType == UITableViewCellAccessoryNone)
         {
             thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self adjustAlphaDataUsingRow:selRow doAdd:TRUE];
+            ((Food*)[listItems objectAtIndex:selRow]).shop_sel = [NSNumber numberWithInt:1];
         }
         else
         {
             thisCell.accessoryType = UITableViewCellAccessoryNone;
-            [self adjustAlphaDataUsingRow:selRow doAdd:FALSE];
+            ((Food*)[listItems objectAtIndex:selRow]).shop_sel = [NSNumber numberWithInt:0];
         }
     }
     else
@@ -362,95 +336,30 @@ static int *viewFlag = 0;
         if(thisCell.accessoryType == UITableViewCellAccessoryNone)
         {
             thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:TRUE];
+            ((Food*)[[listItemsCat objectAtIndex:selSection] objectAtIndex:selRow] ).shop_sel = [NSNumber numberWithInt:1];
         }
         else
         {
             thisCell.accessoryType = UITableViewCellAccessoryNone;
-            [self adjustCatDataUsingSection:selSection atRow:selRow doAdd:FALSE];
+            ((Food*)[[listItemsCat objectAtIndex:selSection] objectAtIndex:selRow] ).shop_sel = [NSNumber numberWithInt:0];
         }
-        
     }
+    [self saveDB];
 
-   }
--(void)adjustAlphaDataUsingRow: (int) row doAdd: (bool) add
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    Food *selected = ((Food*)[listItems objectAtIndex: row]);
-    int currState = selected.state.intValue;
-    if(add)
-    {
-        switch (currState) {
-            case 2:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:3];
-                selected.comment = @"Edit to change comment.";
-                break;
-            case 4:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:6];
-                break;
-            case 5:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:3];
-                break;
-            case 7:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:6];
-                break;
-            default:
-                NSLog(@"Error");
-                break;
-        }
-        
-    }
-    else
-    {
-        selected.state = selected.prev_state;
-    }
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
-    
 }
--(void)adjustCatDataUsingSection: (int) sec atRow: (int) row doAdd: (bool) add
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSMutableArray *sect = ((NSMutableArray*)[listItemsCat objectAtIndex: sec]);
-    Food *selected = ((Food*)[sect objectAtIndex: row]);
-    int currState = selected.state.intValue;
-    if(add)
+    if ([[segue identifier] isEqualToString:@"addShop"]) 
     {
-        switch (currState) {
-            case 2:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:3];
-                break;
-            case 4:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:6];
-                break;
-            case 5:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:3];
-                break;
-            case 7:
-                selected.prev_state = selected.state;
-                selected.state = [NSNumber numberWithInt:6];
-                break;
-            default:
-                NSLog(@"Error");
-                break;
-        }   
+        [self unCheckAll];
     }
-    else
-    {
-        selected.state = selected.prev_state;
-    }
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
 }
+
+
 
 - (IBAction)addToCart:(id)sender {
+    [self updateDBOnAddToCart];
     if (viewFlag == 0) {
         [self fetchListAlpha];
     }
@@ -461,6 +370,7 @@ static int *viewFlag = 0;
     [self unCheckAll];
     [self.myTableView reloadData];
    }
+#pragma mark - Helper Functions
 -(void) unCheckAll
 {
     for (UITableViewCell *cell in [myTableView visibleCells]) {
@@ -468,6 +378,104 @@ static int *viewFlag = 0;
     }
       
 }
+
+-(void) saveDB
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+}
+
+-(void) updateDBOnAddToCart
+{
+    if(viewFlag == 0)
+    {
+        for(int i = 0; i < [listItems count]; i++)
+        {
+            if(((Food*)[listItems objectAtIndex:i]).shop_sel == [NSNumber numberWithInt:1])
+            {
+                [self switchStateOfFood: [listItems objectAtIndex:i]];
+            }
+        }
+    }
+    else
+    {
+        for(int s = 0; s < [listItemsCat count]; s++)
+        {
+            for(int r = 0; r < [[listItemsCat objectAtIndex:s] count];r++)
+            {
+                if(((Food*)[[listItemsCat objectAtIndex:s] objectAtIndex:r]).shop_sel == [NSNumber numberWithInt:1])
+                {
+                    [self switchStateOfFood: [[listItemsCat objectAtIndex:s] objectAtIndex: r]];
+                }
+            }
+        }
+    }
+    [self saveDB];
+}
+-(void) switchStateOfFood: (Food*) temp
+{
+    switch(temp.state.intValue)
+    {
+        case 2:
+            temp.state = [NSNumber numberWithInt:3];
+            break;
+        case 4:
+            temp.state = [NSNumber numberWithInt:6];
+            break;
+        case 5:
+            temp.state = [NSNumber numberWithInt:3];
+            break;
+        case 7:
+            temp.state = [NSNumber numberWithInt:6];
+            break;
+        default:
+            NSLog(@"Error");
+            break;
+    }
+
+}
+
+
+#pragma mark - Unused Functions
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 
 @end

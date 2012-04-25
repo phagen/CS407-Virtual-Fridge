@@ -87,7 +87,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" id="Fj8-VE-Iia">
                             <connections>
-                                <segue destination="Ws2-A9-USf" kind="modal" id="QO2-66-mY5"/>
+                                <segue destination="Ws2-A9-USf" kind="modal" identifier="addShop" id="QO2-66-mY5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

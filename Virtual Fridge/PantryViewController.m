@@ -362,7 +362,7 @@ static int *viewFlag = 0;
         {
             item = [[pantryItemsCat objectAtIndex:sect] objectAtIndex:row];
         }
-       nextViewController.selectedFood = item;
+        nextViewController.selectedFood = item;
         nextViewController.foodName = item.name;
    }
 }

@@ -17,7 +17,7 @@
 @synthesize cartItemsCat;
 @synthesize myTableView;
 
-static int *viewFlag = 0;
+static int viewFlag = 0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -139,10 +139,6 @@ static int *viewFlag = 0;
     [appDelegate.managedObjectContext save: &error];
     [self.myTableView reloadData];
 }
-
-
-
-
 - (void)viewDidUnload
 {
     [self setMyTableView:nil];
@@ -219,6 +215,11 @@ static int *viewFlag = 0;
     {
         return [[cartItemsCat objectAtIndex:section] count];
     }
+    else
+    {
+         NSLog(@"Bad viewFlag state");
+        return 1;
+    }
 
 }
 
@@ -243,9 +244,10 @@ static int *viewFlag = 0;
     {
         NSMutableArray* array = [cartItemsCat objectAtIndex: indexPath.section];
         cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
-        if (((Food *)[array objectAtIndex:indexPath.row]).cart_sel == [NSNumber numberWithInt: 1]) {
+        if (((Food *)[array objectAtIndex:indexPath.row]).cart_sel == [NSNumber numberWithInt: 1]) 
+        {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            }
+        }
     }
     
     return cell;
@@ -307,6 +309,7 @@ static int *viewFlag = 0;
     else
     {
         NSLog(@"Bad Flag State: ");
+        return @"";
     }
 }
 /*
