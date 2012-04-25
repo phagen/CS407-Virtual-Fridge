@@ -25,7 +25,7 @@
     Food *food = nil;
     //Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
     NSArray *produce = [NSArray arrayWithObjects:@"Oranges",@"Lemons",@"Limes",
-                        @"Mango",@"Bananas",@"Pineapple", @"Strawberries",@"Berries",@"Kiwi",@"Grapes",@"Apple",nil];
+                        @"Mango",@"Bananas",@"Pineapple", @"Strawberries",@"Berries",@"Kiwi",@"Grapes",@"Apple",@"random",nil];
     
     
     //Produce Init
@@ -64,26 +64,8 @@
     if([fetchedObjects count] == 0)
     {
         [self initCoreData];
-        /*
-        Food *food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
-        food.name = @"Apple";
-        food.state =  [NSNumber numberWithInt:7];
-        food.prev_state =  [NSNumber numberWithInt:7];
-        food.category = @"produce";
-        food.purchase_date = [NSDate date];
-        food.expiration_date = [NSDate date];
-        food.comment = @"This is my comment";
-        food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
-        food.name = @"Pear";
-        food.category = @"produce";
-        food.state =  [NSNumber numberWithInt:2];
-        food.state =  [NSNumber numberWithInt:3];
-        food.prev_state =  [NSNumber numberWithInt:2];
-        food.prev_state =  [NSNumber numberWithInt:3];
-        ///NEED THIS TO SAVE STATE OF DB///
-        [self saveContext];
-         */
     }
+    return YES;
    
 }							
 - (void)applicationWillResignActive:(UIApplication *)application
