@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C350FD8153FBD18008341DD /* ItemDetailController.m */; };
+		6CA59B321548AA420068B753 /* 157-wrench.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA59B311548AA420068B753 /* 157-wrench.png */; };
+		6CA59B3B1548B03B0068B753 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA59B3A1548B03B0068B753 /* SettingsViewController.m */; };
 		CD022D241547991C00053918 /* EditFoodDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CD022D231547991C00053918 /* EditFoodDetails.m */; };
 		CD0A416C15486D54008A031B /* icon_introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A416B15486D54008A031B /* icon_introduction.png */; };
 		CD0A416F1548714E008A031B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0A416E1548714E008A031B /* CoreBluetooth.framework */; };
@@ -42,6 +44,9 @@
 /* Begin PBXFileReference section */
 		6C350FD7153FBD18008341DD /* ItemDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailController.h; sourceTree = "<group>"; };
 		6C350FD8153FBD18008341DD /* ItemDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailController.m; sourceTree = "<group>"; };
+		6CA59B311548AA420068B753 /* 157-wrench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "157-wrench.png"; path = "Virtual Fridge/157-wrench.png"; sourceTree = "<group>"; };
+		6CA59B391548B03A0068B753 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		6CA59B3A1548B03B0068B753 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		CD022D221547991C00053918 /* EditFoodDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFoodDetails.h; sourceTree = "<group>"; };
 		CD022D231547991C00053918 /* EditFoodDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFoodDetails.m; sourceTree = "<group>"; };
 		CD0A416B15486D54008A031B /* icon_introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_introduction.png; sourceTree = "<group>"; };
@@ -107,6 +112,7 @@
 		CDD2A5151504178100FF5B03 = {
 			isa = PBXGroup;
 			children = (
+				6CA59B311548AA420068B753 /* 157-wrench.png */,
 				CD0A41741548768A008A031B /* fridge-icon.png */,
 				CD0A416E1548714E008A031B /* CoreBluetooth.framework */,
 				CD75E6AC15473B3700EF4B7F /* pantry_new.png */,
@@ -173,6 +179,8 @@
 				CDD2A5431504178200FF5B03 /* second.png */,
 				CDD2A5451504178200FF5B03 /* second@2x.png */,
 				CDD2A52B1504178200FF5B03 /* Supporting Files */,
+				6CA59B391548B03A0068B753 /* SettingsViewController.h */,
+				6CA59B3A1548B03B0068B753 /* SettingsViewController.m */,
 			);
 			path = "Virtual Fridge";
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 				CD0A416C15486D54008A031B /* icon_introduction.png in Resources */,
 				CD0A417115487421008A031B /* check-list-icon-hi.png in Resources */,
 				CD0A41751548768A008A031B /* fridge-icon.png in Resources */,
+				6CA59B321548AA420068B753 /* 157-wrench.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +282,7 @@
 				CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */,
 				CD75E6A815472A4E00EF4B7F /* Food.m in Sources */,
 				CD022D241547991C00053918 /* EditFoodDetails.m in Sources */,
+				6CA59B3B1548B03B0068B753 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

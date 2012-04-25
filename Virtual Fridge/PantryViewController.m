@@ -19,6 +19,7 @@
 @synthesize delete;
 
 static int viewFlag = 0;
+static int alertFlag = 0;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -63,7 +64,36 @@ static int viewFlag = 0;
     pantryItems = (NSMutableArray*) allItems;
     
     
-    
+    if(alertFlag == 0){
+        Food * food;
+        //NSString * alertMessage;
+        NSDate * date;
+        NSDate * expiration;
+        expiration = [[NSDate date] addTimeInterval:(60*60*24*67)];
+        NSMutableString * message = [[NSMutableString alloc] init];
+        
+        [message appendFormat:@"The following items are going to expire in the next 3 days: \n"];
+        
+        for(int i = 0; i < [pantryItems count]; i++){
+            food = ((Food*)[pantryItems objectAtIndex:i]);
+            date = food.expiration_date;
+            NSTimeInterval time;
+            time = [date timeIntervalSinceDate:expiration];
+            if (time < 0){
+                [message appendFormat:@"%@\n", food.name];
+            }
+        
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your food is expiring!!!1!" 
+                                                    message:message
+                                                       delegate:nil 
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+        NSLog(message);
+        [alert show];
+        alertFlag = 1;
+    }
     
     /*for(int i =0; i < [pantryItems count]; i++)
     {

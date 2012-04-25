@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
@@ -108,14 +108,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="6Q0-w0-XDL" rowHeight="39" style="IBUITableViewCellStyleDefault" id="d0y-Fj-3hv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="OLT-D8-2Ew" rowHeight="39" style="IBUITableViewCellStyleDefault" id="d0y-Fj-3hv">
                                 <rect key="frame" x="0.0" y="46" width="320" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="267" height="38"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Q0-w0-XDL">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OLT-D8-2Ew">
                                             <rect key="frame" x="10" y="0.0" width="247" height="38"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -126,7 +126,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Wck-gb-Zj0" kind="modal" identifier="ItemDetail" id="hzp-dI-Ehp"/>
+                                    <segue destination="Wck-gb-Zj0" kind="modal" identifier="ItemDetail" id="AbB-hL-v5B"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -351,7 +351,7 @@
                                 <rect key="frame" x="0.0" y="244" width="320" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="357014751.78007901">
-                                    <!--2012-04-25 02:45:51 +0000-->
+                                    <!--2012-04-24 21:45:51 -0500-->
                                 </date>
                                 <locale key="locale" localeIdentifier="en_US"/>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
@@ -610,6 +610,38 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1153" y="1002"/>
         </scene>
+        <scene sceneID="1Ep-38-MB8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KEL-JI-zgK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="qbW-oa-AyT" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XSr-5u-Cag">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9d3-0m-qPX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="ik6-ir-SeM">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="o2A-0n-f5X"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1153" y="1589"/>
+        </scene>
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -625,81 +657,37 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <segue destination="gWc-Wf-7na" kind="relationship" relationship="viewControllers" id="mF7-gG-Mep"/>
                         <segue destination="YdI-lv-nHR" kind="relationship" relationship="viewControllers" id="Ors-cC-yHO"/>
                         <segue destination="rIA-dt-M7p" kind="relationship" relationship="viewControllers" id="0lD-dH-MhJ"/>
+                        <segue destination="epc-HM-D4O" kind="relationship" relationship="viewControllers" id="w6G-M6-7JP"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="30" y="56"/>
+            <point key="canvasLocation" x="-116" y="376"/>
+        </scene>
+        <scene sceneID="rTR-4O-l3e">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSm-UY-3am" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="epc-HM-D4O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="157-wrench.png" id="TFA-qc-rhE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8Tq-Ln-ujw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qbW-oa-AyT" kind="relationship" relationship="rootViewController" id="eES-CK-efJ"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="656" y="1589"/>
         </scene>
     </scenes>
     <resources>
+        <image name="157-wrench.png" width="24" height="24"/>
         <image name="check-list-icon-hi.png" width="30" height="30"/>
         <image name="fridge-icon.png" width="30" height="30"/>
         <image name="icon_introduction.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="AddCart" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCart.h"/>
-            <relationships>
-                <relationship kind="action" name="dissmissView:"/>
-            </relationships>
-        </class>
-        <class className="AddPantry" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPantry.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissView:"/>
-            </relationships>
-        </class>
-        <class className="AddShoppingList" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddShoppingList.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissView:"/>
-            </relationships>
-        </class>
-        <class className="CartViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="CheckOut:"/>
-                <relationship kind="action" name="segChangeEvent:"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DetailedViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailedViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addToList:"/>
-                <relationship kind="action" name="backButton:"/>
-                <relationship kind="outlet" name="category" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="comment" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="expDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="name" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="purDate" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="EditFoodDetails" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditFoodDetails.h"/>
-            <relationships>
-                <relationship kind="action" name="datePicker:"/>
-                <relationship kind="action" name="doneButton:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="PantryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PantryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delete" candidateClass="UISwipeGestureRecognizer"/>
-            </relationships>
-        </class>
-        <class className="ShoppingListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addToCart:"/>
-                <relationship kind="action" name="segChangeEvent:"/>
-                <relationship kind="outlet" name="addToCart" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
