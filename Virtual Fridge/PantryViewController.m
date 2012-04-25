@@ -14,13 +14,10 @@
 
 @implementation PantryViewController
 
-@synthesize Food = _Food;
-@synthesize s;
 @synthesize pantryItems;
 @synthesize pantryItemsCat;
 
-static int *viewFlag = 0;
-//@synthesize context = _context;
+static int viewFlag = 0;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -232,6 +229,11 @@ static int *viewFlag = 0;
     {
         return [[pantryItemsCat objectAtIndex:section] count];
     }
+    else
+    {
+        NSLog(@"State Error PantryView");
+        return 1;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -306,6 +308,11 @@ static int *viewFlag = 0;
                 return @"Bad Access";
                 break;
         }
+    }
+    else
+    {
+        NSLog(@"State Error View Controller Function Title");
+        return @"";
     }
 }
 /*

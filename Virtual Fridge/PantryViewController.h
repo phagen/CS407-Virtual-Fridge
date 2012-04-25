@@ -10,22 +10,15 @@
 #import "Food.h"
 
 @interface PantryViewController : UITableViewController {
-    NSArray *_Food;
     @private NSMutableArray *pantryItems;
     @private NSMutableArray *pantryItemsCat;
-    NSString *s;
-    NSInteger *viewFlag;
-  //  NSManagedObjectContext *_context;
 }
 
-@property (nonatomic, retain) NSArray *Food;
-@property (nonatomic, retain) NSString *s;
 @property (nonatomic, strong) NSMutableArray *pantryItems;
 @property (nonatomic, strong) NSMutableArray *pantryItemsCat;
 
 
 -(void) fetchPantryAlpha;
 -(void) fetchPantryCat;
-+ (NSMutableArray *) cleanItems: (NSMutableArray*) array;
-//@property (nonatomic, retain) NSManagedObjectContext *context;
+
 @end

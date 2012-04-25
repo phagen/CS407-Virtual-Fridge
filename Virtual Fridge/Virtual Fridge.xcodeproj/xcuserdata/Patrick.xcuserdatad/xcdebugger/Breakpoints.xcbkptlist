@@ -17,31 +17,5 @@
          landmarkName = "-application:didFinishLaunchingWithOptions:"
          landmarkType = "5">
       </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "PantryViewController.h"
-         timestampString = "355957187.455796"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "17"
-         endingLineNumber = "17"
-         landmarkName = "@interface PantryViewController"
-         landmarkType = "2">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "PantryViewController.h"
-         timestampString = "355957190.351575"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "10"
-         endingLineNumber = "10">
-      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
