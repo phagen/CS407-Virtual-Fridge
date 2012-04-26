@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Food.h"
 
-@interface ItemDetailController : UITableViewController {
+@interface ItemDetailController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     Food *food;
     
 }
 
 @property (nonatomic, strong) Food *food;
 
+
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 
 @end

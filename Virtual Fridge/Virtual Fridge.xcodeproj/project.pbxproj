@@ -39,6 +39,7 @@
 		CDD2A5441504178200FF5B03 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD2A5431504178200FF5B03 /* second.png */; };
 		CDD2A5461504178200FF5B03 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD2A5451504178200FF5B03 /* second@2x.png */; };
 		CDE3F791153CB0BE00DD0C39 /* AddCart.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE3F790153CB0BE00DD0C39 /* AddCart.m */; };
+		CDF6B3BE1548FFD900416394 /* CustomDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF6B3BD1548FFD900416394 /* CustomDetailCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,8 @@
 		CDD2A5451504178200FF5B03 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		CDE3F78F153CB0BE00DD0C39 /* AddCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCart.h; sourceTree = "<group>"; };
 		CDE3F790153CB0BE00DD0C39 /* AddCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCart.m; sourceTree = "<group>"; };
+		CDF6B3BC1548FFD900416394 /* CustomDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDetailCell.h; sourceTree = "<group>"; };
+		CDF6B3BD1548FFD900416394 /* CustomDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDetailCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				CD75E6AC15473B3700EF4B7F /* pantry_new.png */,
 				CD60CAE1151170B9000C89B7 /* PantryViewController.h */,
 				CD60CAE2151170B9000C89B7 /* PantryViewController.m */,
+				CDF6B3BC1548FFD900416394 /* CustomDetailCell.h */,
+				CDF6B3BD1548FFD900416394 /* CustomDetailCell.m */,
 				CD60CAD3151161B4000C89B7 /* CoreData.framework */,
 				CDD2A52A1504178200FF5B03 /* Virtual Fridge */,
 				CDD2A5231504178200FF5B03 /* Frameworks */,
@@ -283,6 +288,7 @@
 				CD75E6A815472A4E00EF4B7F /* Food.m in Sources */,
 				CD022D241547991C00053918 /* EditFoodDetails.m in Sources */,
 				6CA59B3B1548B03B0068B753 /* SettingsViewController.m in Sources */,
+				CDF6B3BE1548FFD900416394 /* CustomDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

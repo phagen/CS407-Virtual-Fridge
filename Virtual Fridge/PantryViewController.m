@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 #import "Food.h"
 #import "AppDelegate.h"
-#import "DetailedViewController.h"
+#import "ItemDetailController.h"
 
 
 @implementation PantryViewController
@@ -20,6 +20,7 @@
 
 static int viewFlag = 0;
 static int alertFlag = 0;
+static int alertNeeded = 0;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -80,18 +81,21 @@ static int alertFlag = 0;
             NSTimeInterval time;
             time = [date timeIntervalSinceDate:expiration];
             if (time < 0){
+                alertNeeded = 1;
                 [message appendFormat:@"%@\n", food.name];
             }
         
         }
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your food is expiring!!!1!" 
-                                                    message:message
-                                                       delegate:nil 
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-        NSLog(message);
-        [alert show];
+        if(alertNeeded == 1)
+        {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your food is expiring!!!1!" 
+                                                            message:message
+                                                           delegate:nil 
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
         alertFlag = 1;
     }
     
@@ -389,9 +393,9 @@ static int alertFlag = 0;
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
-   if ([[segue identifier] isEqualToString:@"ItemDetail"]) {
+   if ([[segue identifier] isEqualToString:@"itemDetail"]) {
         Food *item;
-        DetailedViewController *nextViewController = [segue destinationViewController];
+       ItemDetailController *nextViewController = [segue destinationViewController];
         NSUInteger row = [self.tableView indexPathForSelectedRow].row;
         NSUInteger sect = [self.tableView indexPathForSelectedRow].section;
         if (viewFlag == 0) {
@@ -401,8 +405,7 @@ static int alertFlag = 0;
         {
             item = [[pantryItemsCat objectAtIndex:sect] objectAtIndex:row];
         }
-        nextViewController.selectedFood = item;
-        nextViewController.foodName = item.name;
+        nextViewController.food = item;
    }
 }
 #pragma mark - Table view delegate
