@@ -16,8 +16,9 @@
 
 @property (nonatomic, strong) Food *food;
 
-
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
+- (IBAction)doneButton:(id)sender;
+- (IBAction)addToList:(id)sender;
 
 @end

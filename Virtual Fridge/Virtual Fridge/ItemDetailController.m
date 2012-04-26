@@ -9,6 +9,7 @@
 #import "ItemDetailController.h"
 #import "Food.h"
 #import "CustomDetailCell.h"
+#import "AppDelegate.h"
 
 
 @implementation ItemDetailController
@@ -39,18 +40,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navBar.topItem.title = food.name;
 }
 
 - (void)viewDidUnload
 {
     [self setMyTableView:nil];
     [self setNavBar:nil];
+
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -189,4 +187,35 @@
      */
 }
 
+- (IBAction)doneButton:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)addToList:(id)sender {
+    switch (food.state.intValue) {
+        case 1:
+            food.state = [NSNumber numberWithInt:2];
+            break;
+        case 4:
+            food.state = [NSNumber numberWithInt:2];
+            food.comment = @"Edit to change comment";
+            break;
+        case 6:
+            food.state = [NSNumber numberWithInt:5];
+            food.comment = @"Edit to change comment";
+            break;
+        case 7:
+            food.state = [NSNumber numberWithInt:5];
+            food.comment = @"Edit to change comment";
+            break;
+        default:
+            NSLog(@"Invalid State Error");
+            break;
+    }
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
 @end
