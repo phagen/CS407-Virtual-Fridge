@@ -216,8 +216,15 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" id="FWN-D5-xJh">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Left" lineBreakMode="tailTruncation" minimumFontSize="10" id="FWN-D5-xJh">
+                                                    <rect key="frame" x="20" y="11" width="110" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Right" lineBreakMode="tailTruncation" minimumFontSize="10" id="aVX-O7-Kvf">
+                                                    <rect key="frame" x="190" y="11" width="90" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -228,6 +235,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="left" destination="FWN-D5-xJh" id="h4p-2U-7a9"/>
+                                            <outlet property="right" destination="aVX-O7-Kvf" id="lcc-7u-MSW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -583,6 +591,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomDetailCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="left" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="right" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ItemDetailController" superclassName="UIViewController">

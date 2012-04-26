@@ -95,11 +95,14 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)myTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM dd, yyyy"];
+
     static NSString *CellIdentifier = @"custom";
     
     CustomDetailCell *cell = [myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -109,10 +112,28 @@
                 initWithStyle:UITableViewCellStyleDefault 
                 reuseIdentifier:CellIdentifier];
     }
-    cell.left.text = @"bob";
-    
-    // Configure the cell...
-    
+    switch (indexPath.row) {
+        case 0:
+            cell.left.text = @"Name:";
+            cell.right.text = food.name;
+            break;
+        case 1:
+            cell.left.text = @"Category:";
+            cell.right.text = food.category;
+            break;
+        case 2:
+            cell.left.text = @"Experation Date:";
+            cell.right.text = [dateFormat stringFromDate:food.expiration_date];
+            break;
+        case 3:
+            cell.left.text = @"Purchase Date:";
+            cell.right.text = [dateFormat stringFromDate:food.purchase_date];
+            break;
+        default:
+            cell.left.text = @"Error";
+            cell.right.text = @"Error";
+            break;
+    }
     return cell;
 }
 

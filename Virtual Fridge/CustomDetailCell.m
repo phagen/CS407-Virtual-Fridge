@@ -10,5 +10,5 @@
 
 @implementation CustomDetailCell
 
-@synthesize left;
+@synthesize left, right;
 @end
