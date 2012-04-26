@@ -100,12 +100,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)myTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"custom";
     
     CustomDetailCell *cell = [myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[CustomDetailCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];    }
+        cell = [[CustomDetailCell alloc]
+                initWithStyle:UITableViewCellStyleDefault 
+                reuseIdentifier:CellIdentifier];
+    }
     cell.left.text = @"bob";
     
     // Configure the cell...
