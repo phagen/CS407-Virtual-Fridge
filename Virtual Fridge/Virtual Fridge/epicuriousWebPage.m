@@ -1,15 +1,15 @@
 //
-//  SettingsViewController.m
+//  epicuriousWebPage.m
 //  Virtual Fridge
 //
-//  Created by Matt Wysocki on 4/25/12.
+//  Created by Patrick Hagen on 4/26/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SettingsViewController.h"
+#import "epicuriousWebPage.h"
 
-@implementation SettingsViewController
-@synthesize myTableView;
+@implementation epicuriousWebPage
+@synthesize webView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,17 +37,27 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString *url = @"http://epicurious.com";
+    
+    //Create a URL object.
+    NSURL *theUrl = [NSURL URLWithString:url];
+    
+    //URL Requst Object
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:theUrl];
+    
+    //Load the request in the UIWebView.
+    [webView loadRequest:requestObj];
 }
-*/
+
 
 - (void)viewDidUnload
 {
-    [self setMyTableView:nil];
+    [self setWebView:nil];
+    webView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -58,34 +68,5 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-#pragma mark - Table View Methods
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"myCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    // Configure the cell...
-    
-    cell.textLabel.text = @"Epicurious Recipies";
-    
-    return cell;
-
-}
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 
 @end

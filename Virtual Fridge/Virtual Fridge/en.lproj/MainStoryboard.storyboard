@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="4MJ-sy-Xhx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="328"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -517,24 +517,58 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="ik6-ir-SeM">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="ik6-ir-SeM">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="rB8-Ob-pLM" kind="push" id="Kvi-0p-3hS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qbW-oa-AyT" id="3dp-GD-APK"/>
+                                    <outlet property="delegate" destination="qbW-oa-AyT" id="xzQ-2a-722"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="o2A-0n-f5X"/>
+                    <connections>
+                        <outlet property="myTableView" destination="9d3-0m-qPX" id="AB2-6e-vDy"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1153" y="1589"/>
+        </scene>
+        <scene sceneID="1RY-vN-Hlb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVG-4R-Dz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="rB8-Ob-pLM" customClass="epicuriousWebPage" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QxU-vB-wJt">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="CaF-JS-YUS">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="epicurious" id="Myg-Be-c3A"/>
+                    <connections>
+                        <outlet property="webView" destination="CaF-JS-YUS" id="QH4-2m-Vu0"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1681" y="1589"/>
         </scene>
         <scene sceneID="15">
             <objects>
@@ -623,7 +657,6 @@
                 <relationship kind="action" name="doneButton:"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="secondTableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="PantryViewController" superclassName="UITableViewController">
@@ -634,6 +667,9 @@
         </class>
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="ShoppingListViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
@@ -642,6 +678,12 @@
                 <relationship kind="action" name="segChangeEvent:"/>
                 <relationship kind="outlet" name="addToCart" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="epicuriousWebPage" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/epicuriousWebPage.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
             </relationships>
         </class>
     </classes>
