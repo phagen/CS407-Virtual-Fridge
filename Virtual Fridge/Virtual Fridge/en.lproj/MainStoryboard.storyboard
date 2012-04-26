@@ -209,7 +209,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="custom" id="4Vd-CQ-9j8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="custom" id="4Vd-CQ-9j8" customClass="CustomDetailCell">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -232,6 +232,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
+                                    <outlet property="dataSource" destination="Hye-nu-si7" id="585-sV-cgO"/>
                                     <outlet property="delegate" destination="Hye-nu-si7" id="d3y-Jt-LJZ"/>
                                 </connections>
                             </tableView>
@@ -576,6 +577,12 @@
                 <relationship kind="action" name="CheckOut:"/>
                 <relationship kind="action" name="segChangeEvent:"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CustomDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="left" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ItemDetailController" superclassName="UIViewController">

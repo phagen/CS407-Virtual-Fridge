@@ -102,11 +102,11 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomDetailCell *cell = [myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    cell.text = @"bob";
+        cell = [[CustomDetailCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];    }
+    cell.left.text = @"bob";
     
     // Configure the cell...
     
