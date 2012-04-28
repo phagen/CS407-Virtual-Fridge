@@ -595,7 +595,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSm-UY-3am" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="epc-HM-D4O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="157-wrench.png" id="TFA-qc-rhE"/>
+                    <tabBarItem key="tabBarItem" title="Utilities" image="157-wrench.png" id="TFA-qc-rhE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8Tq-Ln-ujw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
