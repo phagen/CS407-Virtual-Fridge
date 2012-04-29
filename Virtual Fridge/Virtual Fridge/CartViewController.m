@@ -437,9 +437,12 @@ static int viewFlag = 0;
                 switch (temp.state.intValue) {
                 case 3:
                     temp.state = [NSNumber numberWithInt:1];
-                    break;
+                    temp.purchase_date = [NSDate date];
+                    temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];                    break;
                 case 5:
                     temp.state = [NSNumber numberWithInt:4];
+                    temp.purchase_date = [NSDate date];
+                    temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];
                     break;
                 case 6:
                     temp.state = [NSNumber numberWithInt:1];
@@ -468,9 +471,13 @@ static int viewFlag = 0;
             switch (temp.state.intValue) {
                 case 3:
                     temp.state = [NSNumber numberWithInt:1];
+                    temp.purchase_date = [NSDate date];
+                    temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];
                     break;
                 case 5:
                     temp.state = [NSNumber numberWithInt:4];
+                    temp.purchase_date = [NSDate date];
+                    temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];
                     break;
                 case 6:
                     temp.state = [NSNumber numberWithInt:1];

@@ -223,8 +223,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Right" lineBreakMode="tailTruncation" minimumFontSize="10" id="aVX-O7-Kvf">
-                                                    <rect key="frame" x="190" y="11" width="90" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Right" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="aVX-O7-Kvf">
+                                                    <rect key="frame" x="137" y="11" width="153" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -582,7 +582,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gWc-Wf-7na" kind="relationship" relationship="viewControllers" id="mF7-gG-Mep"/>
+                        <segue destination="gWc-Wf-7na" kind="relationship" relationship="viewControllers" id="LP3-Qd-hnt"/>
                         <segue destination="YdI-lv-nHR" kind="relationship" relationship="viewControllers" id="Ors-cC-yHO"/>
                         <segue destination="rIA-dt-M7p" kind="relationship" relationship="viewControllers" id="0lD-dH-MhJ"/>
                         <segue destination="epc-HM-D4O" kind="relationship" relationship="viewControllers" id="w6G-M6-7JP"/>
