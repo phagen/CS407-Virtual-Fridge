@@ -10,10 +10,11 @@
 #import "NotificationsCellView.h"
 #import "ExpirationDaysCellView.h"
 #import "Preferences.h"
+#import "epicuriousWebPage.h"
 
 
 @implementation SettingsViewController
-
+@synthesize epic;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -84,14 +85,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     if(section == 0)
         return 2;
@@ -147,6 +147,21 @@
     
     
 }
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return @"Settings";
+            break;
+        case 1:
+            return @"Recipies";
+            break;
+        default:
+            return @"Error";
+            break;
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -191,13 +206,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+        if(indexPath.section == 1 && indexPath.row == 0)
+        {
+          [self performSegueWithIdentifier: @"epic" sender: self];
+        }
+
 }
 
 - (IBAction)changedValue:(id)sender {

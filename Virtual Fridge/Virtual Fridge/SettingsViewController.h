@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class epicuriousWebPage;
+
 @interface SettingsViewController : UITableViewController
+{
+    IBOutlet epicuriousWebPage *epic;
+}
+@property (nonatomic, retain) epicuriousWebPage *epic;
 
 - (IBAction)changedValue:(id)sender;
 - (IBAction)sliderChangedValue:(id)sender;
