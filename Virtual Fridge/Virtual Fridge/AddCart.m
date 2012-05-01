@@ -330,7 +330,6 @@ static bool isFiltered = FALSE;
             temp = [[nonCart objectAtIndex:s]objectAtIndex:r];
             if(temp.add_cart_sel.intValue == 1)
             {
-               // NSLog(temp.name);
                 switch (temp.state.intValue) {
                     case 0:
                         temp.state = [NSNumber numberWithInt:3];

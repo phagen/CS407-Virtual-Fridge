@@ -127,6 +127,9 @@
                 }
                 return cell;
             }
+            default:
+                return nil;
+                break;
         }
         
     }
