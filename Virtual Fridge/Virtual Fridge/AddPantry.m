@@ -16,8 +16,12 @@
 
 
 @implementation AddPantry
+@synthesize searchBar;
 
 @synthesize nonPantry;
+@synthesize filtered;
+
+static bool isFiltered = false;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -43,7 +47,7 @@
 {
     [super viewDidLoad];
     
-    
+    searchBar.delegate = (id)self;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Food" inManagedObjectContext:appDelegate.managedObjectContext];
@@ -88,6 +92,7 @@
 
 - (void)viewDidUnload
 {
+    [self setSearchBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -319,5 +324,35 @@
 - (IBAction)dismissView:(id)sender {
     
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - search bar
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    Food *temp;
+    NSString *sub;
+    if(text.length == 0)
+    {
+        isFiltered = FALSE;
+    }
+    else
+    {
+        isFiltered = TRUE;
+        for(int s =0; s < [nonPantry count]; s++)
+        {
+            for(int r=0; r <[[nonPantry objectAtIndex:s] count]; r++)
+            {
+                temp = ((Food*)[[nonPantry objectAtIndex:s] objectAtIndex:r]);
+                sub = [temp.name substringToIndex:text.length];
+                if(sub.length <= temp.name.length)
+                {
+                    if(sub == text)
+                    {
+                        NSLog(@"DOPE");
+                    }
+                }
+            }
+        }
+    }
 }
 @end

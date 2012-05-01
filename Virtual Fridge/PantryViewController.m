@@ -360,19 +360,53 @@ static int alertNeeded = 0;
 }
 */
 
-/*
-// Override to support editing the table view.
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Food *temp;
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSInteger row = indexPath.row;
+        NSInteger sect = indexPath.section;
+        if(viewFlag == 0)
+        {
+            temp = [pantryItems objectAtIndex:row];
+        }
+        else
+        {
+            temp = [[pantryItemsCat objectAtIndex:sect] objectAtIndex:row];
+        }
+        switch (temp.state.intValue) {
+            case 1:
+                temp.state = [NSNumber numberWithInt: 0];
+                break;
+            case 4:
+                temp.state = [NSNumber numberWithInt:2];
+                break;
+            case 6:
+                temp.state = [NSNumber numberWithInt:3];
+                break;
+            case 7:
+                temp.state = [NSNumber numberWithInt:5];
+                break;
+            default:
+                NSLog(@"Error in deleting");
+                break;
+        }
+        [self fetchPantryCat];
+        [self fetchPantryAlpha];
+        [self.tableView reloadData];
+        
+        
+        //Save DB
+         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSError *error;
+        [appDelegate.managedObjectContext save: &error];
+        return;
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.

@@ -179,6 +179,48 @@ static int viewFlag = 0;
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Food *temp;
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSInteger row = indexPath.row;
+        NSInteger sect = indexPath.section;
+        if(viewFlag == 0)
+        {
+            temp = [listItems objectAtIndex:row];
+        }
+        else
+        {
+            temp = [[listItemsCat objectAtIndex:sect] objectAtIndex:row];
+        }
+        switch (temp.state.intValue) {
+            case 2:
+                temp.state = [NSNumber numberWithInt: 0];
+                break;
+            case 4:
+                temp.state = [NSNumber numberWithInt:1];
+                break;
+            case 5:
+                temp.state = [NSNumber numberWithInt:3];
+                break;
+            case 7:
+                temp.state = [NSNumber numberWithInt:6];
+                break;
+            default:
+                NSLog(@"Error in deleting: ");
+                NSLog(@"%d",temp.state.intValue);
+                break;
+        }
+        [self fetchListCat];
+        [self fetchListAlpha];
+        [self.myTableView reloadData];
+        [self saveDB];
+
+        
+    }   
+    
+}
+
 
 #pragma mark - Table view data source
 
@@ -447,19 +489,6 @@ static int viewFlag = 0;
  }
  */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
 
 /*
  // Override to support rearranging the table view.
