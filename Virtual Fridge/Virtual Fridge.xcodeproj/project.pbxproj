@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C350FD8153FBD18008341DD /* ItemDetailController.m */; };
 		6C4E358F154B54DD00E11271 /* epicuriousWebPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4E358E154B54DD00E11271 /* epicuriousWebPage.m */; };
+		6C54E4B2154F6EC100CE2C80 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C54E4B1154F6EC100CE2C80 /* SettingsViewController.m */; };
+		6C54E4B5154F726900CE2C80 /* NotificationsCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C54E4B4154F726900CE2C80 /* NotificationsCellView.m */; };
+		6C54E4B8154F851200CE2C80 /* ExpirationDaysCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C54E4B7154F851100CE2C80 /* ExpirationDaysCellView.m */; };
 		6CA04663154B53C000FF52FC /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA04662154B53C000FF52FC /* Preferences.m */; };
 		6CA59B321548AA420068B753 /* 157-wrench.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CA59B311548AA420068B753 /* 157-wrench.png */; };
-		6CA59B3B1548B03B0068B753 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA59B3A1548B03B0068B753 /* SettingsViewController.m */; };
 		CD022D241547991C00053918 /* EditFoodDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CD022D231547991C00053918 /* EditFoodDetails.m */; };
 		CD0A416C15486D54008A031B /* icon_introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A416B15486D54008A031B /* icon_introduction.png */; };
 		CD0A416F1548714E008A031B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0A416E1548714E008A031B /* CoreBluetooth.framework */; };
@@ -49,11 +51,15 @@
 		6C350FD8153FBD18008341DD /* ItemDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemDetailController.m; sourceTree = "<group>"; };
 		6C4E358D154B54DD00E11271 /* epicuriousWebPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = epicuriousWebPage.h; sourceTree = "<group>"; };
 		6C4E358E154B54DD00E11271 /* epicuriousWebPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = epicuriousWebPage.m; sourceTree = "<group>"; };
+		6C54E4B0154F6EC100CE2C80 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		6C54E4B1154F6EC100CE2C80 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		6C54E4B3154F726900CE2C80 /* NotificationsCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsCellView.h; sourceTree = "<group>"; };
+		6C54E4B4154F726900CE2C80 /* NotificationsCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsCellView.m; sourceTree = "<group>"; };
+		6C54E4B6154F851100CE2C80 /* ExpirationDaysCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpirationDaysCellView.h; sourceTree = "<group>"; };
+		6C54E4B7154F851100CE2C80 /* ExpirationDaysCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpirationDaysCellView.m; sourceTree = "<group>"; };
 		6CA04660154B53B300FF52FC /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		6CA04662154B53C000FF52FC /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preferences.m; sourceTree = "<group>"; };
 		6CA59B311548AA420068B753 /* 157-wrench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "157-wrench.png"; path = "Virtual Fridge/157-wrench.png"; sourceTree = "<group>"; };
-		6CA59B391548B03A0068B753 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		6CA59B3A1548B03B0068B753 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		CD022D221547991C00053918 /* EditFoodDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditFoodDetails.h; sourceTree = "<group>"; };
 		CD022D231547991C00053918 /* EditFoodDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditFoodDetails.m; sourceTree = "<group>"; };
 		CD0A416B15486D54008A031B /* icon_introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_introduction.png; sourceTree = "<group>"; };
@@ -194,8 +200,12 @@
 				CDD2A5431504178200FF5B03 /* second.png */,
 				CDD2A5451504178200FF5B03 /* second@2x.png */,
 				CDD2A52B1504178200FF5B03 /* Supporting Files */,
-				6CA59B391548B03A0068B753 /* SettingsViewController.h */,
-				6CA59B3A1548B03B0068B753 /* SettingsViewController.m */,
+				6C54E4B0154F6EC100CE2C80 /* SettingsViewController.h */,
+				6C54E4B1154F6EC100CE2C80 /* SettingsViewController.m */,
+				6C54E4B3154F726900CE2C80 /* NotificationsCellView.h */,
+				6C54E4B4154F726900CE2C80 /* NotificationsCellView.m */,
+				6C54E4B6154F851100CE2C80 /* ExpirationDaysCellView.h */,
+				6C54E4B7154F851100CE2C80 /* ExpirationDaysCellView.m */,
 			);
 			path = "Virtual Fridge";
 			sourceTree = "<group>";
@@ -297,10 +307,12 @@
 				CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */,
 				CD75E6A815472A4E00EF4B7F /* Food.m in Sources */,
 				CD022D241547991C00053918 /* EditFoodDetails.m in Sources */,
-				6CA59B3B1548B03B0068B753 /* SettingsViewController.m in Sources */,
 				CDF6B3BE1548FFD900416394 /* CustomDetailCell.m in Sources */,
 				6CA04663154B53C000FF52FC /* Preferences.m in Sources */,
 				6C4E358F154B54DD00E11271 /* epicuriousWebPage.m in Sources */,
+				6C54E4B2154F6EC100CE2C80 /* SettingsViewController.m in Sources */,
+				6C54E4B5154F726900CE2C80 /* NotificationsCellView.m in Sources */,
+				6C54E4B8154F851200CE2C80 /* ExpirationDaysCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

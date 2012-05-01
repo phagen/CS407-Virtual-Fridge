@@ -10,6 +10,7 @@
 #import "Food.h"
 #import "AppDelegate.h"
 #import "ItemDetailController.h"
+#import "Preferences.h"
 
 
 @implementation PantryViewController
@@ -65,12 +66,12 @@ static int alertNeeded = 0;
     pantryItems = (NSMutableArray*) allItems;
     
     
-    if(alertFlag == 0){
+    if(alertFlag == 0 && [Preferences notifications]){
         Food * food;
         //NSString * alertMessage;
         NSDate * date;
         NSDate * expiration;
-        expiration = [[NSDate date] addTimeInterval:(60*60*24*67)];
+        expiration = [[NSDate date] addTimeInterval:(60*60*24*10*[Preferences expirationDays])];
         NSMutableString * message = [[NSMutableString alloc] init];
         
         [message appendFormat:@"The following items are going to expire in the next 3 days: \n"];

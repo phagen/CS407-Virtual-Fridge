@@ -14,6 +14,7 @@
 }
 
 + (Boolean)notifications;
-+ (NSInteger)expirationDays;
-
++ (float)expirationDays;
++ (void)setNotifications:(Boolean)notifications;
++ (void)setExpirationDays:(float)expirationDays;
 @end

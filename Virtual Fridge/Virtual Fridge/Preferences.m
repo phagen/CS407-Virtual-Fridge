@@ -12,7 +12,22 @@
 
 + (Boolean)notifications
 {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"notifications"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"notifications"];
+}
+
++ (float)expirationDays
+{
+    return [[NSUserDefaults standardUserDefaults] floatForKey:@"expirationDays"];
+}
+
++ (void)setNotifications:(Boolean)notifications
+{
+    [[NSUserDefaults standardUserDefaults] setBool:notifications forKey:@"notifications"];
+}
+
++ (void)setExpirationDays:(float)expirationDays
+{
+    [[NSUserDefaults standardUserDefaults] setFloat:expirationDays forKey:@"expirationDays"];
 }
 
 @end
