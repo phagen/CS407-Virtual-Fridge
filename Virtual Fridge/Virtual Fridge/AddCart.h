@@ -10,13 +10,19 @@
 
 @interface AddCart : UITableViewController
 {
-@private NSMutableArray *nonPantry;
+    @private NSMutableArray *nonCart;
+    @private NSMutableArray *filtered;
 }
 
-@property (nonatomic, strong) NSMutableArray *nonPantry;
+@property (nonatomic, strong) NSMutableArray *nonCart;
+@property (nonatomic, strong) NSMutableArray *filtered;
 
 - (void) adustCoreDatainSection: (NSInteger*) section atRow:(NSInteger*) row doAdd: (bool) add;
 - (IBAction)dissmissView:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+//Helper Functions
+-(void) saveDB;
+-(void) updateDB;
 
 @end
