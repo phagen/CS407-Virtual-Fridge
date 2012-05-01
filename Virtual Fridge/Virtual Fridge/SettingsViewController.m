@@ -142,6 +142,7 @@
         // [indexPath 
         
         cell.textLabel.text = @"Epicurious Recipes";
+        cell.AccessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
     
