@@ -17,8 +17,11 @@
 
 @implementation AddShoppingList
 
-
+@synthesize searchBar;
 @synthesize nonPantry;
+@synthesize filtered;
+
+static bool isFiltered = FALSE;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -43,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    searchBar.delegate = (id)self; 
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -89,6 +92,7 @@
 
 - (void)viewDidUnload
 {
+    [self setSearchBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -126,35 +130,58 @@
 {
     
     // Return the number of sections.
-    return 19;
+    if(isFiltered){
+        return 1;
+    }
+    else{
+        return 19;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     // Return the number of rows in the section.
-    return [[nonPantry objectAtIndex:section] count];
+    if(isFiltered){
+        return [filtered count];
+    }
+    else{
+        return [[nonPantry objectAtIndex:section] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    Food *currCell;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    
-    NSMutableArray* array = [nonPantry objectAtIndex: indexPath.section];
-    cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+    if(isFiltered){
+        currCell = [filtered objectAtIndex:indexPath.row];
+    }
+    else{
+        currCell = [[nonPantry objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    }
+    if(currCell.add_shop_sel.intValue == 1){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    cell.textLabel.text = currCell.name;
     
     
     return cell;
 }
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
+    if(isFiltered){
+        return @"";
+    }
     switch (section) {
         case 0:
             return @"Bakery";
@@ -202,7 +229,125 @@
     
     
 }
+#pragma mark - Table view delegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //NSLog(@"Row: %d",[self.tableView indexPathForSelectedRow].section);
+    int selSection = [self.tableView indexPathForSelectedRow].section;
+    int selRow = [self.tableView indexPathForSelectedRow].row;
+    
+    UITableViewCell *thisCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if(thisCell.accessoryType == UITableViewCellAccessoryNone)
+    {
+        thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        //Check if filtered or not
+        if (isFiltered) {
+            ((Food*) [filtered objectAtIndex: selRow]).add_shop_sel = [NSNumber numberWithInt:1];
+        }
+        else{
+            ((Food*)[[nonPantry objectAtIndex:selSection] objectAtIndex:selRow]).add_shop_sel = [NSNumber numberWithInt:1];
+        }
+    }
+    else
+    {
+        thisCell.accessoryType = UITableViewCellAccessoryNone;
+        //Check if filtered or not
+        if (isFiltered) {
+            ((Food*) [filtered objectAtIndex: selRow]).add_shop_sel = [NSNumber numberWithInt:0];
+        }
+        else{
+            ((Food*)[[nonPantry objectAtIndex:selSection] objectAtIndex:selRow]).add_shop_sel = [NSNumber numberWithInt:0];
+        }
+
+    }
+}
+- (IBAction)dismissView:(id)sender {
+    //Update the database
+    [self updateDB];
+    //Save state of database
+    [self saveDB];
+    //Dismiss view
+    [self dismissModalViewControllerAnimated:YES];
+}
+#pragma mark - Search Methods
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text
+{
+    Food *temp;
+    NSString *sub;
+    if(text.length == 0)
+    {
+        isFiltered = FALSE;
+        [self.searchBar resignFirstResponder];
+    }
+    else
+    {
+        isFiltered = TRUE;
+        filtered = [[NSMutableArray alloc] init];
+        for(int s =0; s < [nonPantry count]; s++)
+        {
+            for(int r=0; r <[[nonPantry objectAtIndex:s] count]; r++)
+            {
+                temp = ((Food*)[[nonPantry objectAtIndex:s] objectAtIndex:r]);
+                if(sub.length <= temp.name.length)
+                {
+                    sub = [temp.name substringToIndex:text.length];
+                    
+                    if([sub.lowercaseString isEqualToString:text.lowercaseString])
+                    {
+                        [filtered addObject:temp];
+                    }
+                }
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
+
+#pragma mark - Help Methods
+-(void) saveDB
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    return;
+}
+-(void) updateDB
+{
+    Food *temp;
+    for(int s = 0; s < [nonPantry count]; s++)
+    {
+        for(int r = 0; r < [[nonPantry objectAtIndex:s] count]; r++)
+        {
+            temp = [[nonPantry objectAtIndex:s] objectAtIndex:r];
+            if (temp.add_shop_sel.intValue == 1) {
+                switch (temp.state.intValue) {
+                    case 0:
+                        temp.state = [NSNumber numberWithInt:2];
+                        break;
+                    case 1:
+                        temp.state = [NSNumber numberWithInt:4];
+                        break;
+                    case 3:
+                        temp.state = [NSNumber numberWithInt:5];
+                        break;
+                    case 6:
+                        temp.state = [NSNumber numberWithInt:7];
+                        break;
+                    default:
+                        NSLog(@"Invalid State Error");
+                        break;
+                }
+                temp.add_shop_sel = [NSNumber numberWithInt:0];
+            }
+        }
+    }
+   
+}
+
+
+#pragma mark - Unused TableView Methods
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -242,82 +387,5 @@
  }
  */
 
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //NSLog(@"Row: %d",[self.tableView indexPathForSelectedRow].section);
-    int selSection = [self.tableView indexPathForSelectedRow].section;
-    int selRow = [self.tableView indexPathForSelectedRow].row;
-    
-    UITableViewCell *thisCell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if(thisCell.accessoryType == UITableViewCellAccessoryNone)
-    {
-        thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self adustCoreDatainSection:selSection atRow:selRow doAdd:TRUE];
-    }
-    else
-    {
-        thisCell.accessoryType = UITableViewCellAccessoryNone;
-        [self adustCoreDatainSection:selSection atRow:selRow doAdd:false];
-    }
-}
--(void) adustCoreDatainSection: (int) sec atRow:(int) row doAdd: (bool) add
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSMutableArray *sect = ((NSMutableArray*)[nonPantry objectAtIndex: sec]);
-    Food *selected = ((Food*)[sect objectAtIndex: row]);
-    int currState = selected.state.intValue;
-    if(add)
-    {
-        switch (currState) {
-            case 0:
-                selected.state = [NSNumber numberWithInt:2];
-                break;
-            case 1:
-                selected.state = [NSNumber numberWithInt:4];
-                break;
-            case 3:
-                selected.state = [NSNumber numberWithInt:5];
-                break;
-            case 6:
-                selected.state = [NSNumber numberWithInt:7];
-                break;
-            default:
-                NSLog(@"Invalid State Error");
-                break;
-        }
-    }
-    else
-    {
-        switch (currState) {
-            case 2:
-                selected.state = [NSNumber numberWithInt:0];
-                break;
-            case 4:
-                selected.state = [NSNumber numberWithInt:1];
-                break;
-            case 5:
-                selected.state = [NSNumber numberWithInt:3];
-                break;
-            case 7:
-                selected.state = [NSNumber numberWithInt:6];
-                break;
-            default:
-                NSLog(@"Invalid State Error");
-                break;
-        }
-        
-    }
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
-    return;
-}
-
-- (IBAction)dismissView:(id)sender {
-        [self dismissModalViewControllerAnimated:YES];
-}
 
 @end

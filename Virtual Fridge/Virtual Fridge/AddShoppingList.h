@@ -11,11 +11,18 @@
 @interface AddShoppingList : UITableViewController
 {
     @private NSMutableArray *nonPantry;
+    @private NSMutableArray *filtered;
+
 }
 
 @property (nonatomic, strong) NSMutableArray *nonPantry;
+@property (nonatomic, strong) NSMutableArray *filtered;
 
 - (void) adustCoreDatainSection: (NSInteger*) section atRow:(NSInteger*) row doAdd: (bool) add;
 - (IBAction)dismissView:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+//Helper Functions
+-(void) saveDB;
+-(void) updateDB;
 @end

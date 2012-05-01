@@ -308,7 +308,7 @@ static bool isFiltered = false;
                 {
                     sub = [temp.name substringToIndex:text.length];
 
-                    if([sub isEqualToString:text])
+                    if([sub.lowercaseString isEqualToString:text.lowercaseString])
                     {
                         [filtered addObject:temp];
                     }
@@ -356,7 +356,7 @@ static bool isFiltered = false;
                 }
                 temp.add_pantry_sel = [NSNumber numberWithInt:0];
                 temp.purchase_date = [NSDate date];
-                    temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];
+                temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];
             }
         }
     }
