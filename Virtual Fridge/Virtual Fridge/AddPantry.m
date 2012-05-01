@@ -130,14 +130,26 @@ static bool isFiltered = false;
 {
 
     // Return the number of sections.
-    return 19;
+    if(isFiltered)
+        return 1;
+    else
+    {
+        return 19;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return [[nonPantry objectAtIndex:section] count];
+    if(isFiltered)
+    {
+        return [filtered count];
+    }
+    else
+    {
+        return [[nonPantry objectAtIndex:section] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,16 +161,25 @@ static bool isFiltered = false;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-
-    NSMutableArray* array = [nonPantry objectAtIndex: indexPath.section];
-    cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+    if (isFiltered) {
+        cell.textLabel.text = ((Food*)[filtered objectAtIndex:indexPath.row]).name;
+    }
+    else
+    {
+        NSMutableArray* array = [nonPantry objectAtIndex: indexPath.section];
+        cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+    }
 
         
     return cell;
 }
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-       
+    if (isFiltered) {
+        return @"";
+    }
+    else
+    {
     switch (section) {
         case 0:
             return @"Bakery";
@@ -204,7 +225,7 @@ static bool isFiltered = false;
             break;
     }
 
-    
+    }
 }
 
 /*
@@ -323,6 +344,7 @@ static bool isFiltered = false;
 
 - (IBAction)dismissView:(id)sender {
     
+    isFiltered = FALSE;
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -338,21 +360,25 @@ static bool isFiltered = false;
     else
     {
         isFiltered = TRUE;
+        filtered = [[NSMutableArray alloc] init];
         for(int s =0; s < [nonPantry count]; s++)
         {
             for(int r=0; r <[[nonPantry objectAtIndex:s] count]; r++)
             {
                 temp = ((Food*)[[nonPantry objectAtIndex:s] objectAtIndex:r]);
-                sub = [temp.name substringToIndex:text.length];
                 if(sub.length <= temp.name.length)
                 {
-                    if(sub == text)
+                    sub = [temp.name substringToIndex:text.length];
+
+                    if([sub isEqualToString:text])
                     {
-                        NSLog(@"DOPE");
+                        //NSLog(@"DOPE");
+                        [filtered addObject:temp];
                     }
                 }
             }
         }
     }
+    [self.tableView reloadData];
 }
 @end

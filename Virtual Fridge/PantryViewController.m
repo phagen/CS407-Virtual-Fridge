@@ -90,7 +90,7 @@ static int alertNeeded = 0;
         if(alertNeeded == 1)
         {
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your food is expiring!!!1!" 
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your food is expiring!!!!!" 
                                                             message:message
                                                            delegate:nil 
                                                   cancelButtonTitle:@"OK"
