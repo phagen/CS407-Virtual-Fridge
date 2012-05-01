@@ -20,5 +20,8 @@
 - (IBAction)dismissView:(id)sender;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
-- (void) adustCoreDatainSection: (NSInteger*) section atRow:(NSInteger*) row doAdd: (bool) add;
+
+//Helper Functions
+-(void) saveDB;
+-(void) updateDB;
 @end

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11D50" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Food" representedClassName="Food" syncable="YES">
+        <attribute name="add_cart_sel" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="add_pantry_sel" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="add_shop_sel" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="cart_sel" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,6 +16,6 @@
         <attribute name="state" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Food" positionX="160" positionY="192" width="128" height="195"/>
+        <element name="Food" positionX="160" positionY="192" width="128" height="240"/>
     </elements>
 </model>

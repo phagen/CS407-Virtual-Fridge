@@ -19,13 +19,13 @@
 		CD0A416F1548714E008A031B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0A416E1548714E008A031B /* CoreBluetooth.framework */; };
 		CD0A417115487421008A031B /* check-list-icon-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A417015487421008A031B /* check-list-icon-hi.png */; };
 		CD0A41751548768A008A031B /* fridge-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0A41741548768A008A031B /* fridge-icon.png */; };
+		CD1A7FDB1550604C000BD81F /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A7FDA1550604C000BD81F /* Food.m */; };
 		CD5F28AF151B8F8F00F5E65C /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */; };
 		CD5F28B3151B975D00F5E65C /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B2151B975D00F5E65C /* CartViewController.m */; };
 		CD5F28B6151BC1D000F5E65C /* AddPantry.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F28B5151BC1D000F5E65C /* AddPantry.m */; };
 		CD60CAD115115F01000C89B7 /* foodDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD60CACF15115F01000C89B7 /* foodDB.xcdatamodeld */; };
 		CD60CAD4151161B4000C89B7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD60CAD3151161B4000C89B7 /* CoreData.framework */; };
 		CD60CAE3151170B9000C89B7 /* PantryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD60CAE2151170B9000C89B7 /* PantryViewController.m */; };
-		CD75E6A815472A4E00EF4B7F /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = CD75E6A715472A4E00EF4B7F /* Food.m */; };
 		CD75E6AD15473B3700EF4B7F /* pantry_new.png in Resources */ = {isa = PBXBuildFile; fileRef = CD75E6AC15473B3700EF4B7F /* pantry_new.png */; };
 		CD859E18153CA9BE009B934D /* AddShoppingList.m in Sources */ = {isa = PBXBuildFile; fileRef = CD859E17153CA9BE009B934D /* AddShoppingList.m */; };
 		CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB5C6681545F73A0075DF19 /* DetailedViewController.m */; };
@@ -66,6 +66,8 @@
 		CD0A416E1548714E008A031B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		CD0A417015487421008A031B /* check-list-icon-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check-list-icon-hi.png"; sourceTree = "<group>"; };
 		CD0A41741548768A008A031B /* fridge-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fridge-icon.png"; path = "Virtual Fridge/fridge-icon.png"; sourceTree = "<group>"; };
+		CD1A7FD91550604C000BD81F /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		CD1A7FDA1550604C000BD81F /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		CD5F28AD151B8F8F00F5E65C /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
 		CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
 		CD5F28B1151B975D00F5E65C /* CartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		CD60CAD3151161B4000C89B7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CD60CAE1151170B9000C89B7 /* PantryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PantryViewController.h; sourceTree = "<group>"; };
 		CD60CAE2151170B9000C89B7 /* PantryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PantryViewController.m; sourceTree = "<group>"; };
-		CD75E6A615472A4E00EF4B7F /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
-		CD75E6A715472A4E00EF4B7F /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		CD75E6AC15473B3700EF4B7F /* pantry_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pantry_new.png; path = "Virtual Fridge/pantry_new.png"; sourceTree = "<group>"; };
 		CD859E16153CA9BE009B934D /* AddShoppingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddShoppingList.h; sourceTree = "<group>"; };
 		CD859E17153CA9BE009B934D /* AddShoppingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShoppingList.m; sourceTree = "<group>"; };
@@ -186,9 +186,9 @@
 				CD5F28B2151B975D00F5E65C /* CartViewController.m */,
 				CD5F28AD151B8F8F00F5E65C /* ShoppingListViewController.h */,
 				CD5F28AE151B8F8F00F5E65C /* ShoppingListViewController.m */,
+				CD1A7FD91550604C000BD81F /* Food.h */,
+				CD1A7FDA1550604C000BD81F /* Food.m */,
 				CD60CACF15115F01000C89B7 /* foodDB.xcdatamodeld */,
-				CD75E6A615472A4E00EF4B7F /* Food.h */,
-				CD75E6A715472A4E00EF4B7F /* Food.m */,
 				CDD2A5391504178200FF5B03 /* FirstViewController.h */,
 				CDD2A53A1504178200FF5B03 /* FirstViewController.m */,
 				CDD2A53C1504178200FF5B03 /* first.png */,
@@ -305,7 +305,6 @@
 				CDE3F791153CB0BE00DD0C39 /* AddCart.m in Sources */,
 				6C350FD9153FBD18008341DD /* ItemDetailController.m in Sources */,
 				CDB5C6691545F73A0075DF19 /* DetailedViewController.m in Sources */,
-				CD75E6A815472A4E00EF4B7F /* Food.m in Sources */,
 				CD022D241547991C00053918 /* EditFoodDetails.m in Sources */,
 				CDF6B3BE1548FFD900416394 /* CustomDetailCell.m in Sources */,
 				6CA04663154B53C000FF52FC /* Preferences.m in Sources */,
@@ -313,6 +312,7 @@
 				6C54E4B2154F6EC100CE2C80 /* SettingsViewController.m in Sources */,
 				6C54E4B5154F726900CE2C80 /* NotificationsCellView.m in Sources */,
 				6C54E4B8154F851200CE2C80 /* ExpirationDaysCellView.m in Sources */,
+				CD1A7FDB1550604C000BD81F /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

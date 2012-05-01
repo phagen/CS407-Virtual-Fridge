@@ -37,6 +37,9 @@
         food.expiration_offset = [NSNumber numberWithInt:3];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *bakingfood = [NSArray arrayWithObjects:@"Baking Chips - Milk Chocolate",@"Baking Chips - Butterscotch",@"Baking Chips - Peanut Butter",@"Baking Chips - Other",@"Baking Soda",@"Bread Mix",@"Brownie Mix - Chocolate",@"Brownie Mix - Fudge",@"Brownie Mix - Other",@"Basil",@"Bay Leaves",@"Cajun Seasoning",@"Cayenne Powder",@"Chicken Seasoning",@"Chili Powder",@"Chives",@"Cinnamon",@"Cookie Mix - Chocolate Chip",@"Cookie Mix - Peanut Butter",@"Cookie Mix - Oatmeal",@"Cookie Mix - Sugar",@"Cookie Mix - Other",@"Coriander",@"Cornbread Mix",@"Croutons",@"Cumin",@"Dill",@"Flour",@"Frosting",@"Garlic Powder",@"Garlic Salt",@"Ginger",@"Italian Seasoning",@"Jell-O Mix",@"Lemon Seed",@"Majarom",@"Marshmellows",@"Mint",@"Muffin Mix - Blueberry",@"Muffin Mix - Chocolate Chip",@"Muffin Mix - Other",@"Mustard Seed",@"Nutmeg",@"Nuts - Walnuts",@"Nuts - Hazelnuts",@"Nuts - Peanuts",@"Nuts - Pecans",@"Nuts - Other",@"Oils - Vegetable",@"Oils - Olive",@"Oils - Peanut",@"Oils - Sesame",@"Oils - Spray",@"Oils - Other",@"Onion Powder",@"Oregano",@"Other Dessert Mix",@"Other Spices",@"Paprika",@"Pepper",@"Pie Crust",@"Pie Mix - Apple",@"Pie Mix - Cherry",@"Pie Mix - Chocolate",@"Pie Mix - Key Lime",@"Pie Mix - French Silk",@"Pie Mix - Lemon Meringue",@"Pie Mix - Pumpkin",@"Pie Mix - Strawberry",@"Pie Mix - Other",@"Pudding Mix - Rice",@"Pudding Mix - Chocolate",@"Pudding Mix - Vanilla",@"Pudding Mix - Other",@"Red Pepper",@"Rosemary",@"Sage",@"Salt",@"Sugar - Regular",@"Sugar - Brown",@"Sugar - Other",@"Sugar Substitute",@"Thyme",@"Yeast",nil];
@@ -51,6 +54,9 @@
         food.expiration_offset = [NSNumber numberWithInt:365];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *beverages = [NSArray arrayWithObjects:@"Apple Juice",@"Beer",@"Bottled Water",@"Coffee",@"Grape Juice",@"Liquor",@"Orange Juice",@"Other Fruit Juice",@"Powder Drinks",@"Soft Drinks",@"Tea",@"Wine",nil];
@@ -103,6 +109,9 @@
         
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *breads = [NSArray arrayWithObjects:@"Bagels",@"Biscuits",@"Bread - White",@"Bread - Multi-Grain",@"Bread - Wheat",@"Bread - Rye",@"Bread - Other",@"Buns - Hamburger",@"Buns - Hot Dog",@"Rolls",nil];
@@ -141,6 +150,9 @@
         
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     
@@ -156,6 +168,9 @@
         food.expiration_offset = [NSNumber numberWithInt:365];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *breakfast = [NSArray arrayWithObjects:@"Cereal",@"Breakfast Bars",@"Eggs - Medium",@"Eggs - Large",@"Egg Beaters",@"French Toast",@"Granola Bars",@"Oats",@"Pancakes",@"Waffles",nil];
@@ -198,6 +213,9 @@
         
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     
@@ -213,6 +231,9 @@
         food.expiration_offset = [NSNumber numberWithInt:365];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *dairy = [NSArray arrayWithObjects:@"Butter - Stick",@"Butter - Spread",@"Butter - Spray",@"Cheese - American",@"Cheese - Blue",@"Cheese - Colby Jack",@"Cheese - Cheddar",@"Cheese - Feta",@"Cheese - Gorgonzola",@"Cheese - Mozzarella",@"Cheese - Provolone",@"Cheese - Swiss",@"Cheese - Other",@"Cottage Cheese",@"Creamer",@"Eggs - Medium",@"Eggs - Large",@"Egg Beaters",@"Milk - Whole",@"Milk - One Percent",@"Milk - Two Percent",@"Milk - Skim",@"Milk - Chocolate",@"Milk - Other",@"Ricotta",@"Sour Cream",@"Whip Cream",@"Yogurt - Plain",@"Yogurt - Fruit",@"Yogurt - Other",nil];
@@ -287,6 +308,9 @@
         
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *deli = [NSArray arrayWithObjects:@"American Cheese",@"Baked Beans",@"Cheddar Cheese",@"Chicken",@"Colby Cheese",@"Colby Jack Cheese",@"Cole Slaw",@"Corned Beef",@"Feta Cheese",@"Ham",@"Hot Pepper",@"Mozzarella Cheese",@"Muenster Cheese",@"Other Cheese",@"Pastrami",@"Pepperoni",@"Potato Salad",@"Provolone Cheese",@"Roast Beef",@"Salad",@"Salami",@"Swiss Cheese",@"Tabouli",@"Turkey",nil];
@@ -337,6 +361,9 @@
         
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *ethnicfood = [NSArray arrayWithObjects:@"Bamboo Shoots",@"Burrito Shells",@"Cardamom",@"Chile Paste",@"Coconut Milk",@"Curry Powder",@"Dates",@"Fennel Seeds",@"Fish Sauce",@"Five Spice Powder",@"Ginger Root",@"Grape Leaves",@"Oyster Sauce",@"Palm Sugar",@"Peanut Oil",@"Refried Beans",@"Rice Flour",@"Roasted Rice Powder",@"Salsa - Hot",@"Salsa - Mild",@"Samba Powder",@"Sesame Oil",@"Shrimp Paste",@"Soy Sauce",@"Sweet & Sour Sauce",@"Taco Shells - Hard",@"Taco Shells - Soft",@"Tortillas",@"Turmeric",nil];
@@ -397,6 +424,9 @@
         
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *frozenfood = [NSArray arrayWithObjects:@"Breads - Breadsticks",@"Breads - Garlic Bread",@"Breads - Rolls",@"Breads - Other",@"Frozen Fruit - Blackberries",@"Frozen Fruit - Blueberries",@"Frozen Fruit - Cherries",@"Frozen Fruit - Mixed Fruit",@"Frizen Fruit",@"Peaches",@"Frozen Fruit - Pineapple",@"Frozen Fruit - Strawberries",@"Frozen Fruit - Other",@"French Fries",@"Hash Browns",@"Ice Cream - Vanilla",@"Ice Cream - Chocolate",@"Ice Cream - Other",@"Juice Concentrates - Grape",@"Juice Concentrates",@"Lemonade",@"Juice Concentrates - Orange",@"Juice Concentrates - Pineapple",@"Juice Concentrates - Other",@"Meals - Breakfast",@"Meals - Crock Pot",@"Meals - Lunch/Dinner",@"Meals - Skillet",@"Frozen Meats - Beef",@"Frozen Meats - Chicken",@"Frozen Meats - Pork",@"Frozen Meats - Turkey",@"Frozen Meats - Other",@"Frozn Seafood - Cod",@"Frozen Seafood - Crab Legs",@"Frozen Seafood - Grouper",@"Frozen Seafood - Halibut",@"Frozen Seafood - Lobster",@"Frozen Seafood - Salmon",@"Frozen Seafood - Scallops",@"Frozen Seafood - Sea Bass",@"Frozen Seafood - Shrimp",@"Frozen Seafood - Tuna",@"Frozen Seafood - Other",@"Frozen Veggies - Artichokes",@"Frozen Veggies - Asparagus",@"Frozen Veggies - Beans",@"Frozen Veggies - Broccoli",@"Frozen Veggies - Brussels Sprouts",@"Frozen Veggies - Carrots",@"Frozen Veggies - Cauliflower",@"Frozen Veggies - Corn",@"Frozen Veggies - Mixed",@"Frozen Veggies - Onions",@"Frozen Veggies - Peas",@"Frozen Veggies - Peppers",@"Frozen Veggies - Potatoes",@"Frozen Veggies - Spinach",@"Frozen Veggies - Squach",@"Frozen Veggies - Sweet Peas",@"Frozen Veggies - Other",@"Frozen Yogurt",@"Pancakes",@"Pizza",@"Popsicles",@"Sausage",@"Tater-Tots",@"Waffles",nil];
@@ -411,6 +441,9 @@
         food.expiration_offset = [NSNumber numberWithInt:180];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *healthandbeauty = [NSArray arrayWithObjects:@"ACE Bandages",@"Allergy Medication",@"Antibiotic Cream",@"Anti-Diarrhea",@"Antifungals",@"Band-Aids",@"Brushes",@"Cold/Cough Medicine",@"Combs",@"Conditioner",@"Contact Cleaner",@"Contact Solution",@"Cotton Balls",@"Dental Floss",@"Deodorant",@"Eye Makeup",@"Foot Soles",@"Foundation",@"Gauze Pads",@"Hair Dye",@"Hair Gel",@"Hair Removal Products",@"Hair Spray",@"Hemorrhoid Cream",@"Hydrogen Peroxide",@"Lipstick",@"Lotion",@"Medical Tape",@"Motrin",@"Mouthwash",@"Nail Polish",@"Neosporin",@"Other Cosmetics",@"Other Feminine Products",@"Other Injury Supplies",@"Other Medication",@"Panty Shields",@"Pregnancy Tests",@"Razors",@"Rubbing Alcohol",@"Saline Solution",@"Shampoo",@"Soap (Body) - Bar",@"Soap (Body) - Liquid",@"Sunscreen",@"Tampads",@"Tampons",@"Therapeutic Socks",@"Toothbrushes",@"Toothpaste",@"Tooth Whitening",@"Travel - Shampoo",@"Travel - Conditioner",@"Travel - Deodorant",@"Travel - Mouthwash",@"Travel - Tooth Brush Case",@"Travel - Toothbrush",@"Travel - Toothpaste",@"Travel - Other",@"Tylenol",@"Vitamins",nil];
@@ -425,6 +458,9 @@
         food.expiration_offset = [NSNumber numberWithInt:180];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *householditems = [NSArray arrayWithObjects:@"Air Fresheners - Solid",@"Air Fresheners - Liquid",@"Air Fresheners - Other",@"Bleach",@"Brillo Pads",@"Broom",@"Carpet Cleaner",@"Dishwashing Soap - Gel",@"Dishwashing Soap - Tablets",@"Dishwashing Soap -Other",@"Disinfectant Spray",@"Disinfectant Wipes",@"Dustpan",@"Fabric Softner",@"Furniture Polish",@"Gloves - Latex",@"Gloves - Vinyl",@"Gloves - Other",@"Garbage Bags",@"Hand Soap - Gel",@"Hand Soap - Bar",@"Hand Soap - Other",@"Laundry Detergent",@"Light Bulbs",@"Mop",@"Napkins",@"Oven Cleaner",@"Paper Towels",@"Paper/Plastic Cups",@"Paper/Plastic Plates",@"Spot Remover",@"Storage Bags",@"Storage Containers",@"Tin Foil",@"Tissues",@"Toilet Paper",@"Wax Paper",@"Window Cleaner",nil];
@@ -439,6 +475,9 @@
         food.expiration_offset = [NSNumber numberWithInt:360];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *meatandseafood = [NSArray arrayWithObjects:@"Beef - Ground",@"Beef - Steaks",@"Beef - Roast",@"Beaf - Other",@"Bologna",@"Catfish",@"Chicken - Whole",@"Chicken - Breast",@"Chicken - Legs/Thighs",@"Chicken - Other",@"Cod",@"Crab Legs",@"Frog Legs",@"Hot Dogs - All Beef",@"Hot Dogs - Other",@"Ham",@"Lamb - Chops",@"Lamb - Cutlets",@"Lamb - Ground",@"Lamb - Leg",@"Lamb - Other",@"Lobster",@"Mussels",@"Oysters",@"Pork - Chops",@"Pork - Country Ribs",@"Pork - Spare Ribs",@"Pork - Ground",@"Pork - Other",@"Salmon",@"Scallops",@"Snapper",@"Steak - Chuck",@"Steak - Cube",@"Steak - Filet Mignon",@"Steak - Flank",@"Steak - Porterhouse",@"Steak - Rib Eye",@"Steak - Rump",@"Steak - Sirloin",@"Steak - T-Bone",@"Steak - Other",@"Tilapia",@"Trout",@"Tuna",@"Turkey - Legs/Thighs",@"Turkey - Ground",@"Turkey - Whole",@"Turkey - Other",@"Veal",nil];
@@ -453,6 +492,9 @@
         food.expiration_offset = [NSNumber numberWithInt:3];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *other = [NSArray arrayWithObjects:@"Bird Food",@"Cat Food",@"Dog Food - Wet",@"Dog Food - Dry",@"Dog Food - Treats",@"Dog Food - Other",@"Fish Food - Flakes",@"Fish Food - Pellets",@"Reptile Food",@"Small Pet Food",nil];
@@ -467,6 +509,9 @@
         food.expiration_offset = [NSNumber numberWithInt:180];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }  
     
     NSArray *pastaandrice = [NSArray arrayWithObjects:@"Noodles - Angel Hair",@"Noodles - Bow Tie",@"Noodles - Couscous",@"Noodles - Elbow Macaroni",@"Noodles - Fettuccine",@"Noodles - Lasagna",@"Noodles - Orzo",@"Noodles - Shell",@"Noodles - Spaghetti",@"Noodles - Twist",@"Noodles - Other",@"Pasta Sauce - Pesto",@"Pasta Sauce - Red",@"Pasta Sauce - White",@"Pasta Sauce - Other",@"Rice - White",@"Rice - Brown",@"Rice - Other",nil];
@@ -481,6 +526,9 @@
         food.expiration_offset = [NSNumber numberWithInt:365];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }  
     
     NSArray *produce = [NSArray arrayWithObjects:@"Apples",@"Apricots",@"Artichokes",@"Asparagus",@"Avocados",@"Bananas",@"Bean Sprouts",@"Blackberries",@"Blueberries",@"Broccoli",@"Brussels Sprouts",@"Carrots - Mini",@"Carrots - Shredded",@"Carrots - Whole",@"Cabbage",@"Cantaloupes",@"Cauliflower",@"Celery",@"Cherries",@"Cilantro",@"Collards",@"Corn",@"Cucumbers",@"Clementines",@"Dates",@"Eggplants",@"Elderberries",@"Fennels",@"Garlic",@"Goose Berries",@"Grapes",@"Grapefruits",@"Green Beans",@"Guavas",@"Honeydews",@"Kiwis",@"Kumquats",@"Lemons",@"Lettuce - Iceberg",@"Lettuce - Romaine",@"Lettuce - Red Leaf",@"Lettuce - Bagged",@"Limes",@"Mangos",@"Mushrooms - Sliced",@"Mushrooms - Whole",@"Nectarines",@"Okras",@"Onions - Sweet",@"Onions - White",@"Onions - Yellow",@"Onions - Red",@"Onions - Scallions",@"Oranges",@"Peaches",@"Pears",@"Peppers - Green",@"Peppers - Red",@"Peppers - Orange",@"Peppers - Chili",@"Peppers - Jalapeno",@"Pineapples",@"Plums",@"Pomegranates",@"Potatoes - White",@"Potatoes - Sweet",@"Pumpkins",@"Radishes",@"Raspberries",@"Rhubarbs",@"Snow Peas",@"Spinach",@"Squash",@"Strawberries",@"Tomatoes",@"Watermelons",@"Yellow Beans",@"Zucchini",nil];
@@ -497,6 +545,9 @@
         food.expiration_offset = [NSNumber numberWithInt:5];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     NSArray *snacks = [NSArray arrayWithObjects:@"Beef Jerky",@"Candy Bars",@"Cheese Puffs",@"Chewy Candy",@"Cookies - Chocolate Chip",@"Cookies - Figs",@"Cookies - Oatmeal",@"Cookies - Oreos",@"Cookies - Peanut Butter",@"Cookies - Shortbread",@"Cookies - Other",@"Corn Chips",@"Crackers",@"Dips",@"Dried Fruit",@"Fruit Snacks",@"Gum",@"Hard Candy",@"Licorice",@"Lollipops/Suckers",@"Other Candy",@"Other Snacks",@"Popcorn - Regular",@"Popcorn - Caramel Corn",@"Popcorn - Other",@"Potato Chips",@"Pretzels",@"Raisins",@"Rice Cakes",@"Soy Chips",@"Veggie Chips",nil];
@@ -511,6 +562,9 @@
         food.expiration_offset = [NSNumber numberWithInt:180];
         food.cart_sel = [NSNumber numberWithInt: 0];
         food.shop_sel = [NSNumber numberWithInt: 0];
+        food.add_cart_sel = [NSNumber numberWithInt: 0];
+        food.add_pantry_sel = [NSNumber numberWithInt: 0];
+        food.add_shop_sel = [NSNumber numberWithInt: 0];
     }
     
     return;

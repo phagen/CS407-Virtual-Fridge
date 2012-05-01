@@ -9,12 +9,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Virtual Fridge/AppDelegate.m"
-         timestampString = "356986750.709296"
+         timestampString = "357589330.950631"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
-         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
+         landmarkName = "-initCoreData"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

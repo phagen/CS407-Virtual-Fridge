@@ -2,7 +2,7 @@
 //  Food.m
 //  Virtual Fridge
 //
-//  Created by Patrick Hagen on 4/24/12.
+//  Created by Patrick Hagen on 5/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @implementation Food
 
+@dynamic cart_sel;
 @dynamic category;
 @dynamic comment;
 @dynamic expiration_date;
@@ -18,8 +19,10 @@
 @dynamic name;
 @dynamic prev_state;
 @dynamic purchase_date;
-@dynamic state;
-@dynamic cart_sel;
 @dynamic shop_sel;
+@dynamic state;
+@dynamic add_pantry_sel;
+@dynamic add_shop_sel;
+@dynamic add_cart_sel;
 
 @end

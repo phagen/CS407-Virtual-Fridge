@@ -155,21 +155,30 @@ static bool isFiltered = false;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"AddPantryCell";
-    
+    Food *cellContents;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
     if (isFiltered) {
-        cell.textLabel.text = ((Food*)[filtered objectAtIndex:indexPath.row]).name;
+        cellContents = ((Food*)[filtered objectAtIndex:indexPath.row]);
     }
     else
     {
         NSMutableArray* array = [nonPantry objectAtIndex: indexPath.section];
-        cell.textLabel.text = ((Food *)[array objectAtIndex:indexPath.row]).name;
+        cellContents = ((Food *)[array objectAtIndex:indexPath.row]);
     }
-
+    cell.textLabel.text = cellContents.name;
+    //Check for checkmark
+    if(cellContents.add_pantry_sel.intValue == 0)
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
         
     return cell;
 }
@@ -228,50 +237,11 @@ static bool isFiltered = false;
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSLog(@"Row: %d",[self.tableView indexPathForSelectedRow].section);
+    //Retrieve selected row and section
     int selSection = [self.tableView indexPathForSelectedRow].section;
     int selRow = [self.tableView indexPathForSelectedRow].row;
     
@@ -280,71 +250,38 @@ static bool isFiltered = false;
     if(thisCell.accessoryType == UITableViewCellAccessoryNone)
     {
         thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self adustCoreDatainSection:selSection atRow:selRow doAdd:TRUE];
+        //Check if we are currently filtering
+        if(isFiltered){
+            ((Food*) [filtered objectAtIndex:selRow]).add_pantry_sel = [NSNumber numberWithInt:1];
+            [self.searchBar resignFirstResponder];
+        }
+        else
+        {
+            ((Food*)[[nonPantry objectAtIndex:selSection] objectAtIndex:selRow]).add_pantry_sel = [NSNumber numberWithInt:1];
+        }
     }
     else
     {
         thisCell.accessoryType = UITableViewCellAccessoryNone;
-        [self adustCoreDatainSection:selSection atRow:selRow doAdd:false];
-    }
-}
--(void) adustCoreDatainSection: (int) sec atRow:(int) row doAdd: (bool) add
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSMutableArray *sect = ((NSMutableArray*)[nonPantry objectAtIndex: sec]);
-    Food *selected = ((Food*)[sect objectAtIndex: row]);
-    int currState = selected.state.intValue;
-    if(add)
-    {
-        selected.purchase_date = [NSDate date];
-        selected.expiration_date = [selected.purchase_date addTimeInterval:(60*60*24*selected.expiration_offset.intValue)];
-        switch (currState) {
-            case 0:
-                selected.state = [NSNumber numberWithInt:1];
-                break;
-            case 2:
-                selected.state = [NSNumber numberWithInt:4];
-                break;
-            case 3:
-                selected.state = [NSNumber numberWithInt:6];
-                break;
-            case 5:
-                selected.state = [NSNumber numberWithInt:7];
-                break;
-            default:
-                NSLog(@"Invalid State Error");
-                break;
+        if(isFiltered){
+            ((Food*) [filtered objectAtIndex:selRow]).add_pantry_sel = [NSNumber numberWithInt:0];
+        }
+        else
+        {
+            ((Food*)[[nonPantry objectAtIndex:selSection] objectAtIndex:selRow]).add_pantry_sel = [NSNumber numberWithInt:0];
+            [self.searchBar resignFirstResponder];
         }
     }
-    else
-    {
-        switch (currState) {
-            case 1:
-                selected.state = [NSNumber numberWithInt:0];
-                break;
-            case 4:
-                selected.state = [NSNumber numberWithInt:2];
-                break;
-            case 6:
-                selected.state = [NSNumber numberWithInt:3];
-                break;
-            case 7:
-                selected.state = [NSNumber numberWithInt:5];
-                break;
-            default:
-                NSLog(@"Invalid State Error");
-                break;
-        }
-
-    }
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
-    return;
 }
 
 - (IBAction)dismissView:(id)sender {
-    
+    //So view works next time
     isFiltered = FALSE;
+    //Update the database for selected items
+    [self updateDB];
+    //Save contents of database
+    [self saveDB];
+    //Transition back
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -356,6 +293,7 @@ static bool isFiltered = false;
     if(text.length == 0)
     {
         isFiltered = FALSE;
+        [self.searchBar resignFirstResponder];
     }
     else
     {
@@ -372,7 +310,6 @@ static bool isFiltered = false;
 
                     if([sub isEqualToString:text])
                     {
-                        //NSLog(@"DOPE");
                         [filtered addObject:temp];
                     }
                 }
@@ -381,4 +318,89 @@ static bool isFiltered = false;
     }
     [self.tableView reloadData];
 }
+
+#pragma mark - helper functions
+-(void) saveDB
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    return;
+}
+-(void) updateDB
+{
+    Food *temp;
+    for(int s = 0; s < [nonPantry count]; s++)
+    {
+        for(int r = 0; r < [[nonPantry objectAtIndex:s] count]; r++)
+        {
+            temp = [[nonPantry objectAtIndex:s] objectAtIndex:r];
+            if(temp.add_pantry_sel.intValue == 1)
+                {
+                switch (temp.state.intValue) {
+                    case 0:
+                        temp.state = [NSNumber numberWithInt:1];
+                        break;
+                    case 2:
+                        temp.state = [NSNumber numberWithInt:4];
+                        break;
+                    case 3:
+                        temp.state = [NSNumber numberWithInt:6];
+                        break;
+                    case 5:
+                        temp.state = [NSNumber numberWithInt:7];
+                        break;
+                    default:
+                        NSLog(@"Error updateDB AddPantry.m");
+                        break;
+                }
+                temp.add_pantry_sel = [NSNumber numberWithInt:0];
+                temp.purchase_date = [NSDate date];
+                    temp.expiration_date = [temp.purchase_date addTimeInterval:(60*60*24*temp.expiration_offset.intValue)];
+            }
+        }
+    }
+    
+}
+
+#pragma mark - Unused Functions
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
 @end
