@@ -13,10 +13,13 @@
 
 
 @implementation ItemDetailController
+@synthesize editButton;
 
 @synthesize food;
 @synthesize myTableView;
 @synthesize navBar;
+
+static int editMode = 0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,7 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navBar.topItem.title = food.name;
+     self.navBar.topItem.title = food.name;
 }
 
 - (void)viewDidUnload
@@ -49,6 +52,7 @@
     [self setNavBar:nil];
 
 
+    [self setEditButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -121,11 +125,25 @@
             break;
         case 2:
             cell.left.text = @"Experation Date:";
-            cell.right.text = [dateFormat stringFromDate:food.expiration_date];
+            if(editMode == 1)
+            {
+                cell.right.text = @"Tap to Edit";
+            }
+            else
+            {
+                cell.right.text = [dateFormat stringFromDate:food.expiration_date];
+            }
             break;
         case 3:
             cell.left.text = @"Purchase Date:";
-            cell.right.text = [dateFormat stringFromDate:food.purchase_date];
+            if(editMode == 1)
+            {
+                cell.right.text = @"Tap to Edit";
+            }
+            else
+            {
+                cell.right.text = [dateFormat stringFromDate:food.purchase_date];
+            }
             break;
         default:
             cell.left.text = @"Error";
@@ -178,44 +196,55 @@
 
 - (void)tableView:(UITableView *)myTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+   
 }
 
 - (IBAction)doneButton:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    if (editMode == 1) {
+        editMode = 0;
+        [self.myTableView reloadData];
+    }
+    else
+    {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)addToList:(id)sender {
-    switch (food.state.intValue) {
-        case 1:
-            food.state = [NSNumber numberWithInt:2];
-            break;
-        case 4:
-            food.state = [NSNumber numberWithInt:2];
-            food.comment = @"Edit to change comment";
-            break;
-        case 6:
-            food.state = [NSNumber numberWithInt:5];
-            food.comment = @"Edit to change comment";
-            break;
-        case 7:
-            food.state = [NSNumber numberWithInt:5];
-            food.comment = @"Edit to change comment";
-            break;
-        default:
-            NSLog(@"Invalid State Error");
-            break;
+    if(editMode == 0)
+    {
+        switch (food.state.intValue) {
+            case 1:
+                food.state = [NSNumber numberWithInt:2];
+                break;
+            case 4:
+                food.state = [NSNumber numberWithInt:2];
+                food.comment = @"Edit to change comment";
+                break;
+            case 6:
+                food.state = [NSNumber numberWithInt:5];
+                food.comment = @"Edit to change comment";
+                break;
+            case 7:
+                food.state = [NSNumber numberWithInt:5];
+                food.comment = @"Edit to change comment";
+                break;
+            default:
+                NSLog(@"Invalid State Error");
+                break;
+        }
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSError *error;
+        [appDelegate.managedObjectContext save: &error];
+        [self dismissModalViewControllerAnimated:YES];
+    } 
+}
+
+- (IBAction)edit:(id)sender {
+    if(editMode == 0)
+    {
+        editMode = 1;
+        [self.myTableView reloadData];
     }
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSError *error;
-    [appDelegate.managedObjectContext save: &error];
-    [self dismissModalViewControllerAnimated:YES];
-    
 }
 @end

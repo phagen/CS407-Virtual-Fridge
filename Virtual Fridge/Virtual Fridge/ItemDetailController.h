@@ -20,5 +20,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navBar;
 - (IBAction)doneButton:(id)sender;
 - (IBAction)addToList:(id)sender;
+- (IBAction)edit:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 @end

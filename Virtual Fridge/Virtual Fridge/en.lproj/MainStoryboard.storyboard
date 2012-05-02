@@ -220,7 +220,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="custom" id="4Vd-CQ-9j8" customClass="CustomDetailCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="custom" id="4Vd-CQ-9j8" customClass="CustomDetailCell">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -265,6 +265,11 @@
                                                 <action selector="doneButton:" destination="Hye-nu-si7" id="9gx-4C-VQR"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="VT5-vx-fKS">
+                                            <connections>
+                                                <action selector="edit:" destination="Hye-nu-si7" id="Xr1-rm-SHt"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -288,6 +293,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="editButton" destination="VT5-vx-fKS" id="J4o-bP-ALr"/>
                         <outlet property="myTableView" destination="OlY-pa-kR0" id="fOz-Yf-hiP"/>
                         <outlet property="navBar" destination="xmE-Hm-ygt" id="E0a-sK-h1E"/>
                     </connections>
@@ -730,6 +736,8 @@
             <relationships>
                 <relationship kind="action" name="addToList:"/>
                 <relationship kind="action" name="doneButton:"/>
+                <relationship kind="action" name="edit:"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
             </relationships>
