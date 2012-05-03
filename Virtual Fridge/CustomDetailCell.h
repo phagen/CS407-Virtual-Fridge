@@ -15,4 +15,5 @@
 }
 @property (nonatomic, retain) IBOutlet UILabel *left;
 @property (nonatomic, retain) IBOutlet UILabel *right;
+@property (nonatomic, retain) IBOutlet UITextField *textField;
 @end

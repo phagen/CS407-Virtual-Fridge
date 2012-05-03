@@ -14,12 +14,15 @@
 
 @implementation ItemDetailController
 @synthesize editButton;
+@synthesize datePicker;
 
 @synthesize food;
 @synthesize myTableView;
 @synthesize navBar;
 
 static int editMode = 0;
+static bool editPurchase = FALSE;
+static bool editExp = FALSE;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +56,7 @@ static int editMode = 0;
 
 
     [self setEditButton:nil];
+    [self setDatePicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -125,9 +129,13 @@ static int editMode = 0;
             break;
         case 2:
             cell.left.text = @"Experation Date:";
-            if(editMode == 1)
+            if(editMode == 1 && !editExp)
             {
                 cell.right.text = @"Tap to Edit";
+            }
+            else if(editExp)
+            {
+                cell.right.text = @" ";
             }
             else
             {
@@ -136,9 +144,13 @@ static int editMode = 0;
             break;
         case 3:
             cell.left.text = @"Purchase Date:";
-            if(editMode == 1)
+            if(editMode == 1 && !editPurchase)
             {
                 cell.right.text = @"Tap to Edit";
+            }
+            else if(editPurchase)
+            {
+                cell.right.text = @" ";
             }
             else
             {
@@ -196,17 +208,42 @@ static int editMode = 0;
 
 - (void)tableView:(UITableView *)myTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
+    //CustomDetailCell *cell = ((CustomDetailCell*)[self.myTableView cellForRowAtIndexPath:indexPath]);
+   if(editMode == 1)
+   {
+       switch (indexPath.row) {
+           case 2:
+               [self.datePicker setDate:food.expiration_date];
+               [self.datePicker setHidden:NO];
+               editExp = TRUE;
+               editPurchase = FALSE;
+               break;
+            case 3:
+               [self.datePicker setDate:food.purchase_date];
+               [self.datePicker setHidden:NO];
+               editPurchase = TRUE;
+               editExp = FALSE;
+               break;
+           default:
+               break;
+       }
+       [self.myTableView reloadData];
+   }
 }
 
 - (IBAction)doneButton:(id)sender {
     if (editMode == 1) {
         editMode = 0;
+        [self.datePicker setHidden:YES];
+        editExp = FALSE;
+        editPurchase = FALSE;
         [self.myTableView reloadData];
     }
     else
     {
+        [self saveDB];
         [self dismissModalViewControllerAnimated:YES];
+        
     }
 }
 
@@ -246,5 +283,23 @@ static int editMode = 0;
         editMode = 1;
         [self.myTableView reloadData];
     }
+}
+- (IBAction)dateChange:(id)sender {
+    if(editPurchase){
+        food.purchase_date = [datePicker date];
+    }
+    else if(editExp){
+        food.expiration_date = [datePicker date];
+    }
+    else {
+        NSLog(@"How did you get here?");
+    }
+}
+-(void) saveDB{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSError *error;
+    [appDelegate.managedObjectContext save: &error];
+    return;
+
 }
 @end

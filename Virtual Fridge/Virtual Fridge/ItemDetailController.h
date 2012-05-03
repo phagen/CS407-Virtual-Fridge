@@ -22,5 +22,9 @@
 - (IBAction)addToList:(id)sender;
 - (IBAction)edit:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+- (IBAction)dateChange:(id)sender;
+
+-(void) saveDB;
 
 @end
