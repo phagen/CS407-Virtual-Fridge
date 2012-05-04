@@ -64,9 +64,9 @@ static int alertNeeded = 0;
     NSError *error;
     NSArray *allItems = [appDelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     pantryItems = (NSMutableArray*) allItems;
+    Boolean pref = [Preferences notifications];
     
-    
-    if(alertFlag == 0 && [Preferences notifications]){
+    if(alertFlag == 0 && pref){
         Food * food;
         //NSString * alertMessage;
         NSDate * date;

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SettingsViewController.h"
 
 @interface ExpirationDaysCellView : UITableViewCell
 
+@property (nonatomic, retain) IBOutlet UISlider *slider0;
 @end

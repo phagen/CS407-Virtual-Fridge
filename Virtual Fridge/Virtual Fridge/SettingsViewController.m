@@ -115,6 +115,7 @@
                 if (cell == nil) {
                 cell = [[NotificationsCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 }
+                cell.switch0.on = [Preferences notifications];
                 return cell;
             }
             case 1:
@@ -125,6 +126,7 @@
                 if (cell == nil) {
                     cell = [[ExpirationDaysCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 }
+                cell.slider0.value = [Preferences expirationDays];
                 return cell;
             }
             default:
@@ -220,7 +222,7 @@
 - (IBAction)changedValue:(id)sender {
     UISwitch *sw = (UISwitch*) sender;
 
-    [Preferences setNotifications:sw.on];
+    [Preferences setNotifications:sw.isOn];
 }
 
 - (IBAction)sliderChangedValue:(id)sender {

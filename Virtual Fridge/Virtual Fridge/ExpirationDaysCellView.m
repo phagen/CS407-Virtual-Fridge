@@ -10,5 +10,6 @@
 
 @implementation ExpirationDaysCellView
 
+@synthesize slider0;
 
 @end
