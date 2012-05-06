@@ -390,7 +390,7 @@ static int viewFlag = 0;
     int selSection = [self.myTableView indexPathForSelectedRow].section;
     int selRow = [self.myTableView indexPathForSelectedRow].row;
     
-    UITableViewCell *thisCell = [myTableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell *thisCell = [self.myTableView cellForRowAtIndexPath:indexPath];
     if(viewFlag == 0)
     {
         if(thisCell.accessoryType == UITableViewCellAccessoryNone)

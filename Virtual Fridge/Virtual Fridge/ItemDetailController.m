@@ -111,7 +111,7 @@ static bool editExp = FALSE;
 
     static NSString *CellIdentifier = @"custom";
     
-    CustomDetailCell *cell = [myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomDetailCell *cell = [self.myTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[CustomDetailCell alloc]
