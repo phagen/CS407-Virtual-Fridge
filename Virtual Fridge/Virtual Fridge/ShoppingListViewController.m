@@ -457,6 +457,7 @@ static int viewFlag = 0;
 }
 -(void) switchStateOfFood: (Food*) temp
 {
+    temp.shop_sel = [NSNumber numberWithInt:0];
     switch(temp.state.intValue)
     {
         case 2:
