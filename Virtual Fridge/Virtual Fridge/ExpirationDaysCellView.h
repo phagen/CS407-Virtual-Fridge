@@ -11,5 +11,6 @@
 
 @interface ExpirationDaysCellView : UITableViewCell
 
+@property (nonatomic, retain) IBOutlet UILabel *label0;
 @property (nonatomic, retain) IBOutlet UISlider *slider0;
 @end

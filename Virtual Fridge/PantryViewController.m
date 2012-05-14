@@ -74,7 +74,7 @@ static int alertNeeded = 0;
         expiration = [[NSDate date] addTimeInterval:(60*60*24*10*[Preferences expirationDays])];
         NSMutableString * message = [[NSMutableString alloc] init];
         
-        [message appendFormat:@"The following items are going to expire in the next %d days: \n", [Preferences expirationDays]];
+        [message appendFormat:@"The following items are going to expire in the next %i days: \n", ((int)([Preferences expirationDays] * 10))];
         
         for(int i = 0; i < [pantryItems count]; i++){
             food = ((Food*)[pantryItems objectAtIndex:i]);

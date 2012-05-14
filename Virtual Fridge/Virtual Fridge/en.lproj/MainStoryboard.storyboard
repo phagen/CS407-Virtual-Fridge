@@ -666,7 +666,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Notifications" lineBreakMode="tailTruncation" minimumFontSize="10" id="mt9-fo-B2q">
                                             <rect key="frame" x="20" y="11" width="96" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -688,7 +688,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Expiration Days" lineBreakMode="tailTruncation" minimumFontSize="10" id="cLd-nC-YhC">
                                             <rect key="frame" x="20" y="11" width="120" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -703,6 +703,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="label0" destination="cLd-nC-YhC" id="yeU-Jx-CVQ"/>
                                     <outlet property="slider0" destination="tql-e0-0x6" id="1gG-oU-QV2"/>
                                 </connections>
                             </tableViewCell>
@@ -737,6 +738,100 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="fridge-icon.png" width="30" height="30"/>
         <image name="icon_introduction.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="AddCart" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCart.h"/>
+            <relationships>
+                <relationship kind="action" name="dissmissView:"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="AddPantry" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPantry.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissView:"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="AddShoppingList" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddShoppingList.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissView:"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="CartViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="CheckOut:"/>
+                <relationship kind="action" name="segChangeEvent:"/>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="CustomDetailCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomDetailCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="left" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="right" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ExpirationDaysCellView" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ExpirationDaysCellView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label0" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="slider0" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="ItemDetailController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemDetailController.h"/>
+            <relationships>
+                <relationship kind="action" name="addToList:"/>
+                <relationship kind="action" name="dateChange:"/>
+                <relationship kind="action" name="doneButton:"/>
+                <relationship kind="action" name="edit:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
+            </relationships>
+        </class>
+        <class className="NotificationsCellView" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NotificationsCellView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="switch0" candidateClass="UISwitch"/>
+            </relationships>
+        </class>
+        <class className="PantryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PantryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="delete" candidateClass="UISwipeGestureRecognizer"/>
+            </relationships>
+        </class>
+        <class className="SettingsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changedValue:"/>
+                <relationship kind="action" name="sliderChangedValue:"/>
+                <relationship kind="outlet" name="epic" candidateClass="epicuriousWebPage"/>
+            </relationships>
+        </class>
+        <class className="ShoppingListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ShoppingListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addToCart:"/>
+                <relationship kind="action" name="segChangeEvent:"/>
+                <relationship kind="outlet" name="addToCart" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="epicuriousWebPage" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/epicuriousWebPage.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

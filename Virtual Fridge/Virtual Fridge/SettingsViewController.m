@@ -127,6 +127,10 @@
                     cell = [[ExpirationDaysCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                 }
                 cell.slider0.value = [Preferences expirationDays];
+                
+                int days = ((int)(cell.slider0.value * 10));
+                cell.label0.text = [NSString stringWithFormat:@"Days: %d", days];
+                NSLog(@"Days, %f",cell.slider0.value);
                 return cell;
             }
             default:
@@ -229,6 +233,8 @@
     UISlider *sl = (UISlider*) sender;
     
     [Preferences setExpirationDays:sl.value];
+  //  [self.tableView reloadData];
+    
     
 }
 @end
