@@ -13,8 +13,10 @@
 @interface SettingsViewController : UITableViewController
 {
     IBOutlet epicuriousWebPage *epic;
+    NSIndexPath *daysPath;
 }
 @property (nonatomic, retain) epicuriousWebPage *epic;
+@property (nonatomic, retain) NSIndexPath *daysPath;
 
 - (IBAction)changedValue:(id)sender;
 - (IBAction)sliderChangedValue:(id)sender;

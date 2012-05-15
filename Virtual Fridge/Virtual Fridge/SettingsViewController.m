@@ -14,7 +14,8 @@
 
 
 @implementation SettingsViewController
-@synthesize epic;
+@synthesize epic,daysPath;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -121,7 +122,7 @@
             case 1:
             {
                 static NSString *CellIdentifier = @"expiration";
-                
+                daysPath = indexPath;
                 ExpirationDaysCellView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
                 if (cell == nil) {
                     cell = [[ExpirationDaysCellView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -233,7 +234,9 @@
     UISlider *sl = (UISlider*) sender;
     
     [Preferences setExpirationDays:sl.value];
-  //  [self.tableView reloadData];
+    ExpirationDaysCellView *cell = ((ExpirationDaysCellView*)[self.tableView cellForRowAtIndexPath:daysPath]);
+    int days = ((int)(sl.value * 10));
+    cell.label0.text = [NSString stringWithFormat:@"Days: %d", days];  //  [self.tableView reloadData];
     
     
 }

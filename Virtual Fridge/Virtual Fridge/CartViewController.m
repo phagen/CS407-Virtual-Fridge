@@ -488,7 +488,7 @@ static int viewFlag = 0;
             }   
 
         }
-    }
+        }
     }
     else
     {
